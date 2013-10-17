@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  topic_name: MyString
+  topic_type: 1
+
+two:
+  topic_name: MyString
+  topic_type: 1
