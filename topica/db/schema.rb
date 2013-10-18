@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20131018004603) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["post_id"], name: "index_comments_on_post_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "favors", force: true do |t|
     t.integer  "user_id"
@@ -31,19 +31,17 @@ ActiveRecord::Schema.define(version: 20131018004603) do
     t.datetime "updated_at"
   end
 
-  add_index "favors", ["post_id"], name: "index_favors_on_post_id"
-  add_index "favors", ["user_id"], name: "index_favors_on_user_id"
+  add_index "favors", ["post_id"], name: "index_favors_on_post_id", using: :btree
+  add_index "favors", ["user_id"], name: "index_favors_on_user_id", using: :btree
 
   create_table "feeds", force: true do |t|
     t.integer  "user_id"
-    t.integer  "topic_id"
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "feeds", ["topic_id"], name: "index_feeds_on_topic_id"
-  add_index "feeds", ["user_id"], name: "index_feeds_on_user_id"
+  add_index "feeds", ["user_id"], name: "index_feeds_on_user_id", using: :btree
 
   create_table "followships", force: true do |t|
     t.integer  "user_id"
@@ -52,8 +50,8 @@ ActiveRecord::Schema.define(version: 20131018004603) do
     t.datetime "updated_at"
   end
 
-  add_index "followships", ["topic_id"], name: "index_followships_on_topic_id"
-  add_index "followships", ["user_id"], name: "index_followships_on_user_id"
+  add_index "followships", ["topic_id"], name: "index_followships_on_topic_id", using: :btree
+  add_index "followships", ["user_id"], name: "index_followships_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "topic_id"
@@ -64,18 +62,20 @@ ActiveRecord::Schema.define(version: 20131018004603) do
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id"
-  add_index "posts", ["user_id"], name: "index_posts_on_user_id"
+  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.integer  "user_id"
+    t.integer  "feed_id"
     t.string   "name"
     t.integer  "topic_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "topics", ["user_id"], name: "index_topics_on_user_id"
+  add_index "topics", ["feed_id"], name: "index_topics_on_feed_id", using: :btree
+  add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

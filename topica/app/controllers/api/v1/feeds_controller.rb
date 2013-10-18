@@ -1,2 +1,2 @@
-class Api::V1::FeedsController < ApplicationController
+class Api::V1::FeedsController < Api::V1::ApplicationController
 end
