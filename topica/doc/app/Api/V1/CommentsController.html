@@ -59,7 +59,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link"><a href="../../ApplicationController.html">ApplicationController</a>
+  <p class="link"><a href="ApplicationController.html">Api::V1::ApplicationController</a>
   
 </nav>
 
@@ -104,6 +104,8 @@
     <li><a href="../../Api.html">Api</a>
   
     <li><a href="../../Api/V1.html">Api::V1</a>
+  
+    <li><a href="../../Api/V1/ApplicationController.html">Api::V1::ApplicationController</a>
   
     <li><a href="../../Api/V1/CommentsController.html">Api::V1::CommentsController</a>
   
@@ -158,7 +160,7 @@
 
   <div id="description" class="description">
     
-<p><a href="../../Comment.html">Comment</a> controller</p>
+<p><a href="../../Comment.html">Comment</a> controller Basic GRUD implemented</p>
 
   </div><!-- description -->
 
@@ -196,7 +198,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">comment_params</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">save</span>
@@ -231,7 +233,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 40</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 41</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-constant">Commnet</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
@@ -262,7 +264,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 7</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at DESC&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -292,7 +294,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 13</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])  
 <span class="ruby-keyword">end</span></pre>
@@ -322,7 +324,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 29</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 30</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">comemnt</span> = <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">comment_params</span>)

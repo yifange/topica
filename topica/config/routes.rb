@@ -1,5 +1,7 @@
 Topica::Application.routes.draw do
+  # The namespace for the APIs
   namespace :api do
+    # The namespace for API v1 
     namespace :v1 do
       root :to => "application#ping"
       get "ping" => "application#ping"

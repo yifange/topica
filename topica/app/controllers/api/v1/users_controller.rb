@@ -1,4 +1,6 @@
 # User controller
+# Basic GRUD implemented
+
 class Api::V1::UsersController < Api::V1::ApplicationController
 
   # Query for all the users in descendent order

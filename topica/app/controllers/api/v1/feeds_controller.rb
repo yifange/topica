@@ -1,4 +1,5 @@
 # Feed controller
+# Basic GRUD implemented
 
 class Api::V1::FeedsController < Api::V1::ApplicationController
 

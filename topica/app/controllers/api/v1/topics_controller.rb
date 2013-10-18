@@ -1,4 +1,5 @@
 # Topic controller
+# Basic GRUD implemented
 
 class Api::V1::TopicsController < Api::V1::ApplicationController
   # Query for all the topics in descendent order

@@ -1,5 +1,5 @@
 # Post controller
-
+# Basic GRUD implemented
 class Api::V1::PostsController < Api::V1::ApplicationController
 
   # Query for all the posts in descendent order
