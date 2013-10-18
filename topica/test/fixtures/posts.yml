@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  post_content: 
-  post_date: 2013-10-16
+  topic_id: 
+  user_id: 
+  title: MyText
+  content: MyText
 
 two:
-  post_content: 
-  post_date: 2013-10-16
+  topic_id: 
+  user_id: 
+  title: MyText
+  content: MyText

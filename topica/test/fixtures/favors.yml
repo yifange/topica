@@ -2,10 +2,8 @@
 
 one:
   user_id: 
-  name: MyString
-  topic_type: 1
+  post_id: 
 
 two:
   user_id: 
-  name: MyString
-  topic_type: 1
+  post_id: 
