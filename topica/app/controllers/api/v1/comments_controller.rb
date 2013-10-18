@@ -46,7 +46,7 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   # PUT /comments/comment_id
 
   def update
-    comemnt = comment.find(params[:id])
+    comemnt = Comment.find(params[:id])
     if comment.update_attributes(comment_params)
       render :json => true, :head => :no_content
     else
@@ -55,9 +55,12 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   end
 
   # Destroy one comment by ID
+  # DELETE /comments/:comment_id
+  # or
+  # DELETE /uesrs/:user_id/comments/:comment_id
 
   def destroy
-    Commnet.find(params[:id]).destroy
+    Comment.find(params[:id]).destroy
     render :json => true, :head => :no_content
   end
 

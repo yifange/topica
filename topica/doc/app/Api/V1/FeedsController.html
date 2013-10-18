@@ -160,7 +160,9 @@
 
   <div id="description" class="description">
     
-<p><a href="../../Feed.html">Feed</a> controller Basic GRUD implemented</p>
+<p><a href="../../Feed.html">Feed</a> controller Basic GRUD implemented <a
+href="../../Feed.html">Feed</a> is also defined as a nested resource of
+user, so you can specify the user id for the feed in the URL</p>
 
   </div><!-- description -->
 
@@ -193,12 +195,18 @@
 
         <div class="method-description">
           
-          <p>Create a new feed</p>
+          <p>Create a new feed Params:</p>
+<dl class="rdoc-list note-list"><dt><code>feed</code>
+<dd>
+<p>Hash of the feed object to be created</p>
+</dd></dl>
+
+<p>POST /feeds or POST /users/:user_id/feeds</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">feed</span> = <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">feed_params</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">feed</span>.<span class="ruby-identifier">save</span>
@@ -228,14 +236,15 @@
 
         <div class="method-description">
           
-          <p>Destroy one feed by ID</p>
+          <p>Destroy one feed by ID DELETE /feeds/:feed_id or DELETE
+/users/:user_id/feeds/:feed_id</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 41</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-constant">Commnet</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
+  <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
@@ -259,12 +268,13 @@
 
         <div class="method-description">
           
-          <p>Query for all the feeds in descendent order</p>
+          <p>Query for all the feeds in descendent order GET /feeds or GET
+/users/:user_id/feeds</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 7</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at DESC&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -289,12 +299,18 @@
 
         <div class="method-description">
           
-          <p>Query for one feed by id</p>
+          <p>Query for one feed by id Params:</p>
+<dl class="rdoc-list note-list"><dt><code>id</code>
+<dd>
+<p>feed_id</p>
+</dd></dl>
+
+<p>GET /feeds/:feed_id or GET /users/:user_id/feeds/:feed_id</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])  
 <span class="ruby-keyword">end</span></pre>
@@ -319,14 +335,23 @@
 
         <div class="method-description">
           
-          <p>Update an existing feed</p>
+          <p>Update an existing feed Params:</p>
+<dl class="rdoc-list note-list"><dt><code>id</code>
+<dd>
+<p><a href="../../Feed.html">Feed</a> id</p>
+</dd><dt><code>feed</code>
+<dd>
+<p>Hash of the feed object to be created</p>
+</dd></dl>
+
+<p>PUT /feeds/:feed_id or PUT /users/:user_id/feeds/:feed_id</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 30</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-identifier">comemnt</span> = <span class="ruby-identifier">feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">feed</span> = <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">feed</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">feed_params</span>)
     <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
   <span class="ruby-keyword">else</span>

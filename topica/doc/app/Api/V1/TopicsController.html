@@ -160,7 +160,9 @@
 
   <div id="description" class="description">
     
-<p><a href="../../Topic.html">Topic</a> controller Basic GRUD implemented</p>
+<p><a href="../../Topic.html">Topic</a> controller Basic GRUD implemented You
+have three ways to get to a topic resource. 1) Directly via the topic id 2)
+Specify the user id and the feed id 3) Specify the user id</p>
 
   </div><!-- description -->
 
@@ -193,12 +195,19 @@
 
         <div class="method-description">
           
-          <p>Create a new topic</p>
+          <p>Create a new topic Params:</p>
+<dl class="rdoc-list note-list"><dt><code>topic</code>
+<dd>
+<p>Hash of the topic object to be created</p>
+</dd></dl>
+
+<p>POST /topics or POST /users/:user_id/feeds/:feed_id/topics or POST
+/users/:user_id/topics</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 40</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">topic</span> = <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">topic_params</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">save</span>
@@ -228,14 +237,16 @@
 
         <div class="method-description">
           
-          <p>Destroy one topic by ID</p>
+          <p>Destroy one topic by ID DELETE /topics/:topic_id or DELETE
+/users/:user_id/feeds/:feed_id/topics/:topic_id or DELETE
+/users/:user_id/topics/:topic_id</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 40</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 75</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-constant">Commnet</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
+  <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
@@ -259,12 +270,13 @@
 
         <div class="method-description">
           
-          <p>Query for all the topics in descendent order</p>
+          <p>Query for all the topics in descendent order GET /topics or GET
+/users/:user_id/feeds/:feed_id/topics or GET /users/:user_id/topics</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at DESC&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -289,12 +301,20 @@
 
         <div class="method-description">
           
-          <p>Query for one topic by id</p>
+          <p>Query for one topic by id Params:</p>
+<dl class="rdoc-list note-list"><dt><code>id</code>
+<dd>
+<p>feed_id</p>
+</dd></dl>
+
+<p>GET /topics/:topic_id or GET
+/users/:user_id/feeds/:feed_id/topics/:topic_id or GET
+/users/:user_id/topics/:topic_id</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])  
 <span class="ruby-keyword">end</span></pre>
@@ -319,14 +339,25 @@
 
         <div class="method-description">
           
-          <p>Update an existing topic</p>
+          <p>Update an existing topic Params:</p>
+<dl class="rdoc-list note-list"><dt><code>id</code>
+<dd>
+<p><a href="../../Feed.html">Feed</a> id</p>
+</dd><dt><code>topic</code>
+<dd>
+<p>Hash of the topic object to be created</p>
+</dd></dl>
+
+<p>PUT /topics/:topic_id or PUT
+/users/:user_id/feeds/:feed_id/topics/:topic_id or PUT
+/users/:user_id/topics/:topic_id</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 29</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/topics_controller.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-identifier">comemnt</span> = <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">topic</span> = <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">topic</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">topic_params</span>)
     <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
   <span class="ruby-keyword">else</span>
