@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131018004603) do
+ActiveRecord::Schema.define(version: 20131029040601) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -78,12 +78,21 @@ ActiveRecord::Schema.define(version: 20131018004603) do
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "username"
+    t.string   "username",                        null: false
     t.string   "email"
-    t.string   "encrypted_password"
-    t.string   "password_salt"
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "remember_me_token"
+    t.datetime "remember_me_token_expires_at"
+    t.string   "reset_password_token"
+    t.datetime "reset_password_token_expires_at"
+    t.datetime "reset_password_email_sent_at"
   end
+
+  add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", using: :btree
 
 end

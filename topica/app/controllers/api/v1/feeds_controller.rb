@@ -31,6 +31,8 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   # POST /users/:user_id/feeds
 
   def create
+    puts params
+    puts "====="
     feed = Feed.new(feed_params)
     if feed.save
       render :json => feed, :status => :created
@@ -69,7 +71,7 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def feed_params
-    params.require(:feed).permit(:user_id, :content)
+    params.require(:feed).permit(:user_id, :name)
   end
 
 end

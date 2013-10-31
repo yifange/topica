@@ -57,6 +57,6 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def user_params
-    params.require(:user).permit(:user_id, :content)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 end

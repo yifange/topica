@@ -69,6 +69,6 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def post_params
-    params.require(:post).permit(:user_id, :content)
+    params.require(:post).permit(:user_id, :topic_id, :title, :content)
   end
 end

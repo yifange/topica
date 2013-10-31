@@ -1,4 +1,7 @@
 Topica::Application.routes.draw do
+  get "user_sessions/new"
+  get "user_sessions/create"
+  get "user_sessions/destroy"
   # The namespace for the APIs
   namespace :api do
     # The namespace for API v1 

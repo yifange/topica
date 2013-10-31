@@ -3,11 +3,13 @@
 one:
   username: MyString
   email: MyString
-  encrypted_password: MyString
-  password_salt: MyString
+  crypted_password: MyString
+  salt: MyString
+  name: MyString
 
 two:
   username: MyString
   email: MyString
-  encrypted_password: MyString
-  password_salt: MyString
+  crypted_password: MyString
+  salt: MyString
+  name: MyString
