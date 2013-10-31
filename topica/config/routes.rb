@@ -19,4 +19,5 @@ Topica::Application.routes.draw do
       resources :comments, :posts, :users, :topics, :feeds
     end
   end
+  match "*path", :to => "application#routing_error", :via => [:get, :post, :put, :delete, :patch]
 end
