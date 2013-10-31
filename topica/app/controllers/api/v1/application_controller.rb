@@ -6,6 +6,7 @@
 class Api::V1::ApplicationController < ApplicationController
   protect_from_forgery with: :null_session
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+  rescue_from Exception, :with => :server_error
   
   # return the api version to the user
  
@@ -31,5 +32,8 @@ class Api::V1::ApplicationController < ApplicationController
   def record_not_found
     #http://stackoverflow.com/questions/11859437/how-to-handle-exceptions-in-json-based-restful-code
     render :text => "Record not found", :status => :not_found
+  end
+  def server_error(e)
+    render :text => e.message, :status => :internal_server_error
   end
 end
