@@ -1,11 +1,10 @@
 Topica::Application.routes.draw do
-  get "user_sessions/new"
-  get "user_sessions/create"
-  get "user_sessions/destroy"
   # The namespace for the APIs
   namespace :api do
     # The namespace for API v1 
     namespace :v1 do
+      post "login" => "user_sessions#create"
+      get "logout" => "user_sessions#destroy"
       root :to => "application#ping"
       get "ping" => "application#ping"
       resources :users do
