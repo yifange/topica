@@ -11,7 +11,7 @@ Rails.application.config.sorcery.configure do |config|
   # override the 'not_authenticated' method of course.
   # Default: `:not_authenticated`
   #
-  # config.not_authenticated_action =
+  config.not_authenticated_action = :render_not_authenticated
 
 
   # When a non logged in user tries to enter a page that requires login, save
