@@ -2,7 +2,7 @@
 # Basic GRUD implemented
 
 class Api::V1::UsersController < Api::V1::ApplicationController
-
+  wrap_parameters :user, :include => [:username, :email, :password, :password_confirmation]
   # Query for all the users in descendent order
   # GET /users
   def index
@@ -26,7 +26,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     if user.save
       render :json => user, :status => :created
     else
-      render :json => user.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => user.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -39,9 +39,9 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   def update
     user = User.find(params[:id])
     if user.update_attributes(user_params)
-      render :json => true, :head => :no_content
+      render :json => {:ok => true}, :head => :no_content
     else
-      render :json => user.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => user.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -50,13 +50,13 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    render :json => true, :head => :no_content
+    render :json => {:ok => true}, :head => :no_content
   end
 
   private
   # Whitelist the required fields in params hash
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :username)
   end
 end

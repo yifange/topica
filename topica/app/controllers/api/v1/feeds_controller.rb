@@ -31,13 +31,11 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   # POST /users/:user_id/feeds
 
   def create
-    puts params
-    puts "====="
     feed = Feed.new(feed_params)
     if feed.save
       render :json => feed, :status => :created
     else
-      render :json => feed.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => feed.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -52,9 +50,9 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   def update
     feed = Feed.find(params[:id])
     if feed.update_attributes(feed_params)
-      render :json => true, :head => :no_content
+      render :json => {:ok => true}, :head => :no_content
     else
-      render :json => feed.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => feed.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -64,7 +62,7 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   # DELETE /users/:user_id/feeds/:feed_id
   def destroy
     Feed.find(params[:id]).destroy
-    render :json => true, :head => :no_content
+    render :json => {:ok => true}, :head => :no_content
   end
 
   private

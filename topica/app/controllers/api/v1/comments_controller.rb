@@ -35,7 +35,7 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
     if comment.save
       render :json => comment, :status => :created
     else
-      render :json => comment.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => comment.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -48,9 +48,9 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   def update
     comemnt = Comment.find(params[:id])
     if comment.update_attributes(comment_params)
-      render :json => true, :head => :no_content
+      render :json => {:ok => true}, :head => :no_content
     else
-      render :json => comment.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => comment.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -61,13 +61,13 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
 
   def destroy
     Comment.find(params[:id]).destroy
-    render :json => true, :head => :no_content
+    render :json => {:ok => true}, :head => :no_content
   end
 
   private
   # Whitelist the required fields in params hash
 
   def comment_params
-    params.require(:comment).permit(:user_id, :content)
+    params.require(:comment).permit(:user_id, :post_id, :content)
   end
 end

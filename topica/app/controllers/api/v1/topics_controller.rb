@@ -59,9 +59,9 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   def update
     topic = Topic.find(params[:id])
     if topic.update_attributes(topic_params)
-      render :json => true, :head => :no_content
+      render :json => {:ok => true}, :head => :no_content
     else
-      render :json => topic.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => topic.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -74,7 +74,7 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
 
   def destroy
     Topic.find(params[:id]).destroy
-    render :json => true, :head => :no_content
+    render :json => {:ok => true}, :head => :no_content
   end
 
   private

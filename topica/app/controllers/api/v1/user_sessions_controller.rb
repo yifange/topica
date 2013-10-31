@@ -5,14 +5,14 @@ class Api::V1::UserSessionsController < ApplicationController
 
   def create
     if @user = login(params[:email], params[:password])
-      render json: {text: "Login successful."}
+      render json: {:ok => true}
     else
-      render json: {text: "Login failed"}, status: :unauthorized
+      render json: {:ok => false}, status: :unauthorized
     end
   end
 
   def destroy
     logout
-    render json: {text: "Logged out"}
+    render json: {:ok => true}
   end
 end

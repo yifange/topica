@@ -34,7 +34,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
     if post.save
       render :json => post, :status => :created
     else
-      render :json => post.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => post.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -49,9 +49,9 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   def update
     post = Post.find(params[:id])
     if post.update_attributes(post_params)
-      render :json => true, :head => :no_content
+      render :json => {:ok => true}, :head => :no_content
     else
-      render :json => post.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => post.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -62,7 +62,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
 
   def destroy
     Post.find(params[:id]).destroy
-    render :json => true, :head => :no_content
+    render :json => {:ok => true}, :head => :no_content
   end
 
   private
