@@ -4,8 +4,6 @@ class Api::V1::UserSessionsController < Api::V1::ApplicationController
   # end
 
   def create
-    puts params[:email]
-    puts params[:password]
     if @user = login(params[:email], params[:password])
       render json: {:ok => true}
     else
