@@ -4,4 +4,5 @@ class Topic < ActiveRecord::Base
   validates :user_id, :presence => true
   has_many :followships
   has_many :users, :through => :followships
+  has_many :posts, :through => :categories
 end

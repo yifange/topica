@@ -12,6 +12,7 @@ Topica::Application.routes.draw do
       resources :posts, :only => [] do
         resources :comments, :only => [:index, :create, :destroy, :update]
         get "/favors" => "favors#all_favorers"
+        get "/topics" => "categories#all_topics"
       end
 
       resources :users, :except => [:new, :edit] do
@@ -43,5 +44,5 @@ Topica::Application.routes.draw do
       end
     end
   end
-  match "*path", :to => "application#routing_error", :via => [:get, :post, :put, :delete, :patch]
+  match "*path", :to => "api/v1/errors#routing_error", :via => [:get, :post, :put, :delete, :patch]
 end
