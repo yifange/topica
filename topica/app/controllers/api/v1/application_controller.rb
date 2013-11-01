@@ -8,6 +8,7 @@ class Api::V1::ApplicationController < ApplicationController
   after_filter :set_csrf_cookie_for_ng
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   rescue_from Exception, :with => :server_error
+  before_filter :require_login  
   
   # return the api version to the user
  
@@ -37,5 +38,8 @@ class Api::V1::ApplicationController < ApplicationController
   end
   def server_error(e)
     render :json => {:ok => false, :message => e.message}, :status => :internal_server_error
+  end
+  def render_not_authenticated
+    render :json => {:ok => false, :message => "Not authenticated"}
   end
 end
