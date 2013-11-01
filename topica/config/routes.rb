@@ -16,7 +16,7 @@ Topica::Application.routes.draw do
 
       resources :users, :except => [:new, :edit] do
         
-        # resources :favors, :except => [:new, :edit], :only => [:index]
+        # favors
         get "/favors/:post_id" => "favors#create"
         post "/favors" => "favors#create"
         delete "/favors/:post_id" => "favors#destroy"
