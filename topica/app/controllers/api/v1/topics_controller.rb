@@ -42,7 +42,7 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
     if topic.save
       render :json => topic, :status => :created
     else
-      render :json => topic.errors, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => topic.errors}, :status => :unprocessable_entity
     end
   end
 
@@ -81,6 +81,6 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def topic_params
-    params.require(:topic).permit(:user_id, :content)
+    params.permit(:user_id, :content)
   end
 end

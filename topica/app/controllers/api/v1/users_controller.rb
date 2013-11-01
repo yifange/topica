@@ -3,7 +3,7 @@
 
 class Api::V1::UsersController < Api::V1::ApplicationController
   skip_before_filter :require_login, only: [:create]
-  wrap_parameters :user, :include => [:username, :email, :password, :password_confirmation]
+  # wrap_parameters :user, :include => [:username, :email, :password, :password_confirmation]
   # Query for all the users in descendent order
   # GET /users
   def index
@@ -58,6 +58,6 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :username)
+    params.permit(:email, :password, :password_confirmation, :username)
   end
 end

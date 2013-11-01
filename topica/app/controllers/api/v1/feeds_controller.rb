@@ -69,7 +69,7 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def feed_params
-    params.require(:feed).permit(:user_id, :name)
+    params.permit(:user_id, :name)
   end
 
 end

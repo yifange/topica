@@ -68,6 +68,6 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def comment_params
-    params.require(:comment).permit(:user_id, :post_id, :content)
+    params.permit(:user_id, :post_id, :content)
   end
 end
