@@ -1,50 +1,52 @@
-Verb     URI Pattern                                      
-POST     /api/v1/login                                   
-POST     /api/v1/signup                                 
-GET      /api/v1/logout                                
-GET      /api/v1                                      
-GET      /api/v1/ping                                     
-GET      /api/v1/comments/:id                             
-PATCH    /api/v1/comments/:id                             
-PUT      /api/v1/comments/:id                             
-DELETE   /api/v1/comments/:id                             
-GET      /api/v1/posts/:post\_id/comments             
-POST     /api/v1/posts/:post\_id/comments            
-GET      /api/v1/posts/:post\_id/favors             
-GET      /api/v1/posts/:post\_id/topics            
-POST     /api/v1/posts/:post\_id/topics/delete    
-POST     /api/v1/posts/:post\_id/topics                    
-GET      /api/v1/posts/:id                                
-PATCH    /api/v1/posts/:id                                
-PUT      /api/v1/posts/:id                                
-DELETE   /api/v1/posts/:id                                
-GET      /api/v1/topics/:topic\_id/followers              
-GET      /api/v1/topics/:topic\_id/posts/:post\_id/comments   
-GET      /api/v1/topics/:topic\_id/posts                   
-GET      /api/v1/topics/:id                               
-PATCH    /api/v1/topics/:id                               
-PUT      /api/v1/topics/:id                               
-DELETE   /api/v1/topics/:id                               
-GET      /api/v1/feeds/:feed\_id/topics                    
-GET      /api/v1/feeds/:id                                
-PATCH    /api/v1/feeds/:id                                
-PUT      /api/v1/feeds/:id                                
-DELETE   /api/v1/feeds/:id                                
-GET      /api/v1/users/:user\_id/favors/:post_id           
-POST     /api/v1/users/:user\_id/favors                    
-DELETE   /api/v1/users/:user\_id/favors/:post_id           
-GET      /api/v1/users/:user\_id/favors                    
-GET      /api/v1/users/:user\_id/comments                  
-GET      /api/v1/users/:user\_id/posts                     
-POST     /api/v1/users/:user\_id/posts                     
-GET      /api/v1/users/:user\_id/follows                 
-GET      /api/v1/users/:user\_id/topics                    
-POST     /api/v1/users/:user\_id/topics                    
-GET      /api/v1/users/:user\_id/feeds                     
-POST     /api/v1/users/:user\_id/feeds                     
-GET      /api/v1/users                                    
-POST     /api/v1/users                                    
-GET      /api/v1/users/:id                                
-PATCH    /api/v1/users/:id                                
-PUT      /api/v1/users/:id                                
-DELETE   /api/v1/users/:id                                
+| Verb   | URI Pattern                                        |
+|--------+----------------------------------------------------|
+| POST   | /api/v1/login                                      |
+| POST   | /api/v1/signup                                     |
+| GET    | /api/v1/logout                                     |
+| GET    | /api/v1                                            |
+| GET    | /api/v1/ping                                       |
+| GET    | /api/v1/comments/:id                               |
+| PATCH  | /api/v1/comments/:id                               |
+| PUT    | /api/v1/comments/:id                               |
+| DELETE | /api/v1/comments/:id                               |
+| GET    | /api/v1/posts/:post\_id/comments                   |
+| POST   | /api/v1/posts/:post\_id/comments                   |
+| GET    | /api/v1/posts/:post\_id/favors                     |
+| GET    | /api/v1/posts/:post\_id/topics                     |
+| POST   | /api/v1/posts/:post\_id/topics/delete              |
+| POST   | /api/v1/posts/:post\_id/topics                     |
+| GET    | /api/v1/posts/:id                                  |
+| PATCH  | /api/v1/posts/:id                                  |
+| PUT    | /api/v1/posts/:id                                  |
+| DELETE | /api/v1/posts/:id                                  |
+| GET    | /api/v1/topics/:topic\_id/followers                |
+| GET    | /api/v1/topics/:topic\_id/posts/:post\_id/comments |
+| GET    | /api/v1/topics/:topic\_id/posts                    |
+| GET    | /api/v1/topics/:id                                 |
+| PATCH  | /api/v1/topics/:id                                 |
+| PUT    | /api/v1/topics/:id                                 |
+| DELETE | /api/v1/topics/:id                                 |
+| GET    | /api/v1/feeds/:feed\_id/topics                     |
+| GET    | /api/v1/feeds/:id                                  |
+| PATCH  | /api/v1/feeds/:id                                  |
+| PUT    | /api/v1/feeds/:id                                  |
+| DELETE | /api/v1/feeds/:id                                  |
+| GET    | /api/v1/users/:user\_id/favors/:post_id            |
+| POST   | /api/v1/users/:user\_id/favors                     |
+| DELETE | /api/v1/users/:user\_id/favors/:post_id            |
+| GET    | /api/v1/users/:user\_id/favors                     |
+| GET    | /api/v1/users/:user\_id/comments                   |
+| GET    | /api/v1/users/:user\_id/posts                      |
+| POST   | /api/v1/users/:user\_id/posts                      |
+| GET    | /api/v1/users/:user\_id/follows                    |
+| GET    | /api/v1/users/:user\_id/topics                     |
+| POST   | /api/v1/users/:user\_id/topics                     |
+| GET    | /api/v1/users/:user\_id/feeds                      |
+| POST   | /api/v1/users/:user\_id/feeds                      |
+| GET    | /api/v1/users                                      |
+| POST   | /api/v1/users                                      |
+| GET    | /api/v1/users/:id                                  |
+| PATCH  | /api/v1/users/:id                                  |
+| PUT    | /api/v1/users/:id                                  |
+| DELETE | /api/v1/users/:id                                  |
+
