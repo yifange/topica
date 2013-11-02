@@ -1,12 +1,12 @@
 class Api::V1::CategoriesController < Api::V1::ApplicationController
   def all_topics
-    topic_ids = Category.where(:post_id => params[:post_id]).map(&:topic_id)
+    topic_ids = Category.find(params[:post_id]).map(&:topic_id)
     topics = Topic.where(:id => topic_ids)
     render :json => topics
   end
 
   def all_posts
-    post_ids = Category.where(:topic_id => params[:topic_id]).map(&:post_id)
+    post_ids = Category.find(params[:topic_id]).map(&:post_id)
     posts = Post.where(:id => post_ids)
     render :json => posts
   end

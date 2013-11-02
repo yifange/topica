@@ -16,7 +16,7 @@ Topica::Application.routes.draw do
       end
       
       resources :topics, :only => [] do
-        get "/followers" => "followship#all_following_users"
+        get "/followers" => "followships#all_following_users"
         get "/posts" => "categories#all_posts"
         resources :posts, :excpet => [:index, :new, :edit] do
           resources :comments, :except => [:new, :edit, :destroy]
@@ -42,7 +42,7 @@ Topica::Application.routes.draw do
 
 
         # following topics
-        get "/follows" => "followship#all_following_topics"
+        get "/follows" => "followships#all_following_topics"
 
         resources :topics, :except => [:new, :edit]
 

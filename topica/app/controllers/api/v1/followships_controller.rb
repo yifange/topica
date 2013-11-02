@@ -15,12 +15,12 @@ class Api::V1::FollowshipsController < ApplicationController
   end
 
   def all_following_topics
-    topics = User.find(:id => params[:user_id]).following_topics
+    topics = User.find(params[:user_id]).following_topics
     render :json => topics
   end
 
   def all_following_users
-    users = Topic.find(:id => params[:topic_id]).following_users
+    users = Topic.find(params[:topic_id]).following_users
     render :json => users
   end
 end
