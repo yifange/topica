@@ -1,51 +1,51 @@
-Verb     URI Pattern                                                Controller#Action
-POST     /api/v1/login                                    api/v1/user_sessions#create
-POST     /api/v1/signup                                   api/v1/users#create
-GET      /api/v1/logout                                   api/v1/user_sessions#destroy
-GET      /api/v1                                          api/v1/application#ping
-GET      /api/v1/ping                                     api/v1/application#ping
-GET      /api/v1/comments/:id                             api/v1/comments#show
-PATCH    /api/v1/comments/:id                             api/v1/comments#update
-PUT      /api/v1/comments/:id                             api/v1/comments#update
-DELETE   /api/v1/comments/:id                             api/v1/comments#destroy
-GET      /api/v1/posts/:post_id/comments                  api/v1/comments#index
-POST     /api/v1/posts/:post_id/comments                  api/v1/comments#create
-GET      /api/v1/posts/:post_id/favors                    api/v1/favors#all_favorers
-GET      /api/v1/posts/:post_id/topics                    api/v1/categories#all_topics
-POST     /api/v1/posts/:post_id/topics/delete             api/v1/categories#destroy
-POST     /api/v1/posts/:post_id/topics                    api/v1/categories#create
-GET      /api/v1/posts/:id                                api/v1/posts#show
-PATCH    /api/v1/posts/:id                                api/v1/posts#update
-PUT      /api/v1/posts/:id                                api/v1/posts#update
-DELETE   /api/v1/posts/:id                                api/v1/posts#destroy
-GET      /api/v1/topics/:topic_id/followers               api/v1/followships#all_following_users
-GET      /api/v1/topics/:topic_id/posts                   api/v1/categories#all_posts
-GET      /api/v1/topics/:topic_id/posts/:post_id/comments api/v1/comments#index
-GET      /api/v1/topics/:topic_id/posts                   api/v1/posts#index
-GET      /api/v1/topics/:id                               api/v1/topics#show
-PATCH    /api/v1/topics/:id                               api/v1/topics#update
-PUT      /api/v1/topics/:id                               api/v1/topics#update
-DELETE   /api/v1/topics/:id                               api/v1/topics#destroy
-GET      /api/v1/feeds/:feed_id/topics                    api/v1/feeds#all_topics
-GET      /api/v1/feeds/:id                                api/v1/feeds#show
-PATCH    /api/v1/feeds/:id                                api/v1/feeds#update
-PUT      /api/v1/feeds/:id                                api/v1/feeds#update
-DELETE   /api/v1/feeds/:id                                api/v1/feeds#destroy
-GET      /api/v1/users/:user_id/favors/:post_id           api/v1/favors#create
-POST     /api/v1/users/:user_id/favors                    api/v1/favors#create
-DELETE   /api/v1/users/:user_id/favors/:post_id           api/v1/favors#destroy
-GET      /api/v1/users/:user_id/favors                    api/v1/favors#index
-GET      /api/v1/users/:user_id/comments                  api/v1/comments#index
-GET      /api/v1/users/:user_id/posts                     api/v1/posts#index
-POST     /api/v1/users/:user_id/posts                     api/v1/posts#create
-GET      /api/v1/users/:user_id/follows                   api/v1/followships#all_following_topics
-GET      /api/v1/users/:user_id/topics                    api/v1/topics#index
-POST     /api/v1/users/:user_id/topics                    api/v1/topics#create
-GET      /api/v1/users/:user_id/feeds                     api/v1/feeds#index
-POST     /api/v1/users/:user_id/feeds                     api/v1/feeds#create
-GET      /api/v1/users                                    api/v1/users#index
-POST     /api/v1/users                                    api/v1/users#create
-GET      /api/v1/users/:id                                api/v1/users#show
-PATCH    /api/v1/users/:id                                api/v1/users#update
-PUT      /api/v1/users/:id                                api/v1/users#update
-DELETE   /api/v1/users/:id                                api/v1/users#destroy
+Verb     URI Pattern                                      
+POST     /api/v1/login                                   
+POST     /api/v1/signup                                 
+GET      /api/v1/logout                                
+GET      /api/v1                                      
+GET      /api/v1/ping                                     
+GET      /api/v1/comments/:id                             
+PATCH    /api/v1/comments/:id                             
+PUT      /api/v1/comments/:id                             
+DELETE   /api/v1/comments/:id                             
+GET      /api/v1/posts/:post\_id/comments             
+POST     /api/v1/posts/:post\_id/comments            
+GET      /api/v1/posts/:post\_id/favors             
+GET      /api/v1/posts/:post\_id/topics            
+POST     /api/v1/posts/:post\_id/topics/delete    
+POST     /api/v1/posts/:post\_id/topics                    
+GET      /api/v1/posts/:id                                
+PATCH    /api/v1/posts/:id                                
+PUT      /api/v1/posts/:id                                
+DELETE   /api/v1/posts/:id                                
+GET      /api/v1/topics/:topic\_id/followers              
+GET      /api/v1/topics/:topic\_id/posts                  
+GET      /api/v1/topics/:topic\_id/posts/:post\_id/comments 
+GET      /api/v1/topics/:topic\_id/posts                   
+GET      /api/v1/topics/:id                               
+PATCH    /api/v1/topics/:id                               
+PUT      /api/v1/topics/:id                               
+DELETE   /api/v1/topics/:id                               
+GET      /api/v1/feeds/:feed\_id/topics                    
+GET      /api/v1/feeds/:id                                
+PATCH    /api/v1/feeds/:id                                
+PUT      /api/v1/feeds/:id                                
+DELETE   /api/v1/feeds/:id                                
+GET      /api/v1/users/:user\_id/favors/:post_id           
+POST     /api/v1/users/:user\_id/favors                    
+DELETE   /api/v1/users/:user\_id/favors/:post_id           
+GET      /api/v1/users/:user\_id/favors                    
+GET      /api/v1/users/:user\_id/comments                  
+GET      /api/v1/users/:user\_id/posts                     
+POST     /api/v1/users/:user\_id/posts                     
+GET      /api/v1/users/:user\_id/follows                 
+GET      /api/v1/users/:user\_id/topics                    
+POST     /api/v1/users/:user\_id/topics                    
+GET      /api/v1/users/:user\_id/feeds                     
+POST     /api/v1/users/:user\_id/feeds                     
+GET      /api/v1/users                                    
+POST     /api/v1/users                                    
+GET      /api/v1/users/:id                                
+PATCH    /api/v1/users/:id                                
+PUT      /api/v1/users/:id                                
+DELETE   /api/v1/users/:id                                
