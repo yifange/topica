@@ -12,7 +12,11 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   # or
   # GET /users/:user_id/topics
   def index
-    render :json => Topic.all.order("created_at DESC")
+    if params.has_key? :feed_id
+      render :json => Topic.where(:user_id => params[:user_id], :feed_id => params[:feed_id])
+    else
+      render :json => Topic.where(:user_id => params[:user_id])
+    end
   end
 
   # Query for one topic by id

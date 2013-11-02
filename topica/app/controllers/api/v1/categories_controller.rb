@@ -7,7 +7,7 @@ class Api::V1::CategoriesController < Api::V1::ApplicationController
 
   def all_posts
     post_ids = Category.where(:topic_id => params[:topic_id]).map(&:post_id)
-    posts = Post.where(:id => posts_ids)
+    posts = Post.where(:id => post_ids)
     render :json => posts
   end
   

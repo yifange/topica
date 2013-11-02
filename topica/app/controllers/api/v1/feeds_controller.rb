@@ -12,6 +12,11 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
     render :json => Feed.all.order("created_at DESC")
   end
 
+  def all_topics
+    topics = Feed.find(params[:feed_id]).topics
+    render :json => topics
+  end
+
   # Query for one feed by id
   # Params:
   # +id+:: feed_id
