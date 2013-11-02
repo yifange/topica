@@ -7,4 +7,4 @@ API README
 * `doc/app`: docs for the app
 * `db/schema.rb`: database schema
 
-The list of all the APIs is [here](https://pl.cs.jhu.edu:8000/oose-13-group-12/project/blob/master/topica/api_routes.rdoc).
+The list of all the APIs is [here](https://pl.cs.jhu.edu:8000/oose-13-group-12/project/blob/master/topica/api_routes.md).
