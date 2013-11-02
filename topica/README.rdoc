@@ -6,4 +6,3 @@
 * <tt>config/routes.rb</tt>: URL routing configurations
 * <tt>doc/app</tt>: docs for the app
 * <tt>db/schema.rb</tt>: database schema
-sudo -u postgres createuser --superuser $USER
