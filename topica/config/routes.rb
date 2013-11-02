@@ -8,21 +8,28 @@ Topica::Application.routes.draw do
       get "logout" => "user_sessions#destroy"
       root :to => "application#ping"
       get "ping" => "application#ping"
+      
+      resources :comments, :only => [:destroy, :update, :show]
 
-      resources :posts, :only => [] do
-        resources :comments, :only => [:index, :create, :destroy, :update]
+      resources :posts, :only => [:destroy, :update, :show] do
+        resources :comments, :only => [:index, :create]
         get "/favors" => "favors#all_favorers"
         get "/topics" => "categories#all_topics"
+        post "/topics/delete" => "categories#destroy"
+        post "/topics" => "categories#create"
       end
       
-      resources :topics, :only => [] do
+      resources :topics, :only => [:destroy, :update, :show] do
         get "/followers" => "followships#all_following_users"
         get "/posts" => "categories#all_posts"
-        resources :posts, :excpet => [:index, :new, :edit] do
-          resources :comments, :except => [:new, :edit, :destroy]
+        resources :posts, :only => [:index] do
+          resources :comments, :only => [:index]
         end
       end
-      resources :users, :except => [:new, :edit] do
+      resources :feeds, :only => [:update, :destroy, :show] do
+        get "/topics" => "feeds#all_topics"
+      end
+      resources :users, :only => [:create, :update, :destroy, :index, :show] do
         
         # favors
         get "/favors/:post_id" => "favors#create"
@@ -30,26 +37,15 @@ Topica::Application.routes.draw do
         delete "/favors/:post_id" => "favors#destroy"
         get "/favors" => "favors#index" 
 
-        resources :comments, :except => [:new, :edit]
+        resources :comments, :only => [:index]
 
-        resources :posts, :except => [:new, :edit] do
-          post "/topics/delete" => "categories#destroy"
-            resources :posts, :except => [:new, :edit, :destroy] do
-              resources :comments, :except => [:new, :edit]
-            end
-          post "/topics" => "categories#create"
-        end
+        resources :posts, :only => [:create, :index]
 
+        get "/follows" => "followships#all_following_topics" # following topics
 
-        # following topics
-        get "/follows" => "followships#all_following_topics"
+        resources :topics, :only => [:index, :create]
 
-        resources :topics, :except => [:new, :edit]
-
-        resources :feeds, :except => [:new, :edit] do
-          get "/topics" => "feeds#all_topics"
-        end
-
+        resources :feeds, :only => [:index, :create]
       end
     end
   end

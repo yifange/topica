@@ -3,7 +3,6 @@
 
 class Api::V1::UsersController < Api::V1::ApplicationController
   skip_before_filter :require_login, only: [:create]
-  # wrap_parameters :user, :include => [:username, :email, :password, :password_confirmation]
   # Query for all the users in descendent order
   # GET /users
   def index
