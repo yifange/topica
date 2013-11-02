@@ -5,8 +5,7 @@ class Api::V1::FavorsController < Api::V1::ApplicationController
     render :json => posts
   end
   def all_favorers
-    user_ids = Favor.where(:post_id => params[:post_id]).map(&:user_id)
-    users = User.where(:id => user_ids).select(:id, :email, :username)
+    users = Post.find(:id => params[:post_id]).favoring_users
     render :json => users
   end
   def create

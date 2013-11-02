@@ -13,8 +13,13 @@ class User < ActiveRecord::Base
   # has_many :posts, :through => :favors
   has_many :feeds
   has_many :comments
-  def self.following_topic
+
+  def following_topics
+    topic_ids = Followship.where(:user_id => id).map(&:topic_id)
+    topics = Topic.where(:id => topic_ids)
   end
-  def self.favored_posts
+  def favoring_posts
+    post_ids = Favor.where(:user_id => id).map(&:post_id)
+    posts = Post.where(:id => post_ids)
   end
 end
