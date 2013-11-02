@@ -59,12 +59,34 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link"><a href="../../ApplicationController.html">ApplicationController</a>
+  <p class="link"><a href="ApplicationController.html">Api::V1::ApplicationController</a>
   
 </nav>
 
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-i-all_topics">#all_topics</a>
+    
+    <li><a href="#method-i-create">#create</a>
+    
+    <li><a href="#method-i-destroy">#destroy</a>
+    
+    <li><a href="#method-i-feed_params">#feed_params</a>
+    
+    <li><a href="#method-i-index">#index</a>
+    
+    <li><a href="#method-i-show">#show</a>
+    
+    <li><a href="#method-i-update">#update</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -87,25 +109,43 @@
   
     <li><a href="../../Api/V1.html">Api::V1</a>
   
+    <li><a href="../../Api/V1/ApplicationController.html">Api::V1::ApplicationController</a>
+  
+    <li><a href="../../Api/V1/CategoriesController.html">Api::V1::CategoriesController</a>
+  
+    <li><a href="../../Api/V1/CategoriesHelper.html">Api::V1::CategoriesHelper</a>
+  
     <li><a href="../../Api/V1/CommentsController.html">Api::V1::CommentsController</a>
   
     <li><a href="../../Api/V1/CommentsHelper.html">Api::V1::CommentsHelper</a>
+  
+    <li><a href="../../Api/V1/ErrorsController.html">Api::V1::ErrorsController</a>
+  
+    <li><a href="../../Api/V1/ErrorsHelper.html">Api::V1::ErrorsHelper</a>
+  
+    <li><a href="../../Api/V1/FavorsController.html">Api::V1::FavorsController</a>
+  
+    <li><a href="../../Api/V1/FavorsHelper.html">Api::V1::FavorsHelper</a>
   
     <li><a href="../../Api/V1/FeedsController.html">Api::V1::FeedsController</a>
   
     <li><a href="../../Api/V1/FeedsHelper.html">Api::V1::FeedsHelper</a>
   
+    <li><a href="../../Api/V1/FollowshipsController.html">Api::V1::FollowshipsController</a>
+  
+    <li><a href="../../Api/V1/FollowshipsHelper.html">Api::V1::FollowshipsHelper</a>
+  
     <li><a href="../../Api/V1/PostsController.html">Api::V1::PostsController</a>
   
     <li><a href="../../Api/V1/PostsHelper.html">Api::V1::PostsHelper</a>
   
-    <li><a href="../../Api/V1/SessionsController.html">Api::V1::SessionsController</a>
-  
-    <li><a href="../../Api/V1/SessionsHelper.html">Api::V1::SessionsHelper</a>
-  
     <li><a href="../../Api/V1/TopicsController.html">Api::V1::TopicsController</a>
   
     <li><a href="../../Api/V1/TopicsHelper.html">Api::V1::TopicsHelper</a>
+  
+    <li><a href="../../Api/V1/UserSessionsController.html">Api::V1::UserSessionsController</a>
+  
+    <li><a href="../../Api/V1/UserSessionsHelper.html">Api::V1::UserSessionsHelper</a>
   
     <li><a href="../../Api/V1/UsersController.html">Api::V1::UsersController</a>
   
@@ -118,6 +158,8 @@
     <li><a href="../../ApplicationController.html">ApplicationController</a>
   
     <li><a href="../../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../../Category.html">Category</a>
   
     <li><a href="../../Comment.html">Comment</a>
   
@@ -144,6 +186,10 @@
 
   <div id="description" class="description">
     
+<p><a href="../../Feed.html">Feed</a> controller Basic GRUD implemented <a
+href="../../Feed.html">Feed</a> is also defined as a nested resource of
+user, so you can specify the user id for the feed in the URL</p>
+
   </div><!-- description -->
 
   
@@ -160,6 +206,263 @@
 
     <!-- Methods -->
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-all_topics" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all_topics</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="all_topics-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_topics</span>
+  <span class="ruby-identifier">topics</span> = <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:feed_id</span>]).<span class="ruby-identifier">topics</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">topics</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- all_topics-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- all_topics-method -->
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create a new feed Params:</p>
+<dl class="rdoc-list note-list"><dt><code>feed</code>
+<dd>
+<p>Hash of the feed object to be created</p>
+</dd></dl>
+
+<p>POST /feeds or POST /users/:user_id/feeds</p>
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 38</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-identifier">feed</span> = <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">feed_params</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">feed</span>.<span class="ruby-identifier">save</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">feed</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:created</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">feed</span>.<span class="ruby-identifier">errors</span>}, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create-method -->
+
+    
+      <div id="method-i-destroy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">destroy</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Destroy one feed by ID DELETE /feeds/:feed_id or DELETE
+/users/:user_id/feeds/:feed_id</p>
+          
+
+          
+          <div class="method-source-code" id="destroy-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
+  <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- destroy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- destroy-method -->
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Query for all the feeds in descendent order GET /feeds or GET
+/users/:user_id/feeds</p>
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 11</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at DESC&quot;</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- index-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- index-method -->
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Query for one feed by id Params:</p>
+<dl class="rdoc-list note-list"><dt><code>id</code>
+<dd>
+<p>feed_id</p>
+</dd></dl>
+
+<p>GET /feeds/:feed_id or GET /users/:user_id/feeds/:feed_id</p>
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 27</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])  
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- show-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- show-method -->
+
+    
+      <div id="method-i-update" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">update</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Update an existing feed Params:</p>
+<dl class="rdoc-list note-list"><dt><code>id</code>
+<dd>
+<p><a href="../../Feed.html">Feed</a> id</p>
+</dd><dt><code>feed</code>
+<dd>
+<p>Hash of the feed object to be created</p>
+</dd></dl>
+
+<p>PUT /feeds/:feed_id or PUT /users/:user_id/feeds/:feed_id</p>
+          
+
+          
+          <div class="method-source-code" id="update-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 55</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
+  <span class="ruby-identifier">feed</span> = <span class="ruby-constant">Feed</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">feed</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">feed_params</span>)
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">feed</span>.<span class="ruby-identifier">errors</span>}, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- update-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- update-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+     <section id="private-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Private Instance Methods</h3>
+
+    
+      <div id="method-i-feed_params" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">feed_params</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Whitelist the required fields in params hash</p>
+          
+
+          
+          <div class="method-source-code" id="feed_params-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/feeds_controller.rb, line 76</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">feed_params</span>
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">permit</span>(<span class="ruby-value">:user_id</span>, <span class="ruby-value">:name</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- feed_params-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- feed_params-method -->
+
+    
+    </section><!-- private-instance-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

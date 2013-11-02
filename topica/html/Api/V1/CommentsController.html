@@ -59,7 +59,7 @@
     <nav id="parent-class-section" class="section">
   <h3 class="section-header">Parent</h3>
   
-  <p class="link"><a href="../../ApplicationController.html">ApplicationController</a>
+  <p class="link"><a href="ApplicationController.html">Api::V1::ApplicationController</a>
   
 </nav>
 
@@ -107,25 +107,43 @@
   
     <li><a href="../../Api/V1.html">Api::V1</a>
   
+    <li><a href="../../Api/V1/ApplicationController.html">Api::V1::ApplicationController</a>
+  
+    <li><a href="../../Api/V1/CategoriesController.html">Api::V1::CategoriesController</a>
+  
+    <li><a href="../../Api/V1/CategoriesHelper.html">Api::V1::CategoriesHelper</a>
+  
     <li><a href="../../Api/V1/CommentsController.html">Api::V1::CommentsController</a>
   
     <li><a href="../../Api/V1/CommentsHelper.html">Api::V1::CommentsHelper</a>
+  
+    <li><a href="../../Api/V1/ErrorsController.html">Api::V1::ErrorsController</a>
+  
+    <li><a href="../../Api/V1/ErrorsHelper.html">Api::V1::ErrorsHelper</a>
+  
+    <li><a href="../../Api/V1/FavorsController.html">Api::V1::FavorsController</a>
+  
+    <li><a href="../../Api/V1/FavorsHelper.html">Api::V1::FavorsHelper</a>
   
     <li><a href="../../Api/V1/FeedsController.html">Api::V1::FeedsController</a>
   
     <li><a href="../../Api/V1/FeedsHelper.html">Api::V1::FeedsHelper</a>
   
+    <li><a href="../../Api/V1/FollowshipsController.html">Api::V1::FollowshipsController</a>
+  
+    <li><a href="../../Api/V1/FollowshipsHelper.html">Api::V1::FollowshipsHelper</a>
+  
     <li><a href="../../Api/V1/PostsController.html">Api::V1::PostsController</a>
   
     <li><a href="../../Api/V1/PostsHelper.html">Api::V1::PostsHelper</a>
   
-    <li><a href="../../Api/V1/SessionsController.html">Api::V1::SessionsController</a>
-  
-    <li><a href="../../Api/V1/SessionsHelper.html">Api::V1::SessionsHelper</a>
-  
     <li><a href="../../Api/V1/TopicsController.html">Api::V1::TopicsController</a>
   
     <li><a href="../../Api/V1/TopicsHelper.html">Api::V1::TopicsHelper</a>
+  
+    <li><a href="../../Api/V1/UserSessionsController.html">Api::V1::UserSessionsController</a>
+  
+    <li><a href="../../Api/V1/UserSessionsHelper.html">Api::V1::UserSessionsHelper</a>
   
     <li><a href="../../Api/V1/UsersController.html">Api::V1::UsersController</a>
   
@@ -138,6 +156,8 @@
     <li><a href="../../ApplicationController.html">ApplicationController</a>
   
     <li><a href="../../ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="../../Category.html">Category</a>
   
     <li><a href="../../Comment.html">Comment</a>
   
@@ -165,6 +185,10 @@
   <div id="description" class="description">
     
 <p><a href="../../Comment.html">Comment</a> controller</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Yifan Ge</p>
+</dd></dl>
 
   </div><!-- description -->
 
@@ -197,18 +221,19 @@
 
         <div class="method-description">
           
-          <p>Create a new comment</p>
+          <p>Create a new comment POST    
+/api/v1/users/:user_id/posts/:post_id/posts/:post_id/comments</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 26</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">comment</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">comment_params</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">save</span>
     <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">comment</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:created</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">errors</span>}, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- create-source -->
@@ -237,10 +262,10 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 40</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
-  <span class="ruby-constant">Commnet</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
-  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
+  <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
           
@@ -263,12 +288,14 @@
 
         <div class="method-description">
           
-          <p>Query for all the comments in descendent order</p>
+          <p>Query for all the comments in descendent order GET     
+/api/v1/users/:user_id/comments GET     
+/api/v1/users/:user_id/posts/:post_id/posts/:post_id/comments</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 11</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at DESC&quot;</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -293,12 +320,13 @@
 
         <div class="method-description">
           
-          <p>Query for one comment by id</p>
+          <p>Query for one comment by id GET      /api/v1/users/:user_id/comments/:id 
+GET      /api/v1/users/:user_id/posts/:post_id/posts/:post_id/comments/:id</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 12</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])  
 <span class="ruby-keyword">end</span></pre>
@@ -323,18 +351,20 @@
 
         <div class="method-description">
           
-          <p>Update an existing comment</p>
+          <p>Update an existing comment PATCH   
+/api/v1/users/:user_id/posts/:post_id/posts/:post_id/comments/:id PUT     
+/api/v1/users/:user_id/posts/:post_id/posts/:post_id/comments/:id</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 29</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 39</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
-  <span class="ruby-identifier">comemnt</span> = <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-identifier">comemnt</span> = <span class="ruby-constant">Comment</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">comment_params</span>)
-    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">comment</span>.<span class="ruby-identifier">errors</span>}, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- update-source -->
@@ -369,9 +399,9 @@
 
           
           <div class="method-source-code" id="comment_params-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 48</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/comments_controller.rb, line 58</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">comment_params</span>
-  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">require</span>(<span class="ruby-value">:comment</span>).<span class="ruby-identifier">permit</span>(<span class="ruby-value">:user_id</span>, <span class="ruby-value">:content</span>)
+  <span class="ruby-identifier">params</span>.<span class="ruby-identifier">permit</span>(<span class="ruby-value">:user_id</span>, <span class="ruby-value">:post_id</span>, <span class="ruby-value">:content</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- comment_params-source -->
           

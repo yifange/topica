@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>module Api::V1::TopicsHelper - App Documentation</title>
+<title>class Api::V1::ErrorsController - App Documentation</title>
 
 <link type="text/css" media="screen" href="../../rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="../../js/darkfish.js"></script>
 
 
-<body id="top" class="module">
+<body id="top" class="class">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>app/helpers/api/v1/topics_helper.rb
+    <li>app/controllers/api/v1/errors_controller.rb
   </ul>
 </nav>
 
@@ -56,9 +56,27 @@
 
   <div id="class-metadata">
     
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="ApplicationController.html">Api::V1::ApplicationController</a>
+  
+</nav>
+
     
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
     
+    <li><a href="#method-i-render_page_not_found">#render_page_not_found</a>
     
+    <li><a href="#method-i-routing_error">#routing_error</a>
+    
+  </ul>
+</nav>
+
   </div>
 
   <div id="project-metadata">
@@ -154,7 +172,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="module">module Api::V1::TopicsHelper</h1>
+  <h1 class="class">class Api::V1::ErrorsController</h1>
 
   <div id="description" class="description">
     
@@ -174,6 +192,72 @@
 
     <!-- Methods -->
     
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-render_page_not_found" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">render_page_not_found</span><span
+            class="method-args">(e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="render_page_not_found-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/errors_controller.rb, line 4</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render_page_not_found</span>(<span class="ruby-identifier">e</span>)
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>}
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- render_page_not_found-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- render_page_not_found-method -->
+
+    
+      <div id="method-i-routing_error" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">routing_error</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="routing_error-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/errors_controller.rb, line 7</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">routing_error</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">RoutingError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Resource not found: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:path</span>])
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- routing_error-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- routing_error-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->
