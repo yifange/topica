@@ -15,7 +15,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # +id+:: user_id
   # GET /users/:user_id
   def show
-    render :json => User.find(params[:id])  
+    render :json => User.find(params[:id]).select(:id, :username, :email)
   end
 
   # Create a new user
