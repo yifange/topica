@@ -22,7 +22,7 @@ Topica::Application.routes.draw do
       resources :topics, :only => [:destroy, :update, :show] do
         get "/followers" => "followships#all_following_users"
         get "/posts" => "categories#all_posts"
-        resources :posts, :only => [:index] do
+        resources :posts, :only => [] do
           resources :comments, :only => [:index]
         end
       end

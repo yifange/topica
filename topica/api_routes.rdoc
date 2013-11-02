@@ -19,8 +19,7 @@ PATCH    /api/v1/posts/:id
 PUT      /api/v1/posts/:id                                
 DELETE   /api/v1/posts/:id                                
 GET      /api/v1/topics/:topic\_id/followers              
-GET      /api/v1/topics/:topic\_id/posts                  
-GET      /api/v1/topics/:topic\_id/posts/:post\_id/comments 
+GET      /api/v1/topics/:topic\_id/posts/:post\_id/comments   
 GET      /api/v1/topics/:topic\_id/posts                   
 GET      /api/v1/topics/:id                               
 PATCH    /api/v1/topics/:id                               
