@@ -81,6 +81,6 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def topic_params
-    params.permit(:user_id, :content)
+    params.permit(:user_id, :name, :feed_id)
   end
 end

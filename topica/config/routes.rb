@@ -25,9 +25,13 @@ Topica::Application.routes.draw do
 
         resources :comments, :except => [:new, :edit]
 
-        resources :posts, :except => [:new, :edit]
+        resources :posts, :except => [:new, :edit] do
+          post "/topic/delete" => "categories#destroy"
+          post "/topics" => "categories#create"
+        end
 
         resources :topics, :except => [:new, :edit] do
+          get "/posts" => "categories#all_posts"
           resources :posts, :except => [:new , :edit, :destroy] do
             resources :comments, :except => [:new, :edit, :destroy]
           end

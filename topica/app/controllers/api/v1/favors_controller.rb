@@ -16,17 +16,6 @@ class Api::V1::FavorsController < Api::V1::ApplicationController
     else
       render :json => {:ok => false, :message => favor.errors}, :status => :unprocessable_entity
     end
-    # post_ids = params[:post_ids]
-    # favors = []
-    # post_ids.each do |post_id|
-    #   favors << Favor.new(:user_id => params[:user_id], :post_id => post_id)
-    # end
-    # import_result = Favor.import(favors)
-    # if import_result.failed_instances.empty?
-    #   render :json => {:ok => true, :num_inserts => import_result.num_inserts}, :status => :created
-    # else
-    #   render :json => {:ok => false, :num_inserts => import_result.num_inserts, :failed_instances => import_result.failed_instances.map {|i| i.post_id}}, :status => :unprocessable_entity
-    # end
   end
   def destroy
     favor = Favor.where(:user_id => params[:user_id], :post_id => params[:post_id])
