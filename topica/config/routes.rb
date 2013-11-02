@@ -14,7 +14,14 @@ Topica::Application.routes.draw do
         get "/favors" => "favors#all_favorers"
         get "/topics" => "categories#all_topics"
       end
-
+      
+      resources :topics, :only => [] do
+        get "/followers" => "followship#all_following_users"
+        get "/posts" => "categories#all_post"
+        resources :posts, :excpet => [:index, :new, :edit] do
+          resources :comments, :except => [:new, :edit, :destroy]
+        end
+      end
       resources :users, :except => [:new, :edit] do
         
         # favors
@@ -30,19 +37,14 @@ Topica::Application.routes.draw do
           post "/topics" => "categories#create"
         end
 
-        resources :topics, :except => [:new, :edit] do
-          get "/posts" => "categories#all_posts"
-          resources :posts, :except => [:new , :edit, :destroy] do
-            resources :comments, :except => [:new, :edit, :destroy]
-          end
-        end
+
+        # following topics
+        get "/follows" => "followship#all_following_topics"
+
+        resources :topics, :except => [:new, :edit]
 
         resources :feeds, :except => [:new, :edit] do
-          resources :topics, :except => [:new, :edit, :destroy] do
-            resources :posts, :except => [:new, :edit, :destroy] do
-              resources :comments, :except => [:new, :edit]
-            end
-          end
+          resources :topics, :except => [:new, :edit, :destroy]
         end
 
       end
