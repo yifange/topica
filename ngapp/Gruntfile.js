@@ -32,6 +32,10 @@ module.exports = function (grunt) {
   grunt.initConfig({
     yeoman: yeomanConfig,
     watch: {
+      haml: {
+        files: ['<%= yeoman.app %>/{,*/}*.haml'],
+        tasks: ['haml:test']
+      },
       coffee: {
         files: ['<%= yeoman.app %>/scripts/{,*/}*.coffee'],
         tasks: ['coffee:dist']
@@ -113,7 +117,8 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        url: 'http://localhost:<%= connect.options.port %>'
+        url: 'http://localhost:<%= connect.options.port %>',
+        app: 'chromium-browser'
       }
     },
     clean: {
@@ -162,6 +167,33 @@ module.exports = function (grunt) {
         }]
       }
     },
+    haml: {
+      options: {
+        language: 'ruby'
+      },
+      test: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= yeoman.app %>/views',
+            src: '{,*/}*.haml',
+            dest: '.tmp/views',
+            ext: '.html'
+          }
+        ]
+      },
+      dist: {
+        files: [
+          {
+            expand: true,
+            cwd: '<%= yeoman.app %>/views',
+            src: '{,*/}*.haml',
+            dest: '<%= yeoman.dist %>/views',
+            ext: '.html'
+          }
+        ]
+      }
+    }
     // not used since Uglify task does concat,
     // but still available if needed
     /*concat: {
@@ -334,6 +366,8 @@ module.exports = function (grunt) {
     grunt.task.run([
       'clean:server',
       'concurrent:server',
+      'configureProxies',
+      'haml:test'
       'autoprefixer',
       'connect:livereload',
       'open',
@@ -344,9 +378,11 @@ module.exports = function (grunt) {
   grunt.registerTask('test', [
     'clean:server',
     'concurrent:test',
+    'configureProxies',
     'autoprefixer',
     'connect:test',
-    'karma'
+    'karma',
+    'haml'
   ]);
 
   grunt.registerTask('build', [
@@ -355,6 +391,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
+    'haml:dist'
     'copy:dist',
     'cdnify',
     'ngmin',
