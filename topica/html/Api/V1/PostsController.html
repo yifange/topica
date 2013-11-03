@@ -70,6 +70,8 @@
 
   <ul class="link-list">
     
+    <li><a href="#method-i-all_favorers">#all_favorers</a>
+    
     <li><a href="#method-i-create">#create</a>
     
     <li><a href="#method-i-destroy">#destroy</a>
@@ -184,9 +186,11 @@
 
   <div id="description" class="description">
     
-<p><a href="../../Post.html">Post</a> controller Basic GRUD implemented <a
-href="../../Post.html">Post</a> is also defined as a nested resource of
-user, so you can specify the user id for the post in the URL</p>
+<p><a href="../../Post.html">Post</a> controller</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Yifan Ge</p>
+</dd></dl>
 
   </div><!-- description -->
 
@@ -208,6 +212,39 @@ user, so you can specify the user id for the post in the URL</p>
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-all_favorers" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">all_favorers</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get all the favorers of a post</p>
+
+<p>GET /api/v1/posts/:post_id/favors</p>
+          
+
+          
+          <div class="method-source-code" id="all_favorers-source">
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 12</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_favorers</span>
+  <span class="ruby-identifier">users</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:post_id</span>]).<span class="ruby-identifier">favoring_users</span>
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">users</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- all_favorers-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- all_favorers-method -->
+
+    
       <div id="method-i-create" class="method-detail ">
         
         <div class="method-heading">
@@ -225,12 +262,12 @@ user, so you can specify the user id for the post in the URL</p>
 <p>Hash of the post object to be created</p>
 </dd></dl>
 
-<p>POST /posts or POST /users/:user_id/posts</p>
+<p>title content POST /users/:user_id/posts</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 32</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 38</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">post</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">post_params</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">post</span>.<span class="ruby-identifier">save</span>
@@ -260,13 +297,14 @@ user, so you can specify the user id for the post in the URL</p>
 
         <div class="method-description">
           
-          <p>Destroy one post by ID DELETE /post/:post_id or DELETE
-/users/:user_id/posts/:post_id</p>
+          <p>Destroy one post by ID</p>
+
+<p>DELETE  /api/v1/posts/:id</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 63</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 66</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-constant">Post</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>]).<span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}, <span class="ruby-value">:head</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:no_content</span>
@@ -292,15 +330,16 @@ user, so you can specify the user id for the post in the URL</p>
 
         <div class="method-description">
           
-          <p>Query for all the posts in descendent order GET /posts or GET
-/users/:user_id/posts</p>
+          <p>Query for all the posts of the user</p>
+
+<p>GET /users/:user_id/posts</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 10</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Post</span>.<span class="ruby-identifier">all</span>.<span class="ruby-identifier">order</span>(<span class="ruby-string">&quot;created_at DESC&quot;</span>)
+  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]).<span class="ruby-identifier">posts</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
           
@@ -323,18 +362,14 @@ user, so you can specify the user id for the post in the URL</p>
 
         <div class="method-description">
           
-          <p>Query for one post by id Params:</p>
-<dl class="rdoc-list note-list"><dt><code>id</code>
-<dd>
-<p>post_id</p>
-</dd></dl>
+          <p>Query for one post by id</p>
 
-<p>GET /posts/:post_id or GET /users/:user_id/posts/:post_id</p>
+<p>GET /posts/:post_id</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 21</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 27</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-constant">Post</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])  
 <span class="ruby-keyword">end</span></pre>
@@ -360,20 +395,17 @@ user, so you can specify the user id for the post in the URL</p>
         <div class="method-description">
           
           <p>Update an existing post Params:</p>
-<dl class="rdoc-list note-list"><dt><code>id</code>
-<dd>
-<p><a href="../../Post.html">Post</a> id</p>
-</dd><dt><code>post</code>
+<dl class="rdoc-list note-list"><dt><code>post</code>
 <dd>
 <p>Hash of the post object to be created</p>
 </dd></dl>
 
-<p>PUT /posts/:post_id or PUT /users/:user_id/posts/:post_id</p>
+<p>title content PATCH   /api/v1/posts/:id PUT     /api/v1/posts/:id</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 49</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">post</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">post</span>.<span class="ruby-identifier">update_attributes</span>(<span class="ruby-identifier">post_params</span>)
@@ -414,7 +446,7 @@ user, so you can specify the user id for the post in the URL</p>
 
           
           <div class="method-source-code" id="post_params-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 71</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/posts_controller.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">post_params</span>
   <span class="ruby-identifier">params</span>.<span class="ruby-identifier">permit</span>(<span class="ruby-value">:user_id</span>, <span class="ruby-value">:topic_id</span>, <span class="ruby-value">:title</span>, <span class="ruby-value">:content</span>)
 <span class="ruby-keyword">end</span></pre>

@@ -176,6 +176,12 @@
 
   <div id="description" class="description">
     
+<p>Error controller used to handle or the errors</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Yifan Ge</p>
+</dd></dl>
+
   </div><!-- description -->
 
   
@@ -212,7 +218,7 @@
 
           
           <div class="method-source-code" id="render_page_not_found-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/errors_controller.rb, line 4</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/errors_controller.rb, line 9</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render_page_not_found</span>(<span class="ruby-identifier">e</span>)
   <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">false</span>, <span class="ruby-value">:message</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">message</span>}
 <span class="ruby-keyword">end</span></pre>
@@ -242,7 +248,7 @@
 
           
           <div class="method-source-code" id="routing_error-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/errors_controller.rb, line 7</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/errors_controller.rb, line 12</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">routing_error</span>
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">ActionController</span><span class="ruby-operator">::</span><span class="ruby-constant">RoutingError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Resource not found: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:path</span>])
 <span class="ruby-keyword">end</span></pre>

@@ -176,6 +176,13 @@
 
   <div id="description" class="description">
     
+<p><a href="../../User.html">User</a> session controller Where login and
+logout happen</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Yifan Ge</p>
+</dd></dl>
+
   </div><!-- description -->
 
   
@@ -207,12 +214,12 @@
 
         <div class="method-description">
           
-          
+          <p>Create a user session aka login POST    /api/v1/login</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/user_sessions_controller.rb, line 6</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/user_sessions_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@user</span> = <span class="ruby-identifier">login</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:email</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:password</span>])
     <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}
@@ -241,12 +248,12 @@
 
         <div class="method-description">
           
-          
+          <p>Destroy a user session aka logout GET     /api/v1/logout</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/user_sessions_controller.rb, line 14</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/user_sessions_controller.rb, line 20</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">logout</span>
   <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> {<span class="ruby-value">:ok</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword">true</span>}

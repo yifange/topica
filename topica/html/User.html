@@ -212,7 +212,7 @@
 
           
           <div class="method-source-code" id="favoring_posts-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 21</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 19</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">favoring_posts</span>
   <span class="ruby-identifier">post_ids</span> = <span class="ruby-constant">Favor</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>).<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:post_id</span>)
   <span class="ruby-identifier">posts</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">post_ids</span>)
@@ -243,7 +243,7 @@
 
           
           <div class="method-source-code" id="following_topics-source">
-            <pre><span class="ruby-comment"># File app/models/user.rb, line 17</span>
+            <pre><span class="ruby-comment"># File app/models/user.rb, line 15</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">following_topics</span>
   <span class="ruby-identifier">topic_ids</span> = <span class="ruby-constant">Followship</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">id</span>).<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:topic_id</span>)
   <span class="ruby-identifier">topics</span> = <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">topic_ids</span>)

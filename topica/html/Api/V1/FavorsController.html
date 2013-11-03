@@ -70,13 +70,9 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-all_favorers">#all_favorers</a>
-    
     <li><a href="#method-i-create">#create</a>
     
     <li><a href="#method-i-destroy">#destroy</a>
-    
-    <li><a href="#method-i-index">#index</a>
     
   </ul>
 </nav>
@@ -180,6 +176,13 @@
 
   <div id="description" class="description">
     
+<p><a href="../../Favor.html">Favor</a> controller. Used to manage the favor
+relatioship between a user and a post</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Yifan Ge</p>
+</dd></dl>
+
   </div><!-- description -->
 
   
@@ -200,37 +203,6 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-all_favorers" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">all_favorers</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="all_favorers-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/favors_controller.rb, line 7</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_favorers</span>
-  <span class="ruby-identifier">users</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:post_id</span>]).<span class="ruby-identifier">favoring_users</span>
-  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">users</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- all_favorers-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- all_favorers-method -->
-
-    
       <div id="method-i-create" class="method-detail ">
         
         <div class="method-heading">
@@ -242,7 +214,10 @@
 
         <div class="method-description">
           
-          
+          <p><a href="../../Favor.html">Favor</a> a post</p>
+
+<p>GET     /api/v1/users/:user_id/favors/:post_id POST   
+/api/v1/users/:user_id/favors</p>
           
 
           
@@ -277,12 +252,14 @@
 
         <div class="method-description">
           
-          
+          <p>Delete a favor relationship</p>
+
+<p>DELETE  /api/v1/users/:user_id/favors/:post_id</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/favors_controller.rb, line 19</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/favors_controller.rb, line 24</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">favor</span> = <span class="ruby-constant">Favor</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>], <span class="ruby-value">:post_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:post_id</span>])
   <span class="ruby-identifier">favor</span>.<span class="ruby-identifier">destroy</span>
@@ -296,38 +273,6 @@
 
         
       </div><!-- destroy-method -->
-
-    
-      <div id="method-i-index" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">index</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/favors_controller.rb, line 2</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
-  <span class="ruby-identifier">post_ids</span> = <span class="ruby-constant">Favor</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]).<span class="ruby-identifier">map</span>(&amp;<span class="ruby-value">:post_id</span>)
-  <span class="ruby-identifier">posts</span> = <span class="ruby-constant">Post</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">post_ids</span>)
-  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">posts</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- index-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- index-method -->
 
     
     </section><!-- public-instance-method-details -->

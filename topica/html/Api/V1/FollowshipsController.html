@@ -70,10 +70,6 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-all_following_topics">#all_following_topics</a>
-    
-    <li><a href="#method-i-all_following_users">#all_following_users</a>
-    
     <li><a href="#method-i-create">#create</a>
     
     <li><a href="#method-i-destroy">#destroy</a>
@@ -180,6 +176,14 @@
 
   <div id="description" class="description">
     
+<p><a href="../../Followship.html">Followship</a> controller</p>
+
+<p>The followship relationship of the users and the topics</p>
+<dl class="rdoc-list note-list"><dt>Author
+<dd>
+<p>Yifan Ge</p>
+</dd></dl>
+
   </div><!-- description -->
 
   
@@ -200,68 +204,6 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-all_following_topics" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">all_following_topics</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="all_following_topics-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/followships_controller.rb, line 17</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_following_topics</span>
-  <span class="ruby-identifier">topics</span> = <span class="ruby-constant">User</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>]).<span class="ruby-identifier">following_topics</span>
-  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">topics</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- all_following_topics-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- all_following_topics-method -->
-
-    
-      <div id="method-i-all_following_users" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">all_following_users</span><span
-            class="method-args">()</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="all_following_users-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/followships_controller.rb, line 22</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">all_following_users</span>
-  <span class="ruby-identifier">users</span> = <span class="ruby-constant">Topic</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:topic_id</span>]).<span class="ruby-identifier">following_users</span>
-  <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">users</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- all_following_users-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- all_following_users-method -->
-
-    
       <div id="method-i-create" class="method-detail ">
         
         <div class="method-heading">
@@ -273,12 +215,13 @@
 
         <div class="method-description">
           
-          
+          <p>Follow a topic GET     /api/v1/users/:user_id/followships/:topic_id  POST  
+/api/v1/users/:user_id/followships</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/followships_controller.rb, line 2</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/followships_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">followship</span> = <span class="ruby-constant">Followship</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>], <span class="ruby-value">:topic_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:topic_id</span>])
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">followship</span>.<span class="ruby-identifier">save</span>
@@ -308,12 +251,14 @@
 
         <div class="method-description">
           
-          
+          <p>Un-follow a topic</p>
+
+<p>DELETE  /api/v1/users/:user_id/followships/:topic_id</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/followships_controller.rb, line 11</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/followships_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">followship</span> = <span class="ruby-constant">Followship</span>.<span class="ruby-identifier">where</span>(<span class="ruby-value">:user_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:user_id</span>], <span class="ruby-value">:topic_id</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>[<span class="ruby-value">:topic_id</span>]) 
   <span class="ruby-identifier">followship</span>.<span class="ruby-identifier">destroy</span>
