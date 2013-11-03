@@ -20,13 +20,13 @@ Topica::Application.routes.draw do
       end
       
       resources :topics, :only => [:destroy, :update, :show] do
-        get "/followers" => "followships#all_following_users"
+        get "/followers" => "topics#all_following_users"
         get "/posts" => "categories#all_posts"
       end
       resources :feeds, :only => [:update, :destroy, :show] do
         get "/topics" => "feeds#all_topics"
       end
-      resources :users, :only => [:create, :update, :destroy, :index, :show] do
+      resources :users, :only => [:update, :destroy, :index, :show] do
         
         # favors
         get "/favors/:post_id" => "favors#create"
@@ -39,7 +39,10 @@ Topica::Application.routes.draw do
         
         resources :posts, :only => [:create, :index]
 
-        get "/follows" => "followships#all_following_topics" # following topics
+        get "/follows" => "users#all_following_topics" # following topics
+        get "/followships/:topic_id" => "followships#create"
+        post "/followships" => "followships#create"
+        delete "/followships/:topic_id" => "followships#destroy"
 
         resources :topics, :only => [:index, :create]
 

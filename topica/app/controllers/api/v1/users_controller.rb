@@ -1,5 +1,6 @@
 # User controller
-# Basic GRUD implemented
+#
+# Author:: Yifan Ge
 
 class Api::V1::UsersController < Api::V1::ApplicationController
   skip_before_filter :require_login, only: [:create]
@@ -21,11 +22,15 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     posts = Post.where(:id => post_ids)
     render :json => posts
   end
-
-  # Get all the posts created by a user
-  def all_posts
-    User.find(params[:user_id]).posts
+  
+  # Get all the following topics of a user
+  #
+  # GET     /api/v1/users/:user_id/follows
+  def all_following_topics
+    topics = User.find(params[:user_id]).following_topics
+    render :json => topics
   end
+  
   # Query for all the users in descendent order
   # GET /users
   def index
@@ -35,15 +40,15 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # Query for one user by id
   # Params:
   # +id+:: user_id
-  # GET /users/:user_id
+  # GET /api/v1/users/:user_id
   def show
     render :json => User.find(params[:id]).select(:id, :username, :email)
   end
 
-  # Create a new user
+  # Create a new user aka signup
   # Params:
   # +user+:: Hash of the user object to be created
-  # POST /users
+  # POST /api/v1/signup
   def create
     user = User.new(user_params)
     if user.save
@@ -57,7 +62,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # Params:
   # +id+:: user id
   # +user+:: Hash of the user object to be created
-  # PUT /users/:user_id
+  # PUT /api/v1/users/:user_id
 
   def update
     user = User.find(params[:id])
@@ -69,7 +74,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   end
 
   # Destroy one user by ID
-  # DELETE /users/:user_id
+  # DELETE /api/v1/users/:user_id
 
   def destroy
     User.find(params[:id]).destroy

@@ -57,9 +57,8 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   end
 
   # Destroy one feed by ID
-  # DELETE /feeds/:feed_id
-  # or
-  # DELETE /users/:user_id/feeds/:feed_id
+  #
+  # DELETE  /api/v1/feeds/:id
   def destroy
     Feed.find(params[:id]).destroy
     render :json => {:ok => true}, :head => :no_content

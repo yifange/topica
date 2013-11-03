@@ -1,33 +1,29 @@
 # Post controller
-# Basic GRUD implemented
-# Post is also defined as a nested resource of user, so you can specify the user id for the post in the URL
+# 
+# Author:: Yifan Ge
 class Api::V1::PostsController < Api::V1::ApplicationController
   
 
   ##
   # Get all the favorers of a post
   #
-  # GET     /api/v1/posts/:post_id/favors
+  # GET /api/v1/posts/:post_id/favors
   
   def all_favorers
     users = Post.find(params[:post_id]).favoring_users
     render :json => users
   end
-  # Query for all the posts in descendent order
-  # GET /posts
-  # or
+
+  # Query for all the posts of the user
+  #
   # GET /users/:user_id/posts
   def index
-    render :json => Post.all.order("created_at DESC")
+    render :json => User.find(params[:user_id]).posts
   end
 
   # Query for one post by id
-  # Params:
-  # +id+:: post_id
+  #
   # GET /posts/:post_id
-  # or
-  # GET /users/:user_id/posts/:post_id
-
   def show
     render :json => Post.find(params[:id])  
   end
@@ -35,8 +31,8 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # Create a new post
   # Params:
   # +post+:: Hash of the post object to be created
-  # POST /posts
-  # or
+  # title
+  # content
   # POST /users/:user_id/posts
 
   def create
@@ -50,12 +46,11 @@ class Api::V1::PostsController < Api::V1::ApplicationController
 
   # Update an existing post
   # Params:
-  # +id+:: Post id
   # +post+:: Hash of the post object to be created
-  # PUT /posts/:post_id
-  # or
-  # PUT /users/:user_id/posts/:post_id
-
+  # title
+  # content
+  # PATCH   /api/v1/posts/:id
+  # PUT     /api/v1/posts/:id
   def update
     post = Post.find(params[:id])
     if post.update_attributes(post_params)
@@ -66,10 +61,8 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   end
 
   # Destroy one post by ID
-  # DELETE /post/:post_id
-  # or
-  # DELETE /users/:user_id/posts/:post_id
-
+  #
+  # DELETE  /api/v1/posts/:id
   def destroy
     Post.find(params[:id]).destroy
     render :json => {:ok => true}, :head => :no_content

@@ -1,46 +1,27 @@
 # Topic controller
-# Basic GRUD implemented
-# You have three ways to get to a topic resource.
-# 1) Directly via the topic id
-# 2) Specify the user id and the feed id
-# 3) Specify the user id
+#
+# Author:: Yifan Ge
 class Api::V1::TopicsController < Api::V1::ApplicationController
-  # Query for all the topics in descendent order
-  # GET /topics
-  # or
-  # GET /users/:user_id/feeds/:feed_id/topics
-  # or
-  # GET /users/:user_id/topics
+
+  # Query for all the topics of a user
+  # GET     /api/v1/users/:user_id/topics
   def index
-    if params.has_key? :feed_id
-      render :json => Topic.where(:user_id => params[:user_id], :feed_id => params[:feed_id])
-    else
-      render :json => Topic.where(:user_id => params[:user_id])
-    end
+    render :json => User.find(params[:user_id]).topics
   end
 
   # Query for one topic by id
-  # Params:
-  # +id+:: feed_id
-  # GET /topics/:topic_id
-  # or
-  # GET /users/:user_id/feeds/:feed_id/topics/:topic_id
-  # or
-  # GET /users/:user_id/topics/:topic_id
-
+  # GET     /api/v1/topics/:id
   def show
     render :json => Topic.find(params[:id])  
   end
 
   # Create a new topic
-  # Params:
-  # +topic+:: Hash of the topic object to be created
-  # POST /topics
-  # or
-  # POST /users/:user_id/feeds/:feed_id/topics
-  # or
-  # POST /users/:user_id/topics
-
+  # params:
+  # user_id
+  # name
+  # feed_id
+  #
+  # POST    /api/v1/users/:user_id/topics
   def create
     topic = Topic.new(topic_params)
     if topic.save
@@ -52,14 +33,8 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
 
   # Update an existing topic
   # Params:
-  # +id+:: Feed id
-  # +topic+:: Hash of the topic object to be created
-  # PUT /topics/:topic_id
-  # or
-  # PUT /users/:user_id/feeds/:feed_id/topics/:topic_id
-  # or
-  # PUT /users/:user_id/topics/:topic_id
-
+  # PATCH   /api/v1/topics/:id
+  # PUT     /api/v1/topics/:id
   def update
     topic = Topic.find(params[:id])
     if topic.update_attributes(topic_params)
@@ -70,15 +45,19 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   end
 
   # Destroy one topic by ID
-  # DELETE /topics/:topic_id
-  # or
-  # DELETE /users/:user_id/feeds/:feed_id/topics/:topic_id
-  # or
-  # DELETE /users/:user_id/topics/:topic_id
-
+  #
+  # DELETE  /api/v1/topics/:id
   def destroy
     Topic.find(params[:id]).destroy
     render :json => {:ok => true}, :head => :no_content
+  end
+
+  # Get all the following users of a topic
+  #
+  # GET     /api/v1/topics/:topic_id/followers 
+  def all_following_users
+    users = Topic.find(params[:topic_id]).following_users
+    render :json => users
   end
 
   private
