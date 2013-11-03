@@ -2,7 +2,17 @@
 # Basic GRUD implemented
 # Post is also defined as a nested resource of user, so you can specify the user id for the post in the URL
 class Api::V1::PostsController < Api::V1::ApplicationController
+  
 
+  ##
+  # Get all the favorers of a post
+  #
+  # GET     /api/v1/posts/:post_id/favors
+  
+  def all_favorers
+    users = Post.find(params[:post_id]).favoring_users
+    render :json => users
+  end
   # Query for all the posts in descendent order
   # GET /posts
   # or

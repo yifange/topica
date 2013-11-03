@@ -1,13 +1,13 @@
+# Favor controller.
+# Used to manage the favor relatioship between a user and a post
+#
+# Author:: Yifan Ge
+
 class Api::V1::FavorsController < Api::V1::ApplicationController
-  def index
-    post_ids = Favor.where(:user_id => params[:user_id]).map(&:post_id)
-    posts = Post.where(:id => post_ids)
-    render :json => posts
-  end
-  def all_favorers
-    users = Post.find(params[:post_id]).favoring_users
-    render :json => users
-  end
+  # Favor a post 
+  #
+  # GET     /api/v1/users/:user_id/favors/:post_id
+  # POST    /api/v1/users/:user_id/favors
   def create
     favor = Favor.new(:user_id => params[:user_id], :post_id => params[:post_id])
     if favor.save
@@ -16,6 +16,11 @@ class Api::V1::FavorsController < Api::V1::ApplicationController
       render :json => {:ok => false, :message => favor.errors}, :status => :unprocessable_entity
     end
   end
+
+
+  # Delete a favor relationship
+  #
+  # DELETE  /api/v1/users/:user_id/favors/:post_id
   def destroy
     favor = Favor.where(:user_id => params[:user_id], :post_id => params[:post_id])
     favor.destroy

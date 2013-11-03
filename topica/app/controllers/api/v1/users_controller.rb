@@ -3,6 +3,29 @@
 
 class Api::V1::UsersController < Api::V1::ApplicationController
   skip_before_filter :require_login, only: [:create]
+
+  # Get all the comments created by a user
+  # GET     /api/v1/users/:user_id/comments 
+
+  def all_comments
+    User.find(params[:user_id]).comments
+  end
+
+
+  # Get all the posts favored by a user
+  #
+  # GET     /api/v1/users/:user_id/favors
+  #
+  def all_favoring_posts
+    post_ids = Favor.where(:user_id => params[:user_id]).map(&:post_id)
+    posts = Post.where(:id => post_ids)
+    render :json => posts
+  end
+
+  # Get all the posts created by a user
+  def all_posts
+    User.find(params[:user_id]).posts
+  end
   # Query for all the users in descendent order
   # GET /users
   def index

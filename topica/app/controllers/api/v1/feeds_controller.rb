@@ -1,28 +1,24 @@
 # Feed controller
-# Basic GRUD implemented
-# Feed is also defined as a nested resource of user, so you can specify the user id for the feed in the URL
+#
+# Author:: Yifan Ge
 
 class Api::V1::FeedsController < Api::V1::ApplicationController
 
   # Query for all the feeds in descendent order
-  # GET /feeds
-  # or
-  # GET /users/:user_id/feeds
+  # GET     /api/v1/users/:user_id/feeds 
   def index
-    render :json => Feed.all.order("created_at DESC")
+    render :json => User.find(params[:user_id]).feeds
   end
 
+  # Get all the topics of a feed
+  # GET     /api/v1/posts/:post_id/topics
   def all_topics
     topics = Feed.find(params[:feed_id]).topics
     render :json => topics
   end
 
   # Query for one feed by id
-  # Params:
-  # +id+:: feed_id
   # GET /feeds/:feed_id
-  # or
-  # GET /users/:user_id/feeds/:feed_id
 
   def show
     render :json => Feed.find(params[:id])  
@@ -30,13 +26,12 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
 
   # Create a new feed
   # Params:
-  # +feed+:: Hash of the feed object to be created
-  # POST /feeds
-  # or
-  # POST /users/:user_id/feeds
+  # POST:
+  # name
+  # POST    /api/v1/users/:user_id/feeds 
 
   def create
-    feed = Feed.new(feed_params)
+    feed = Feed.new(:user_id => params[:user_id], :name => params[:name])
     if feed.save
       render :json => feed, :status => :created
     else

@@ -6,7 +6,7 @@
 class Api::V1::CategoriesController < Api::V1::ApplicationController
   ##
   # return all the topics of a given post
-  # GET /api/v1/users/:user_id/feeds/:feed_id/topics
+  # GET     /api/v1/posts/:post_id/topics
   def all_topics
     topic_ids = Category.where(:post_id => params[:post_id]).map(&:topic_id)
     topics = Topic.where(:id => topic_ids)
@@ -24,7 +24,11 @@ class Api::V1::CategoriesController < Api::V1::ApplicationController
   
   ##
   # add topics for a post
-  # POST     /api/v1/users/:user_id/posts/:post_id/topics  
+  # params:
+  # POST:
+  # topic_ids (list)
+  #
+  # POST    /api/v1/posts/:post_id/topics                  
   #
   def create
     categries = []
@@ -45,7 +49,12 @@ class Api::V1::CategoriesController < Api::V1::ApplicationController
   
   ##
   # Remove topics from a post
-  # POST     /api/v1/users/:user_id/posts/:post_id/topics/delete
+  #
+  # params:
+  # POST:
+  # topic_ids (list)
+  #
+  # POST    /api/v1/posts/:post_id/topics/delete           
   #
   def destroy
     unless params.has_key? :topic_ids or params[:topics_ids].respond_to? :each

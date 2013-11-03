@@ -1,3 +1,8 @@
+# Error controller
+# used to handle or the errors
+#
+# Author:: Yifan Ge
+
 class Api::V1::ErrorsController < Api::V1::ApplicationController
   rescue_from ActionController::RoutingError, :with => :render_page_not_found
 
