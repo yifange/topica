@@ -19,10 +19,11 @@ module.exports = function (grunt) {
 
   // load the proxy.
   grunt.loadNpmTasks('grunt-connect-proxy');
+  grunt.loadNpmTasks('grunt-haml');
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: 'dist'
+    dist: '../api/public'
   };
 
   try {
@@ -167,6 +168,7 @@ module.exports = function (grunt) {
         }]
       }
     },
+
     haml: {
       options: {
         language: 'ruby'
@@ -193,7 +195,7 @@ module.exports = function (grunt) {
           }
         ]
       }
-    }
+    },
     // not used since Uglify task does concat,
     // but still available if needed
     /*concat: {
@@ -289,9 +291,10 @@ module.exports = function (grunt) {
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
-            'bower_components/**/*',
+            // 'bower_components/**/*',
             'images/{,*/}*.{gif,webp}',
-            'styles/fonts/*'
+            // 'styles/fonts/*'
+            'views/*.{html}'
           ]
         }, {
           expand: true,
@@ -299,6 +302,13 @@ module.exports = function (grunt) {
           dest: '<%= yeoman.dist %>/images',
           src: [
             'generated/*'
+          ]
+        }, {
+          expand: true,
+          dest: '<%= yeoman.dist %>/font',
+          cwd: '<%= yeoman.app %>/bower_components/font-awesome/font/',
+          src: [
+            '*'
           ]
         }]
       },
@@ -367,7 +377,7 @@ module.exports = function (grunt) {
       'clean:server',
       'concurrent:server',
       'configureProxies',
-      'haml:test'
+      'haml:test',
       'autoprefixer',
       'connect:livereload',
       'open',
@@ -391,7 +401,7 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'autoprefixer',
     'concat',
-    'haml:dist'
+    'haml:dist',
     'copy:dist',
     'cdnify',
     'ngmin',
