@@ -41,6 +41,6 @@ class Api::V1::ApplicationController < ApplicationController
     render :json => {:ok => false, :message => e.message}, :status => :internal_server_error
   end
   def render_not_authenticated
-    render :json => {:ok => false, :message => "Not authenticated"}
+    render :json => {:ok => false, :message => "Not authenticated"}, :status => :unauthorized
   end
 end
