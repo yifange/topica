@@ -1,11 +1,15 @@
 'use strict';
 
-angular.module('topicaApp', [])
+angular.module('topicaApp', ['ngRoute', 'restangular'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainController'
+      })
+      .when('/login', {
+        templateUrl: 'views/login.html',
+        controller: 'LoginController'
       })
       .otherwise({
         redirectTo: '/'
