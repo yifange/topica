@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('topicaApp', ['ngRoute', 'restangular'])
+angular.module('topicaApp', ['ngRoute', 'restangular', 'http-auth-interceptor'])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {

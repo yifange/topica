@@ -317,20 +317,29 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
+      },
+      images: {
+        expand: true,
+        cwd: '<%= yeoman.app %>/images',
+        dest: '.tmp/images/',
+        src: '{,*/}*.{png,jpg,jpeg,gif,wep,svg}'
       }
     },
     concurrent: {
       server: [
         'coffee:dist',
-        'copy:styles'
+        'copy:styles',
+        'copy:images'
       ],
       test: [
         'coffee',
-        'copy:styles'
+        'copy:styles',
+        'copy:images'
       ],
       dist: [
         'coffee',
         'copy:styles',
+        'copy:images',
         'imagemin',
         'svgmin',
         'htmlmin'

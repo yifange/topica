@@ -21,6 +21,24 @@
 .form-signin input[type="text"]
 {
     margin-bottom: -1px;
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 2px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 2px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+    font-family: "FontAwesome";
+}
+
+.form-signin input[type="password"]
+{
+-webkit-border-bottom-right-radius: 2px;
+-webkit-border-bottom-left-radius: 2px;
+-moz-border-radius-bottomright: 2px;
+-moz-border-radius-bottomleft: 2px;
+border-bottom-right-radius: 2px;
+border-bottom-left-radius: 2px;
+font-family: "FontAwesome";
 }
 .login-card
 {
