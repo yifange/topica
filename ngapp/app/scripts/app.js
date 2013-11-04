@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('ngappApp', [])
+angular.module('topicaApp', [])
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
