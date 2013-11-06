@@ -3,6 +3,7 @@ Topica::Application.routes.draw do
   namespace :api do
     # The namespace for API v1 
     namespace :v1 do
+      get "home" => "home#index"
       post "login" => "user_sessions#create"
       post "signup" => "users#create"
       get "logout" => "user_sessions#destroy"
