@@ -1,11 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  user_id: 
-  topic_id: 
-  name: MyString
+# one:
+#   user_id: 
+#   topic_id: 
+#   name: MyString
+# 
+# two:
+#   user_id: 
+#   topic_id: 
+#   name: MyString
 
-two:
-  user_id: 
-  topic_id: 
-  name: MyString
+<% 10.times do |n| %>
+feed_<%= n %>:
+  user_id: <%= "(user#{n}).id" %>
+  name: <%= "feed#{n}" %>
+<% end %>

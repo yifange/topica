@@ -1,13 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  topic_id: 
-  user_id: 
-  title: MyText
-  content: MyText
+# one:
+#   topic_id: 
+#   user_id: 
+#   title: MyText
+#   content: MyText
+# 
+# two:
+#   topic_id: 
+#   user_id: 
+#   title: MyText
+#   content: MyText
 
-two:
-  topic_id: 
-  user_id: 
-  title: MyText
-  content: MyText
+<% 10.times do |n| %>
+post_<%= n %>:
+  user_id: <%= "(user#{n}).id" %>
+  topic_id: <%= "(topic#{n}).id" %>
+  tile: <%= "post#{n}" %>
+  content: <%= "post#{n}_content: Hello!" %>
+<% end %>

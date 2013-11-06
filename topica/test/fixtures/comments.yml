@@ -1,11 +1,18 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  post_id: 
-  user_id: 
-  content: MyText
+# one:
+#   post_id: 
+#   user_id: 
+#   content: MyText
+# 
+# two:
+#   post_id: 
+#   user_id: 
+#   content: MyText
 
-two:
-  post_id: 
-  user_id: 
-  content: MyText
+<% 10.times do |n| %>
+comment_<%= n %>:
+  user_id: <%= "(user#{n}).id" %>
+  post_id: <%= "(post#{n}).id" %>
+  content: <%= "This is a good post#{n}" %>
+<% end %>
