@@ -9,6 +9,7 @@ class Api::V1::ApplicationController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   rescue_from Exception, :with => :server_error
   before_filter :require_login  
+  skip_before_filter :require_login, only: [:ping]
   
   # return the api version to the user
  
