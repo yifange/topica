@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('topicaApp', ['ngRoute', 'restangular', 'http-auth-interceptor'])
-  .config(function ($routeProvider) {
+var app = angular.module('topicaApp', ['ngRoute', 'restangular', 'http-auth-interceptor'])
+app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -15,3 +15,10 @@ angular.module('topicaApp', ['ngRoute', 'restangular', 'http-auth-interceptor'])
         redirectTo: '/'
       });
   });
+
+app.config(function(RestangularProvider) {
+  RestangularProvider.setBaseUrl("/api/v1");
+});
+app.constant("Configs", {
+  apiRoot: "/api/v1"
+});

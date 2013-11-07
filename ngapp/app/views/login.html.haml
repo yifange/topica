@@ -5,9 +5,9 @@
     .login-card
       %img.profile-img{:src => "images/profile.png", :alt => ""}
       %form.form-signin
-        %input.form-control{:type => "text", :placeholder => "Email", :required => true, :autofocus => true}
-        %input.form-control{:type => "password", :placeholder => "Passowrd", :required => true}
-        %button#signin-button.btn.btn-large.btn-primary.btn-block{:type => "submit"}
+        %input.form-control{"data-ng-model" => "credential.email", :type => "text", :placeholder => "Email", :required => true, :autofocus => true}
+        %input.form-control{"data-ng-model" => "credential.password", :type => "password", :placeholder => "Passowrd", :required => true}
+        %button#signin-button.btn.btn-large.btn-primary.btn-block{"ng-click" => "submit()", :type => "submit"}
           Sign in
         %label.checkbox.pull-left
           %input{:type => "checkbox", :value => "remember-me"}
