@@ -70,3 +70,7 @@ font-family: "FontAwesome";
     -webkit-border-radius: 50%;
     border-radius: 50%;
 }
+.error-message 
+{
+  color: #DD1111;
+}

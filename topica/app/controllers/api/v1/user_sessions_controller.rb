@@ -9,9 +9,9 @@ class Api::V1::UserSessionsController < Api::V1::ApplicationController
   # POST    /api/v1/login 
   def create
     if @user = login(params[:email], params[:password])
-      render json: {:ok => true}
+      render json: {:ok => true, :id => @user.id}
     else
-      render json: {:ok => false}, status: :unauthorized
+      render json: {:ok => false}, status: :unprocessable_entity
     end
   end
   
