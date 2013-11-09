@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('topicaApp', ['ngRoute', 'restangular', 'http-auth-interceptor'])
+var app = angular.module('topicaApp', ['ngRoute', 'restangular', 'http-auth-interceptor', 'ui.bootstrap'])
 app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
@@ -26,15 +26,21 @@ app.run(function($rootScope, $location, $http, Configs, authService) {
   $rootScope.userSession = {};
   $rootScope.logout = function() {
     $http.get(Configs.apiRoot + "/logout");
-    delete this.userSession.id;
+    delete $rootScope.userSession.id;
+    delete $rootScope.userSession.username;
+    delete $rootScope.userSession.email;
     $location.path("/login");
   };
-  $rootScope.$on("event:auth-loginRequired", function(data) {
+  $rootScope.$on("event:auth-loginRequired", function() {
     $rootScope.userSession.from = $location.path();
     $location.path('/login');
   });
-  $rootScope.$on("event:auth-loginConfirmed", function(data) {
-    $rootScope.userSession.id = data;
+  $rootScope.$on("event:auth-loginConfirmed", function(event, data) {
+    console.log(data);
+    $rootScope.userSession.id = data.id;
+    $rootScope.userSession.username = data.username;
+    $rootScope.userSession.email = data.email;
+
     if ($rootScope.userSession.from != undefined) {
       $location.path($rootScope.userSession.from);
       delete $rootScope.userSession.from;

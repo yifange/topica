@@ -3,10 +3,14 @@
     .brand
       Topica
     %ul.nav.pull-right
-      %li
-        %a{:href => "", "ng-click" => "logout()"}
-          logout
-      
+      %li.dropdown
+        %a.dropdown-toggle{:href => ""}
+          %i.fa.fa-user
+          {{user.username}}
+        %ul.dropdown-menu
+          %li
+            %a{:href => "", "ng-click" => "logout()"}
+              Logout
 .card{"ng-repeat" => "post in posts"}
   %h3.card-heading.simple
     {{post.title}}
