@@ -14,6 +14,10 @@ app.config ($routeProvider) ->
       templateUrl: 'views/login.html',
       controller: 'LoginController'
     })
+    .when('/signup', {
+      templateUrl: 'views/signup.html',
+      controller: 'SignupController'
+    })
     .otherwise({
       redirectTo: '/'
     })
@@ -36,7 +40,7 @@ app.factory "UserSession", [
           password: password
         })
       currentUser: ->
-        $http.get(Configs.apiRoot + /)
+        $http.get(Configs.apiRoot + "/me")
     }
 ]
 app.run ($rootScope, $location, $http, Configs, authService) ->
