@@ -9,10 +9,8 @@ app.controller "LoginController", [
     $scope.credential = {email: "", password: ""}
     $scope.submit = ->
       UserSession.login($scope.credential.email, $scope.credential.password).then (response) ->
-          user = {}
-          user.id = response.data.id
-          user.email = response.data.email
-          user.username = response.data.username
+          user = response.data.user
+          console.log(user)
           authService.loginConfirmed user
       , (error) ->
           $scope.message = "Invalid username or password."
