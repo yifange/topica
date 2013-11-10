@@ -35,6 +35,8 @@ app.factory "UserSession", [
           email: email,
           password: password
         })
+      currentUser: ->
+        $http.get(Configs.apiRoot + /)
     }
 ]
 app.run ($rootScope, $location, $http, Configs, authService) ->
@@ -42,9 +44,7 @@ app.run ($rootScope, $location, $http, Configs, authService) ->
 
   $rootScope.logout = ->
     $http.get(Configs.apiRoot + "/logout")
-    delete $rootScope.userSession.id
-    delete $rootScope.userSession.username
-    delete $rootScope.userSession.email
+    delete $rootScope.user
     $location.path("/login")
 
   $rootScope.$on "event:auth-loginRequired", ->
@@ -52,10 +52,7 @@ app.run ($rootScope, $location, $http, Configs, authService) ->
     $location.path('/login')
 
   $rootScope.$on "event:auth-loginConfirmed", (event, data) ->
-    # console.log(data)
-    $rootScope.userSession.id = data.id
-    $rootScope.userSession.username = data.username
-    $rootScope.userSession.email = data.email
+    $rootScope.userSession.user = data
 
     if ($rootScope.userSession.from != undefined)
       $location.path($rootScope.userSession.from)
