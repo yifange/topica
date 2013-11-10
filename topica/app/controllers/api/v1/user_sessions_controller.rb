@@ -22,4 +22,8 @@ class Api::V1::UserSessionsController < Api::V1::ApplicationController
     render json: {:ok => true}
   end
 
+  def me
+    render json: current_user
+  end
+
 end
