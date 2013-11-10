@@ -24,7 +24,19 @@ app.config (RestangularProvider) ->
 app.constant "Configs", {
   apiRoot: "/api/v1"
 }
-
+app.factory "UserSession", [
+  "$http",
+  "Configs",
+  "authService",
+  ($http, Configs, authService) ->
+    {
+      login: (email, password) ->
+        $http.post(Configs.apiRoot + "/login", {
+          email: email,
+          password: password
+        })
+    }
+]
 app.run ($rootScope, $location, $http, Configs, authService) ->
   $rootScope.userSession = {}
 
@@ -40,7 +52,7 @@ app.run ($rootScope, $location, $http, Configs, authService) ->
     $location.path('/login')
 
   $rootScope.$on "event:auth-loginConfirmed", (event, data) ->
-    console.log(data)
+    # console.log(data)
     $rootScope.userSession.id = data.id
     $rootScope.userSession.username = data.username
     $rootScope.userSession.email = data.email
