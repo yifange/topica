@@ -23,7 +23,7 @@ module.exports = function (grunt) {
   // configurable paths
   var yeomanConfig = {
     app: 'app',
-    dist: '../api/public'
+    dist: '../topica/public'
   };
 
   try {
