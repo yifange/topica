@@ -4,10 +4,11 @@
       Create your account
     .login-card
       %form.form-signin
-        %input.form-control{"data-ng-model" => "credential.email", :type => "text", :placeholder => "Email", :required => true, :autofocus => true}
-        %input.form-control{"data-ng-model" => "credential.password", :type => "password", :placeholder => "Password", :required => true}
-        %input.form-control{"data-ng-model" => "credential.passwordConfirmation", :type => "password", :placeholder => "Password confirmation", :required => true}
+        %input.form-control{"data-ng-model" => "credential.username", "data-ng-change" => "checkSubmittable()", :type => "text", :placeholder => "Username", :required => true, :autofocus => true}
+        %input.form-control{"data-ng-model" => "credential.email", "data-ng-change" => "checkSubmittable()", :type => "text", :placeholder => "Email", :required => true}
+        %input.form-control{"data-ng-model" => "credential.password", "data-ng-change" => "checkSubmittable()", :type => "password", :placeholder => "Password", :required => true}
+        %input.form-control{"data-ng-model" => "credential.passwordConfirmation", "data-ng-change" => "checkSubmittable()", :type => "password", :placeholder => "Password confirmation", :required => true}
         %p.error-message
           {{message}}
-        %button#signin-button.btn.btn-large.btn-primary.btn-block{"ng-click" => "submit()", :type => "submit"}
+        %button#signin-button.btn.btn-large.btn-primary.btn-block{"data-ng-disabled" => "!submittable", "data-ng-click" => "submit()", :type => "submit"}
           Sign up

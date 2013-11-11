@@ -1,0 +1,31 @@
+<div class='navbar'>
+<div class='navbar-inner'>
+<div class='brand'>
+Topica
+</div>
+<ul class='nav pull-right'>
+<li class='dropdown'>
+<a class='dropdown-toggle' href=''>
+<i class='fa fa-user'></i>
+{{user.username}}
+</a>
+<ul class='dropdown-menu'>
+<li>
+<a href='' ng-click='logout()'>
+Logout
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class='card' ng-repeat='post in posts'>
+<h3 class='card-heading simple'>
+{{post.title}}
+</h3>
+<div class='card-body'>
+{{post.content}}
+</div>
+<div class='card-actions'></div>
+</div>

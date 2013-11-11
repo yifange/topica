@@ -1,0 +1,27 @@
+<div class='row-fluid'>
+<div class='span6 offset3'>
+<h1 class='text-center login-title'>
+Login to Topica
+</h1>
+<div class='login-card'>
+<img alt='' class='profile-img' src='images/profile.png'>
+<form class='form-signin'>
+<input autofocus class='form-control' data-ng-model='credential.email' placeholder='Email' required type='text'>
+<input class='form-control' data-ng-model='credential.password' placeholder='Password' required type='password'>
+<p class='error-message'>
+{{message}}
+</p>
+<button class='btn btn-large btn-primary btn-block' id='signin-button' ng-click='submit()' type='submit'>
+Sign in
+</button>
+<label class='checkbox pull-left'>
+<input type='checkbox' value='remember-me'>
+Remember me
+</label>
+<a class='pull-right' href=''>
+New account
+</a>
+</form>
+</div>
+</div>
+</div>
