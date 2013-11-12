@@ -8,9 +8,11 @@ app.controller 'MainController', [
   "$rootScope",
   "UserSession",
   (Restangular, $scope, $http, Configs, $location, $rootScope, UserSession) ->
-    $http.get(Configs.apiRoot + "/me").then (response) ->
+    UserSession.currentUser().then (response) ->
       $rootScope.userSession.user = response.data
+    , (error) ->
+      $rootScope.userSession.user = {"username": "user"}
+
     Restangular.all("home").getList().then (posts) ->
-      $scope.user = $rootScope.userSession.user
       $scope.posts = posts
 ]

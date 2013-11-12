@@ -34,10 +34,11 @@ app.factory "UserSession", [
   "authService",
   ($http, Configs, authService) ->
     {
-      login: (email, password) ->
+      login: (email, password, rememberMe) ->
         $http.post(Configs.apiRoot + "/login", {
           email: email,
           password: password
+          remember: rememberMe
         })
       currentUser: ->
         $http.get(Configs.apiRoot + "/me")

@@ -12,7 +12,7 @@
         %button#signin-button.btn.btn-large.btn-primary.btn-block{"ng-click" => "submit()", :type => "submit"}
           Sign in
         %label.checkbox.pull-left
-          %input{:type => "checkbox", :value => "remember-me"}
+          %input{:type => "checkbox", :value => "remember-me", "ng-model" => "credential.rememberMe"}
           Remember me
         %a.pull-right{"data-ng-href" => "/#/signup"}
           New account
