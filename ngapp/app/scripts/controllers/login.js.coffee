@@ -6,6 +6,7 @@ app.controller "LoginController", [
   'authService',
   'UserSession',
   (Configs, $http, $scope, authService, UserSession) ->
+    # redirect if the user has logged in
     $scope.credential = {email: "", password: ""}
     $scope.submit = ->
       UserSession.login($scope.credential.email, $scope.credential.password).then (response) ->
