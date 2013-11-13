@@ -1,0 +1,24 @@
+.navbar
+  .navbar-inner
+    .brand
+      Topica
+    %ul.nav
+      %li
+        %a{:href => "#"}
+          %i.fa.fa-home
+          Home
+    %ul.nav.input-append
+      %form.navbar-search.pull-left
+        %input.search-query#navbar-search-rounded{:type => "text", :placeholder => "Search"}
+        -# %button.btn{:type => "submit"}
+        -#   %i.fa.fa-search
+    %ul.nav.pull-right
+      %li.dropdown
+        %a.dropdown-toggle{:href => ""}
+          %i.fa.fa-user
+          {{userSession.user.username}}
+        %ul.dropdown-menu
+          %li
+            %a{:href => "", "ng-click" => "logout()"}
+              %i.fa.fa-power-off
+              Logout
