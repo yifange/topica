@@ -120,7 +120,7 @@ module.exports = function (grunt) {
     open: {
       server: {
         url: 'http://localhost:<%= connect.options.port %>',
-        // app: 'google-chrome'
+        app: 'google-chrome'
       }
     },
     clean: {

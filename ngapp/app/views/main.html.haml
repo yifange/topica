@@ -9,9 +9,12 @@
           {{userSession.user.username}}
         %ul.dropdown-menu
           %li
+            %a{"data-ng-href" => "/#/profile"}
+              %i.fa.fa-user
+              Profile
             %a{:href => "", "ng-click" => "logout()"}
               %i.fa.fa-power-off
-              Logout
+              Logout            
 .card{"ng-repeat" => "post in posts"}
   %h3.card-heading.simple
     {{post.title}}

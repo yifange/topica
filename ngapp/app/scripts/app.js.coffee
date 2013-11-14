@@ -18,6 +18,10 @@ app.config ($routeProvider) ->
       templateUrl: 'views/signup.html',
       controller: 'SignupController'
     })
+    .when('/profile', {
+      templateUrl: 'views/profile.html',
+      controller: 'ProfileController'
+    })
     .otherwise({
       redirectTo: '/'
     })
