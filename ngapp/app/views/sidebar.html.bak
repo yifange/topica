@@ -1,0 +1,35 @@
+  <ul id="gn-menu" class="gn-menu-main">
+    <li class="gn-trigger">
+      <a class="gn-icon gn-icon-menu" data-ng-click='mouseEnterIconMenu()' data-ng-mouseenter="mouseEnterIconMenu()" data-ng-mouseleave="mouseLeaveIconMenu()" data-ng-class="{true: 'gn-open-part', false: ''}[mouseOverIconMenu]" data-ng-class="{true: 'gn-openselected', false: ''}[mouseOverMenu]"><span>Menu</span></a>
+      <nav class="gn-menu-wrapper" ng-mouseover="mouseEnterMenu()", ng-class="{true: 'gn-open-all', false: ''}[mouseOverMenu]">
+        <div class="gn-scroller">
+          <ul class="gn-menu">
+            <li class="gn-search-item">
+              <input placeholder="Search" type="search" class="gn-search">
+                <a class="gn-icon gn-icon-search"><span>Search</span></a>
+              </li>
+              <li>
+                <a class="gn-icon gn-icon-download">Downloads</a>
+                <ul class="gn-submenu">
+                  <li><a class="gn-icon gn-icon-illustrator">Vector Illustrations</a></li>
+                  <li><a class="gn-icon gn-icon-photoshop">Photoshop files</a></li>
+                </ul>
+              </li>
+              <li><a class="gn-icon gn-icon-cog">Settings</a></li>
+              <li><a class="gn-icon gn-icon-help">Help</a></li>
+              <li>
+                <a class="gn-icon gn-icon-archive">Archives</a>
+                <ul class="gn-submenu">
+                  <li><a class="gn-icon gn-icon-article">Articles</a></li>
+                  <li><a class="gn-icon gn-icon-pictures">Images</a></li>
+                  <li><a class="gn-icon gn-icon-videos">Videos</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /gn-scroller -->
+        </nav>
+      </li>
+      <li><a href="">Codrops</a></li>
+      <li><a class="codrops-icon codrops-icon-prev" href=""><span>Previous Demo</span></a></li>
+      <li><a class="codrops-icon codrops-icon-drop" href=""><span>Back to the Codrops Article</span></a></li>
+    </ul>
