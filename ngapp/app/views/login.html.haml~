@@ -1,0 +1,18 @@
+.row-fluid
+  .span6.offset3
+    %h1.text-center.login-title
+      Login to Topica
+    .login-card
+      %img.profile-img{:src => "images/profile.png", :alt => ""}
+      %form.form-signin
+        %input.form-control.form-control-no-margin{"data-ng-model" => "credential.email", :type => "text", :placeholder => "Email", :required => true, :autofocus => true}
+        %input.form-control.form-control-no-margin{"data-ng-model" => "credential.password", :type => "password", :placeholder => "Password", :required => true}
+        %p.error-message
+          {{message}}
+        %button#signin-button.btn.btn-large.btn-primary.btn-block{"ng-click" => "submit()", :type => "submit"}
+          Sign in
+        %label.checkbox.pull-left
+          %input{:type => "checkbox", :value => "remember-me", "ng-model" => "credential.rememberMe"}
+          Remember me
+        %a.pull-right{"data-ng-href" => "/#/signup"}
+          New account
