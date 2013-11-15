@@ -1,13 +1,12 @@
 .navbar.navbar-fixed-top{"ng-controller" => "NavbarController"}
   .navbar-inner
-    .hotcorner-trigger-wrapper{"ng-mouseenter" => "hoverHotcornerIcon = true", "ng-mouseleave" => "hoverHotcornerIcon = false; clickHotcornerIcon = false", "ng-class" => "hotcornerIconClass()"}
-      %a.hotcorner-icon.hotcorner-icon-trigger{:href => ""}
-        %i.fa.fa-bars
-    %ul.nav
-      %li
-        -# %a{:href => "#", "ng-click" => "hello()"}
-        -#   %i.fa.fa-home
-        -#   Home
+    %a.hotcorner-icon.hotcorner-icon-trigger{"ng-mouseenter" => "hoverHotcornerIcon = true", "ng-mouseleave" => "hoverHotcornerIcon = false; clickHotcornerIcon = false", "ng-class" => "hotcornerIconClass()", "ng-click" => "toggleHotcornerMenu()"}
+      %i.fa.fa-bars
+    -# %ul.nav
+    -#   %li{:style => "margin-left: 60px"}
+    -#     %a{:href => "#", "ng-click" => "hello()"}
+    -#       %i.fa.fa-home
+    -#       Home
     %ul.nav.pull-right
       %li.dropdown
         %a.dropdown-toggle{:href => ""}
@@ -25,7 +24,21 @@
           %a.hotcorner-icon.hotcorner-icon-search
             %i.fa.fa-search
           %input.hotcorner-search{:placeholder => "Search", :type => "search"}
+        %li.hotcorner-user-item.hotcorner-menu-item
+          %a.hotcorner-icon.hotcorner-icon-user
+            %i.fa.fa-user
+          %span.hotcorner-menu-text
+            Users
+        %li.hotcorner-topic-item.hotcorner-menu-item
+          %a.hotcorner-icon.hotcorner-icon-topic
+            %i.fa.fa-comments
+          %span.hotcorner-menu-text
+            Topics
 
-
+        %li.hotcorner-post-item.hotcorner-menu-item
+          %a.hotcorner-icon.hotcorner-icon-post
+            %i.fa.fa-comment-o
+          %span.hotcorner-menu-text
+            Posts
 
 
