@@ -1,0 +1,44 @@
+.navbar
+  .navbar-inner
+    .brand
+      Topica
+    %ul.nav.pull-right
+      %li.dropdown
+        %a.dropdown-toggle{:href => ""}
+          %i.fa.fa-user
+          {{userSession.user.username}}
+        %ul.dropdown-menu
+          %li
+            %a{"data-ng-href" => "/#/profile"}
+              %i.fa.fa-user
+              Profile
+            %a{:href => "", "ng-click" => "logout()"}
+              %i.fa.fa-power-off
+              Logout
+.row-fluid
+  .span6.offset3
+    %h1.text-center.login-title
+      Profile Page
+    %i.fa.fa-user
+.card{"ng-repeat" => "post in posts"}
+  %h3.card-heading.simple
+    {{post.title}}
+  .card-body
+    {{post.content}}
+  .card-actions
+.row-fluid
+  .span6.offset3
+    %h1.text-center.login-title
+      Topics Followed:
+.card{"ng-repeat" => "topic in topics"}
+  %h3.card-heading.simple
+    {{topic.name}}
+.row-fluid
+  .span6.offset3
+    %h1.text-center.login-title
+      Suggested Topics:
+.row-fluid
+  .span6.offset3
+    %h1.text-center.login-title
+      Coming Soon!
+
