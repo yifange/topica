@@ -1,7 +1,7 @@
 .navbar.navbar-fixed-top{"ng-controller" => "NavbarController"}
   .navbar-inner
-    .brand.hotcorner-trigger-wrapper{"ng-mouseenter" => "hoverHotcornerIcon = true", "ng-mouseleave" => "hoverHotcornerIcon = false; clickHotcornerIcon = false", "ng-class" => "hotcornerIconClass()"}
-      %a.hotcorner-icon{:href => ""}
+    .hotcorner-trigger-wrapper{"ng-mouseenter" => "hoverHotcornerIcon = true", "ng-mouseleave" => "hoverHotcornerIcon = false; clickHotcornerIcon = false", "ng-class" => "hotcornerIconClass()"}
+      %a.hotcorner-icon.hotcorner-icon-trigger{:href => ""}
         %i.fa.fa-bars
     %ul.nav
       %li
@@ -22,7 +22,7 @@
     .hotcorner-menu-scroller
       %ul.hotcorner-menu
         %li.hotcorner-search-item.hotcorner-menu-item
-          %a.hotcorner-icon
+          %a.hotcorner-icon.hotcorner-icon-search
             %i.fa.fa-search
           %input.hotcorner-search{:placeholder => "Search", :type => "search"}
 

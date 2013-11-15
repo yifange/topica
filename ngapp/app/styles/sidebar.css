@@ -18,17 +18,27 @@ li.hotcorner-menu-item:hover {
 .hotcorner-trigger-wrapper.hotcorner-selected a.hotcorner-icon {
   color: #4d90fe;
 }
+.hotcorner-trigger-wrapper {
+  left: 0;
+  font-size: 20px;
+  padding: 0;
+  line-height: 44px;
+}
 a.hotcorner-icon {
   position: absolute;
+  text-align: center;
   height: 44px;
   width: 44px;
 }
 a.hotcorner-icon, a.hotcorner-icon:active {
-  color: #222222;
   text-decoration: none;
+  color: #DDDDDD;
+}
+a.hotcorner-icon-trigger, a.hotcorner-icon-trigger:hover {
+  color: #4d90fe;
 }
 .hotcorner-trigger-wrapper > a.hotcorner-icon:hover {
-  color: #4d90fe;
+  /* color: #4d90fe; */
 }
 .hotcorner-search-item {
   border-bottom: 1px inset #DDDDDD;
@@ -69,9 +79,6 @@ input.hotcorner-search:hover, input.hotcorner-search:focus {
     box-shadow: none;
 }
 
-.hotcorner-icon {
-  padding-left: 13px;
-}
 .hotcorner-menu-wrapper ul li {
 		margin: 0;
 		padding: 0;
