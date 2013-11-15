@@ -2,7 +2,8 @@ app = angular.module 'topicaApp', [
   'ngRoute',
   'restangular',
   'http-auth-interceptor',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'ngAnimate'
 ]
 app.config ($routeProvider) ->
   $routeProvider

@@ -10,18 +10,35 @@ app.controller 'NavbarController', [
     , (error) ->
       $rootScope.userSession.user = {"username": "user"}
 
-
-
     openHotcornerMenu = false
+    openFullMenu = false
+    selectedMenuItem = ""
+
+    $scope.arrowClass = (name) ->
+      if selectedMenuItem == name
+        "fa-angle-double-left"
+      else
+        "fa-angle-double-right"
+
+    $scope.selectMenuItem = (name) ->
+      if selectedMenuItem == ""
+        selectedMenuItem = name
+      else
+        selectedMenuItem = ""
+
     $scope.toggleHotcornerMenu = ->
-      openHotcornerMenu = !openHotcornerMenu
+      openFullMenu = !openFullMenu
+
+    $scope.showMenuItem = (name) ->
+      (selectedMenuItem == "") or (selectedMenuItem == name)
+
     $scope.hotcornerIconClass = ->
-      if $scope.hoverHotcornerMenu
+      if $scope.hoverHotcornerMenu or openFullMenu
         "hotcorner-selected"
       else
         ""
     $scope.hotcornerMenuClass = ->
-      if openHotcornerMenu
+      if openFullMenu
         "hotcorner-open-all"
       else
         if $scope.hoverHotcornerMenu
@@ -30,5 +47,4 @@ app.controller 'NavbarController', [
           "hotcorner-open-part"
         else
           ""
-          # "hotcorner-open-all"
   ]
