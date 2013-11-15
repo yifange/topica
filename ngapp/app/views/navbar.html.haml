@@ -21,25 +21,11 @@
   .hotcorner-menu-wrapper{"ng-class" => "hotcornerMenuClass()", "ng-mouseenter" => "hoverHotcornerMenu = true", "ng-mouseleave" => "hoverHotcornerMenu = false"}  
     .hotcorner-menu-scroller
       %ul.hotcorner-menu
-        %li.hotcorner-search-item
+        %li.hotcorner-search-item.hotcorner-menu-item
           %a.hotcorner-icon
             %i.fa.fa-search
           %input.hotcorner-search{:placeholder => "Search", :type => "search"}
 
--# %div
--#   %ul#gn-menu.gn-menu-main
--#     %li.gn-trigger
--#       %a.gn-icon.gn-icon-menu{:href => "", "ng-mouseenter" => "hoverIcon = true", "ng-mouseleave" => "hoverIcon = false; clickIcon = false", "ng-click" => "toggleMenu()", "ng-class" => "menuIconClass()"}
--#       .gn-menu-wrapper{"ng-class" => "menuClass()", "ng-mouseenter" => "hoverMenu = true", "ng-mouseleave" => "hoverMenu = false"}
--#         %div.gn-scroller
--#           %ul.gn-menu
--#             %li.gn-search-item
--#               %input.gn-search{:placeholder => "Search", :type => "search"}
--#               %a.gn-icon.gn-icon-search
--#                 %i.fa.fa-search
--#     %li
--#       %a{:href => ""}
--#         Main
 
 
 
