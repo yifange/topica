@@ -182,28 +182,27 @@ span.hotcorner-menu-item-arrow {
 .hotcorner-menu-wrapper.hotcorner-open-all .hotcorner-submenu li {
 		height: 44px
 }
-.hotcorner-menu-item.ng-hide-add, 
-.hotcorner-menu-item.ng-hide-remove
-{ 
-   -webkit-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -moz-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -ms-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    -o-transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-    transition: 400ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+.hotcorner-menu-item.ng-enter, 
+.hotcorner-menu-item.ng-leave { 
+    -webkit-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -moz-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -ms-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    -o-transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+    transition: 250ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
     position: relative;
-    display: block !important;
+    display: block;
 } 
  
-.hotcorner-menu-item.ng-remove.ng-hide-remove-active,
-.hotcorner-menu-item.ng-hide-add {
-    opacity: 1;
-    top: 0;
-    height: 30px;
+.hotcorner-menu-item.ng-leave.ng-leave-active,
+.hotcorner-menu-item.ng-enter {
+     opacity: 0;
+    left: -50px;
+    height: 0px;
 }
  
-.hotcorner-menu-item.ng-add.ng-hide-add-active, 
-.hotcorner-menu-item.ng-hide-remove {
-    opacity: 0;
-    top: -50px;
-    height: 0px;
+.hotcorner-menu-item.ng-enter.ng-enter-active,
+.hotcorner-menu-item.ng-leave {
+     opacity: 1;
+    top: 0;
+    height: 30px;
 }

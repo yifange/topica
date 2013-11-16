@@ -12,19 +12,39 @@ app.controller 'NavbarController', [
 
     openHotcornerMenu = false
     openFullMenu = false
-    selectedMenuItem = ""
+    selected = false
+    menuItems = [
+      {
+        name: "user"
+        text: "Users"
+        icon: "user"
+      },
+      {
+        name: "feed"
+        text: "Feeds"
+        icon: "comments"
+      },
+      {
+        name: "topic"
+        text: "Topics"
+        icon: "comment-o"
+      }
+    ]
+    $scope.visibleItems = menuItems
 
     $scope.arrowClass = (name) ->
-      if selectedMenuItem == name
+      if selected
         "fa-angle-double-left"
       else
         "fa-angle-double-right"
 
-    $scope.selectMenuItem = (name) ->
-      if selectedMenuItem == ""
-        selectedMenuItem = name
+    $scope.selectMenuItem = (index) ->
+      if !selected
+        $scope.visibleItems = [$scope.visibleItems[index]]
+        selected = true
       else
-        selectedMenuItem = ""
+        $scope.visibleItems = menuItems
+        selected = false
 
     $scope.toggleHotcornerMenu = ->
       openFullMenu = !openFullMenu

@@ -24,29 +24,15 @@
           %a.hotcorner-icon.hotcorner-icon-search
             %i.fa.fa-search
           %input.hotcorner-search{:placeholder => "Search", :type => "search"}
-        %li.hotcorner-user-item.hotcorner-menu-item{"ng-show" => "showMenuItem('user')", "ng-click" => "selectMenuItem('user')"}
-          %a.hotcorner-icon.hotcorner-icon-user
-            %i.fa.fa-user
-          %span.hotcorner-menu-text
-            Users
-          %span.hotcorner-menu-item-arrow
-            %i.fa{"ng-class" => "arrowClass('user')"}
 
-        %li.hotcorner-topic-item.hotcorner-menu-item{"ng-show" => "showMenuItem('feed')", "ng-click" => "selectMenuItem('feed')"}
-          %a.hotcorner-icon.hotcorner-icon-feed
-            %i.fa.fa-comments
+        %li.hotcorner-menu-item{"ng-repeat" => "item in visibleItems", "ng-click" => "selectMenuItem($index)"}
+          %a.hotcorner-icon
+            %i.fa{"ng-class" => "'fa-' + item.icon"}
           %span.hotcorner-menu-text
-            Feeds
+            {{item.text}}
           %span.hotcorner-menu-item-arrow
-            %i.fa{"ng-class" => "arrowClass('feed')"}
+            %i.fa{"ng-class" => "arrowClass()"}
 
-        %li.hotcorner-post-item.hotcorner-menu-item{"ng-show" => "showMenuItem('topic')", "ng-click" => "selectMenuItem('topic')"}
-          %a.hotcorner-icon.hotcorner-icon-topic
-            %i.fa.fa-comment-o
-          %span.hotcorner-menu-text
-            Topics
-          %span.hotcorner-menu-item-arrow
-            %i.fa{"ng-class" => "arrowClass('topic')"}
 
 
 
