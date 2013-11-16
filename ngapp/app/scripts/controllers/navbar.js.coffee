@@ -68,3 +68,18 @@ app.controller 'NavbarController', [
         else
           ""
   ]
+
+app.controller "CardNewPost", [
+  '$scope'
+  ($scope) ->
+    # $scope.options = ['Zero', 'One']
+    # $scope.select2Options = {
+    #   'tags': ['tag1', 'tag2'],
+    #   'multiple': true,
+    #   'allowClear': true,
+    #   'simple_tags': true
+    # }
+    console.log("within card new post")
+    $scope.mouseClickShowDropdown = ->
+      console.log("mouse click in the input, show drop down")
+  ]
