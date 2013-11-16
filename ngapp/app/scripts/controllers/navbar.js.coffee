@@ -22,7 +22,7 @@ app.controller 'NavbarController', [
       {
         name: "feed"
         text: "Feeds"
-        icon: "comments"
+        icon: "folder"
       },
       {
         name: "topic"

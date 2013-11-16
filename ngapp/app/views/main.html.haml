@@ -1,19 +1,5 @@
--# %div{"ng-include" => "", :src => "'views/navbar.html'", "ng-controller" => "NavbarController"}
 %div{"ng-include" => "", :src => "'views/navbar.html'"}
--# .navbar
--#   .navbar-inner
--#     .brand
--#       Topica
--#     %ul.nav.pull-right
--#       %li.dropdown
--#         %a.dropdown-toggle{:href => ""}
--#           %i.fa.fa-user
--#           {{userSession.user.username}}
--#         %ul.dropdown-menu
--#           %li
--#             %a{:href => "", "ng-click" => "logout()"}
--#               %i.fa.fa-power-off
--#               Logout
+%div{"ng-include" => "", :src => "'views/newPost.html'", "style" => "padding-top: 50px"}
 .card{"ng-repeat" => "post in posts"}
   %h3.card-heading.simple
     {{post.title}}
