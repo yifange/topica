@@ -24,7 +24,16 @@ app.directive('pluspickerToggle', [
     closeMenu = angular.noop
     {
       restrict: 'CA'
+      scope: {
+        items: "="
+      }
+      template: "<span class='pluspicker-listitem' ng-repeat='item in items | filter: {selected: true}'><span class='pluspicker-listitem-content'><span class='pluspicker-listitem-text'>{{item.text}}</span><div class='pluspicker-close' ng-click='toggleSelected({{item.id}}, $event)'><i class='fa fa-times-circle'></i></div></span></span>"
       link: (scope, element, attrs) ->
+        scope.toggleSelected = (id, $event) ->
+          for item in scope.items
+            if item.id == id
+              item.selected = !item.selected
+          $event.stopPropagation()
         scope.$watch('$location.path', ->
           closeMenu()
         )
@@ -51,26 +60,4 @@ app.directive('pluspickerToggle', [
             $document.bind('click', closeMenu)
         )
     }
-])
-# app.directive("pluspicker-close", [
-#   ->
-#     {
-#       restrict: "CA"
-#
-#     }
-# )
-app.directive("pluspickerListitem", [
-  ->
-    {
-      restrict: "CA"
-      transclude: true
-      template: "<span class='pluspicker-listitem-content'><span class='pluspicker-listitem-text' ng-transclude></span><div class='pluspicker-close' ng-click='toggleSelected({{topic.id}}, $event)'><i class='fa fa-times-circle'></i></div></span>"
-      link: (scope, element, attrs) ->
-        scope.toggleSelected = (id, $event) ->
-          for item in scope.topics
-            if item.id == id
-              item.selected = !item.selected
-          $event.stopPropagation()
-    }
-
 ])
