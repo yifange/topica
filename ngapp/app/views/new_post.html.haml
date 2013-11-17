@@ -1,0 +1,13 @@
+.card{"ng-controller" => "NewPostController"}
+  .card-body
+    .pluspicker-wrapper
+      .pluspicker-toggle.pluspicker-box
+        %span.pluspicker-listitem{"ng-repeat" => "topic in topics | filter: {selected: true}"}
+          {{topic.text}}
+
+      %ul.pluspicker-menu
+        %li.pluspicker-menu-item{"ng-repeat" => "topic in topics | filter: {selected: false}"}
+          {{topic.text}}
+  .card-actions
+    %a{"ng-click" => "showSelectedTopics()"}
+      show

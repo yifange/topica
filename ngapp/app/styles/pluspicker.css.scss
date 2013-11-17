@@ -3,6 +3,7 @@ $box-border: 1px solid #e4e4e4;
 $box-width: 400px;
 .pluspicker-wrapper {
   width: $box-width;
+  position: relative;
 }
 .pluspicker-box {
   height: 40px;
@@ -57,7 +58,7 @@ $box-width: 400px;
 
 .pluspicker-menu > li > a {
   display: block;
-  padding: 3px 20px;
+  padding: 5px 20px;
   clear: both;
   font-weight: normal;
   line-height: 20px;
@@ -118,5 +119,33 @@ $box-width: 400px;
 .pull-right > .pluspicker-menu {
   right: 0;
   left: auto;
+}
+.pluspicker-listitem {
+  border-radius: 15px;
+  display: inline-block;
+  // background: -webkit-gradient(linear,left top,left bottom,from(#4285f4),to(#4285f4));
+  background: #4285f4;
+  border: 1px solid #4285f4;
+  height: 28px;
+  margin: 2px;
+  outline: none;
+  padding: 0 1px;
+  vertical-align: middle;
+  cursor: default;
+  white-space: nowrap;
+  color: #fff;
+}
+.pluspicker-listitem-content {
+  display: inline-block;
+  padding: 4px 8px 6px 8px;
+}
+.pluspicker-close {
+  margin-left: 4px;
+  display: inline-block;
+  color: rgba(255, 255, 255, 1);
+}
+.pluspicker-close:hover {
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
 }
 

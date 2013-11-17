@@ -40,8 +40,4 @@ app.controller "SignupController", [
       , (error) ->
         console.log(error)
         $scope.message = error.data.message
-
-
-
-
 ]
