@@ -1,6 +1,4 @@
-
 app = angular.module("topicaApp")
-
 app.directive 'pluspickerMenu', [
   ->
     {
@@ -8,9 +6,15 @@ app.directive 'pluspickerMenu', [
       scope: {
         items: "="
       }
-      template: "<li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false}' ng-click='toggleSelected({{item.id}}, $event)'><a>{{item.text}}</a></li>"
+      template: """
+        <li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false}' ng-click='toggleSelection({{item.id}}, $event)'>
+          <a>
+            {{item.text}}
+          </a>
+        </li>
+                """
       link: (scope, element, attrs) ->
-        scope.toggleSelected = (id, $event) ->
+        scope.toggleSelection = (id, $event) ->
           for item in scope.items
             if item.id == id
               item.selected = !item.selected
@@ -27,9 +31,11 @@ app.directive('pluspickerToggle', [
       scope: {
         items: "="
       }
-      template: "<span class='pluspicker-listitem' ng-repeat='item in items | filter: {selected: true}'><span class='pluspicker-listitem-content'><span class='pluspicker-listitem-text'>{{item.text}}</span><div class='pluspicker-close' ng-click='toggleSelected({{item.id}}, $event)'><i class='fa fa-times-circle'></i></div></span></span>"
+      template: """
+        <span class='pluspicker-listitem' ng-repeat='item in items | filter: {selected: true}'><span class='pluspicker-listitem-content'><span class='pluspicker-listitem-text'>{{item.text}}</span><div class='pluspicker-close' ng-click='toggleSelection({{item.id}}, $event)'><i class='fa fa-times-circle'></i></div></span></span>
+                """
       link: (scope, element, attrs) ->
-        scope.toggleSelected = (id, $event) ->
+        scope.toggleSelection = (id, $event) ->
           for item in scope.items
             if item.id == id
               item.selected = !item.selected
