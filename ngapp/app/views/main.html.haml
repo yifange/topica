@@ -1,15 +1,5 @@
 %div#main-view
   %div{"ng-include" => "", :src => "'views/navbar.html'"}
-<<<<<<< HEAD
-  .span8.offset2
-    %div{"ng-include" => "", :src => "'views/new_post.html'", "style" => "padding-top: 50px"}
-    .card{"ng-repeat" => "post in posts"}
-      %h3.card-heading.simple
-        {{post.title}}
-      .card-body
-        {{post.content}}
-      .card-actions
-=======
   %div{"ng-include" => "", :src => "'views/new_post.html'", "style" => "padding-top: 50px"}
 
   .card{"ng-repeat" => "post in posts", :style => "padding: 15px"}
@@ -24,5 +14,3 @@
     .card-body
       {{post.content}}
     .card-actions
-
->>>>>>> Seed file & Post partially implemented.
