@@ -50,7 +50,7 @@ app.run ($rootScope, $location, $http, Configs, authService) ->
 
   $rootScope.logout = ->
     $http.get(Configs.apiRoot + "/logout")
-    delete $rootScope.user
+    delete $rootScope.userSession.user
     $location.path("/login")
 
   $rootScope.$on "event:auth-loginRequired", ->
