@@ -10,8 +10,9 @@ gem 'pg'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+# solr search service
+#gem 'sunspot_rails'
+#gem 'sunspot_solr'
 
 gem "sorcery"
 
@@ -24,17 +25,11 @@ group :doc do
   gem 'sdoc', require: false
 end
 
-# group :development do
-#   gem 'railroady'
-# end
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'ZenTest'
+  gem 'factory_girl_rails'
+  gem 'debugger'
+  #gem 'database_cleaner'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
