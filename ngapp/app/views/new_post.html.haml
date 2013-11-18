@@ -1,9 +1,4 @@
 .card{"ng-controller" => "NewPostController"}
   .card-body
-    .pluspicker
-      .pluspicker-toggle.pluspicker-box{:items => "topics"}
-        %span.pluspicker-listitem{"ng-repeat" => "topic in topics | filter: {selected: true}"}
-          {{topic.text}}
-
-      %ul.pluspicker-menu{:items => "topics"}
+    .pluspicker{:items => "topics"}
   .card-actions
