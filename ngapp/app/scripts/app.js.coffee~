@@ -2,8 +2,7 @@ app = angular.module 'topicaApp', [
   'ngRoute',
   'restangular',
   'http-auth-interceptor',
-  'ui.bootstrap',
-  'ngAnimate'
+  'ui.bootstrap'
 ]
 app.config ($routeProvider) ->
   $routeProvider
@@ -51,11 +50,10 @@ app.factory "UserSession", [
 ]
 app.run ($rootScope, $location, $http, Configs, authService) ->
   $rootScope.userSession = {}
-  $rootScope.changeView = (view) ->
-    $location.path(view)
+
   $rootScope.logout = ->
     $http.get(Configs.apiRoot + "/logout")
-    delete $rootScope.userSession.user
+    delete $rootScope.user
     $location.path("/login")
 
   $rootScope.$on "event:auth-loginRequired", ->

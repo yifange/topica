@@ -1,0 +1,29 @@
+%div#profile-view
+  %div{"ng-include" => "", :src => "'views/navbar.html'"}
+  .row-fluid
+    .span6.offset3
+      %h1.text-center.login-title
+        Profile Page
+  %img.profile-img{:src => "images/profile.png", :alt => ""}
+  .card{"ng-repeat" => "post in posts"}
+    %h3.card-heading.simple
+      {{post.title}}
+    .card-body
+      {{post.content}}
+    .card-actions
+  .row-fluid
+    .span6.offset3
+      %h1.text-center.login-title
+        Topics Followed:
+  .card{"ng-repeat" => "topic in topics"}
+    %h3.card-heading.simple
+      {{topic.name}}
+  .row-fluid
+    .span6.offset3
+      %h1.text-center.login-title
+        Suggested Topics:
+  .row-fluid
+    .span6.offset3
+      %h1.text-center.login-title
+        Coming Soon!
+

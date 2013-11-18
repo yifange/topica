@@ -10,3 +10,4 @@ Most of the class method we designed, like CRUDs, are implemented by Rails autom
 E.g. we defined in the [User model](https://pl.cs.jhu.edu:8000/oose-13-group-12/project/blob/master/topica/app/models/user.rb) that a user should _has many_ _feeds_ by saying `has_many :feeds`, then we get an instance method `User#feeds` to get all the feeds that associated with this user instance.
 
 All the APIs are listed [here](https://pl.cs.jhu.edu:8000/oose-13-group-12/project/blob/master/topica/api_routes.md)
+Instructions on unit testing in rails can be found [here](https://pl.cs.jhu.edu:8000/oose-13-group-12/project/wikis/unit-testing).

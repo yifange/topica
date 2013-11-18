@@ -1,0 +1,5 @@
+class Api::V1::HomeTopicController < Api::V1::ApplicationController
+  def index
+    render :json => User.find(current_user.id).posts
+  end
+end

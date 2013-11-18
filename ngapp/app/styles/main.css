@@ -1,3 +1,12 @@
+@media (min-width: 768px) and (max-width: 979px) {
+  .navbar-fixed-top {
+    margin-left: -20px !important;
+    margin-right: -20px !important;
+  }
+  .container {
+    width: auto !important;
+  }
+}
 .form-signin
 {
     padding: 15px;

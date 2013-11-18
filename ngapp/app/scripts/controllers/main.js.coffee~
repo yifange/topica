@@ -13,6 +13,6 @@ app.controller 'MainController', [
     , (error) ->
       $rootScope.userSession.user = {"username": "user"}
 
-    Restangular.all("users").getList().then (users) ->
-      $scope.users = users
+    Restangular.all("users").getList().then (posts) ->
+      $scope.posts = posts
 ]

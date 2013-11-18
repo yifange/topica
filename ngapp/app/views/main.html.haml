@@ -1,8 +1,10 @@
-%div{"ng-include" => "", :src => "'views/navbar.html'"}
-%div{"ng-include" => "", :src => "'views/new_post.html'", "style" => "padding-top: 50px"}
-.card{"ng-repeat" => "post in posts"}
-  %h3.card-heading.simple
-    {{post.title}}
-  .card-body
-    {{post.content}}
-  .card-actions
+%div#main-view
+  %div{"ng-include" => "", :src => "'views/navbar.html'"}
+  .span8.offset2
+    %div{"ng-include" => "", :src => "'views/new_post.html'", "style" => "padding-top: 50px"}
+    .card{"ng-repeat" => "post in posts"}
+      %h3.card-heading.simple
+        {{post.title}}
+      .card-body
+        {{post.content}}
+      .card-actions

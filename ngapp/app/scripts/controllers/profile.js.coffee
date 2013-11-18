@@ -1,5 +1,5 @@
 app = angular.module("topicaApp")
-app.controller 'MainController', [
+app.controller "ProfileController", [
   "Restangular",
   "$scope",
   "$http",
@@ -13,6 +13,9 @@ app.controller 'MainController', [
     , (error) ->
       $rootScope.userSession.user = {"username": "user"}
 
-    Restangular.all("users").getList().then (users) ->
-      $scope.users = users
+    Restangular.one("users",$scope.userSession.user.id).all("posts").getList().then (posts) ->
+      $scope.posts = posts
+
+    Restangular.one("users",$scope.userSession.user.id).all("topics").getList().then (topics) ->
+      $scope.topics = topics
 ]

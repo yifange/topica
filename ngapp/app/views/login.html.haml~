@@ -1,5 +1,5 @@
 .row-fluid
-  .span4.offset4
+  .span6.offset3
     %h1.text-center.login-title
       Login to Topica
     .login-card
