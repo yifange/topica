@@ -1,35 +1,23 @@
 .card{"ng-controller" => "NewPostController"}
-  .card-body.new-post-card{:style => "overflow: hidden"}
-    %table.table
-      %tr
-        %td.column-for-profile-img
-          %img.profile-img-on-post.img-rounded{:src => "images/profile.png", :alt => "", :style => "width: 50px"}
-        %td
-          %table.table
-            %tr
-              %td
-                %textarea{:rows => 1, "data-ng-model" => "postTitle"}
-            %tr
-              %td
-                %textarea{:rows => "5", "data-ng-content" => "postContent"}
-    %table.table
-      %tr
-        %td.column-for-profile-img
-          %label
-            Topic:
-        %td
-          %select
-            %option
-              Music
-            %option
-              Sports
-            %option
-              Reading
-    %p{:style => "float: right"}
+  .card-body
+    %input{:type => "text", :placeholder => "Title", "data-ng-model" => "newPost.title", :required => "true", :style => "width: 100%; box-sizing: border-box;"}
+    %textarea{:rows => "5", :placeholder => "Content", :required => "true", "data-ng-model" => "newPost.content", :style => "width: 100%; box-sizing: border-box;"} 
+    -# %table.table
+    -#   %tr
+    -#     %td.column-for-profile-img
+    -#       %img.profile-img-on-post.img-rounded{:src => "images/profile.png", :alt => "", :style => "width: 50px"}
+    -#     %td
+    -#       %table.table
+    -#         %tr
+    -#           %td
+    -#             %input.span6{:type => "text", :placeholder => "Title", "data-ng-model" => "newPost.title", :required => "true"}
+    -#         %tr
+    -#           %td
+    -#             %textarea.span6{:rows => "5", :placeholder => "Content", :required => "true", "data-ng-model" => "newPost.content"}
+    .pluspicker{:items => "topics"} 
+  .card-actions
+    %div.pull-right
       %button.btn{:type => "button", "data-ng-click" => "createNewPost()"}
         Post
       %button.btn{:type => "button"}
         Cancel
-
-    .pluspicker{:items => "topics"}
-  .card-actions

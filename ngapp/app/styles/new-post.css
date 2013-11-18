@@ -30,6 +30,24 @@ textarea
   width: 50px !important;
   /* height: 50px !important; */
 }
+.delete-post
+{
+}
+.no-decoration:hover
+{
+  text-decoration: none;
+  color: inherit;
+}
+.no-decoration:link
+{
+  text-decoration: none;
+  color: inherit;
+}
+.no-decoration
+{
+  text-decoration: none;
+  color: inherit;
+}
 /* .card-wrapper */
 /* { */
 /*   overflow: hidden !important; */

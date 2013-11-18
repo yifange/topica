@@ -13,6 +13,9 @@ app.controller 'MainController', [
     , (error) ->
       $rootScope.userSession.user = {"username": "user"}
 
-    Restangular.all("users").getList().then (users) ->
-      $scope.users = users
+    Restangular.all("home").getList().then (posts) ->
+      $scope.posts = posts
+
+    $scope.deletePost = () ->
+      $http.post(Configs.apiRoot + "/users/" + $rootScope.userSession.user.id)
 ]

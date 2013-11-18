@@ -65,14 +65,12 @@ ActiveRecord::Schema.define(version: 20131117211413) do
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
-    t.integer  "topic_id"
     t.text     "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "topics", force: true do |t|
