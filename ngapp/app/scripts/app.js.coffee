@@ -51,7 +51,8 @@ app.factory "UserSession", [
 ]
 app.run ($rootScope, $location, $http, Configs, authService) ->
   $rootScope.userSession = {}
-
+  $rootScope.changeView = (view) ->
+    $location.path(view)
   $rootScope.logout = ->
     $http.get(Configs.apiRoot + "/logout")
     delete $rootScope.userSession.user
