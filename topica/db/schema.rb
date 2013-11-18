@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131101232634) do
+ActiveRecord::Schema.define(version: 20131117211413) do
 
   create_table "categories", force: true do |t|
     t.integer  "topic_id"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 20131101232634) do
     t.integer  "user_id"
     t.integer  "feed_id"
     t.string   "name"
-    t.integer  "topic_type"
+    t.string   "topic_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
