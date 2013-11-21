@@ -31,10 +31,35 @@ Feed.create(user_id: 4, name: "Programming")
 Feed.create(user_id: 5, name: "Programming")
 Feed.create(user_id: 6, name: "Programming")
 
-# Topic.delete_all
-# Topic.create(user_id: 1, feed_id: 1, )
-# Category
-# Comment
-# Favor
-# Followship
-# Post
+Topic.delete_all
+Topic.create(user_id: 1, name: "c++", topic_type: 1) # 1 to be public
+Topic.create(user_id: 1, name: "python", topic_type: 1)
+Topic.create(user_id: 2, name: "java", topic_type: 1)
+Topic.create(user_id: 2, name: "c++", topic_type: 1)
+Topic.create(user_id: 3, name: "country", topic_type: 1)
+
+Followship.delete_all
+Followship.create(user_id: 1, topic_id: 3, feed_id: 2)
+Followship.create(user_id: 1, topic_id: 4, feed_id: 2)
+Followship.create(user_id: 1, topic_id: 5, feed_id: 1)
+
+Post.delete_all
+Post.create(title: "c++ string", content: "It's not convenient to convert a single character to a string.")
+Post.create(title: "cmake", content: "CMake is a great tool.")
+Post.create(title: "JVM", content: "JVM provides portability.")
+
+Favor.delete_all
+Favor.create(user_id: 1, post_id: 3)
+Favor.create(user_id: 2, post_id: 1)
+Favor.create(user_id: 2, post_id: 2)
+
+Comment.delete_all
+Comment.create(post_id: 1, user_id: 3, content: "Agree.")
+Comment.create(post_id: 1, user_id: 4, content: "same.")
+Comment.create(post_id: 2, user_id: 5, content: "Really?")
+
+Category.delete_all
+Category.create(post_id: 1, topic_id: 1)
+Category.create(post_id: 1, topic_id: 2)
+Category.create(post_id: 2, topic_id: 1)
+Category.create(post_id: 3, topic_id: 3)

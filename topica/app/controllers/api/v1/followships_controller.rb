@@ -8,7 +8,7 @@ class Api::V1::FollowshipsController < ApplicationController
   # GET     /api/v1/users/:user_id/followships/:topic_id 
   # POST    /api/v1/users/:user_id/followships
   def create
-    followship = Followship.new(:user_id => params[:user_id], :topic_id => params[:topic_id])
+    followship = Followship.new(:user_id => params[:user_id], :topic_id => params[:topic_id], :feed_id => params[:feed_id])
     if followship.save
       render :json => followship, :status => :created
     else
