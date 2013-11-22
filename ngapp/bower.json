@@ -17,7 +17,8 @@
     "angular-markdown-directive": "0.1.0",
     "angular-elastic": "2.1.0",
     "angular-http-auth": "*",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "angularjs-gravatar": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.0-rc.3",

@@ -1,7 +1,24 @@
-.card{"ng-controller" => "NewPostController"}
+.card.new-post-card{"ng-controller" => "NewPostController"}
   .card-body
-    %input{:type => "text", :placeholder => "Title", "data-ng-model" => "newPost.title", :required => "true", :style => "width: 100%; box-sizing: border-box;"}
-    %textarea{:rows => "5", :placeholder => "Content", :required => "true", "data-ng-model" => "newPost.content", :style => "width: 100%; box-sizing: border-box;"} 
+    .new-post-input-box{"ng-show" => "!edit", "ng-click" => "edit = true"}
+      Share what's new...
+    .new-post-input-box-arrow-out{"ng-show" => "!edit"}
+    .new-post-input-box-arrow-in{"ng-show" => "!edit"}
+    %textarea.new-post-input-box{"ng-hide" => "!edit", "ng-model" => "newPost.content", "msd-elastic" => "\n"}
+    .topic-picker{"ng-hide" => "!edit"}
+      .topic-picker-label.pull-left
+        To:
+      .pluspicker{:items => "topics"}
+    .new-post-actions{"ng-hide" => "!edit"}
+      %button.btn.btn-success
+        Share
+      %button.btn{"ng-click" => "edit = false"}
+        Cancel
+      
+
+
+    -# %input{:type => "text", :placeholder => "Title", "data-ng-model" => "newPost.title", :required => "true", :style => "width: 100%; box-sizing: border-box;"}
+    -# %textarea{:rows => "5", :placeholder => "Content", :required => "true", "data-ng-model" => "newPost.content", :style => "width: 100%; box-sizing: border-box;"} 
     -# %table.table
     -#   %tr
     -#     %td.column-for-profile-img
@@ -14,10 +31,10 @@
     -#         %tr
     -#           %td
     -#             %textarea.span6{:rows => "5", :placeholder => "Content", :required => "true", "data-ng-model" => "newPost.content"}
-    .pluspicker{:items => "topics"} 
-  .card-actions
-    %div.pull-right
-      %button.btn{:type => "button", "data-ng-click" => "createNewPost()"}
-        Post
-      %button.btn{:type => "button"}
-        Cancel
+  -#   .pluspicker{:items => "topics"} 
+  -# .card-actions
+  -#   %div.pull-right
+  -#     %button.btn{:type => "button", "data-ng-click" => "createNewPost()"}
+  -#       Post
+  -#     %button.btn{:type => "button"}
+  -#       Cancel
