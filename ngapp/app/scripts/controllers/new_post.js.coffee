@@ -11,6 +11,9 @@ app.controller "NewPostController", [
       {id: 1, text: "Movies", selected: false}
       {id: 2, text: "Games", selected: false}
       {id: 3, text: "Photography", selected: false}
+      {id: 4, text: "Linux", selected: false}
+      {id: 5, text: "Algorithm", selected: false}
+      {id: 6, text: "Webdev", selected: false}
     ]
 
     $scope.newPost = {}
