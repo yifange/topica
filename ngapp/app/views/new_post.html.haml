@@ -10,7 +10,7 @@
         To:
       .pluspicker{:items => "topics"}
     .new-post-actions{"ng-hide" => "!edit"}
-      %button.btn.btn-success
+      %button.btn.btn-success{"ng-click" => "createNewPost()"}
         Share
       %button.btn{"ng-click" => "edit = false"}
         Cancel
