@@ -18,7 +18,7 @@ input.pluspicker-input-area, input.pluspicker-input-area:focus, input.pluspicker
   left: 2px;
 }
 .pluspicker {
-  width: $box-width;
+  // width: $box-width;
   position: relative;
 }
 .pluspicker-box {
@@ -44,7 +44,7 @@ input.pluspicker-input-area, input.pluspicker-input-area:focus, input.pluspicker
 .pluspicker-menu {
   max-height: 170px;
   overflow-y: auto;
-  width: $box-width;
+  width: 100%;
   position: absolute;
   top: 100%;
   left: 0;
