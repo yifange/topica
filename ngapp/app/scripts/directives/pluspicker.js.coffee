@@ -48,7 +48,6 @@ app.directive 'pluspicker', ['$document'
           closeMenu()
         )
         element.bind 'click', (event) ->
-          console.log("click")
           elementWasOpen = (element == openElement)
           event.preventDefault()
           event.stopPropagation()
