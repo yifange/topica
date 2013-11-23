@@ -1,4 +1,4 @@
-.card.new-post-card{"ng-controller" => "NewPostController"}
+.card.new-post-card{"ng-controller" => "NewPostController", "ng-class" => "{'new-post-large': edit}"}
   .card-body
     .new-post-input-box{"ng-show" => "!edit", "ng-click" => "edit = true"}
       Share what's new...
