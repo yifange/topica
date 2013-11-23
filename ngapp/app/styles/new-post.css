@@ -6,9 +6,17 @@
   margin-top: 40px;
 
 }
+.new-post-large {
+  margin-left: -5%;
+  margin-right: -5%;
+}
+.new-post-card {
+  -webkit-transition:all linear 0.3s;
+  transition:all linear 0.3s;
+}
 .new-post-input-box {
-  -webkit-transition:all linear 0.5s;
-  transition:all linear 0.5s;
+  -webkit-transition:all linear 0.3s;
+  transition:all linear 0.3s;
 }
 .new-post-input-box.ng-hide-add,
 .new-post-input-box.ng-hide-remove {
