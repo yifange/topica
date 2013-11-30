@@ -11,12 +11,14 @@
               %a{:href => "", "data-ng-click" => ""}
                 Delete
         .card-heading.image
-          .gravatar-image.card-heading-avatar{"data-gravatar-email" => "email", "data-gravatar-size" => "46", "data-gravatar-default" => "mm"}
+          .gravatar-image.card-heading-avatar{"data-gravatar-email" => "post.user.email", "data-gravatar-size" => "46", "data-gravatar-default" => "mm"}
 
           .card-heading-header
             %h3
               {{post.title}}
             %span{"am-time-ago" => "post.updated_at"}
+            %span
+              , posted by {{post.user.username}}
         .card-body
           %p 
             {{post.content}}
