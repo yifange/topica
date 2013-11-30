@@ -8,6 +8,7 @@ app.controller 'MainController', [
   "$rootScope",
   "UserSession",
   (Restangular, $scope, $http, Configs, $location, $rootScope, UserSession) ->
+    $scope.email = "irfan.1989@gmail.com"
     UserSession.currentUser().then (response) ->
       $rootScope.userSession.user = response.data
     , (error) ->
