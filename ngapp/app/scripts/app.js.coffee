@@ -4,7 +4,10 @@ app = angular.module 'topicaApp', [
   'http-auth-interceptor',
   'ui.bootstrap',
   'ngAnimate',
-  'monospaced.elastic'
+  'monospaced.elastic',
+  "angularMoment",
+  "ui-gravatar",
+  "md5"
 ]
 app.config ($routeProvider) ->
   $routeProvider
