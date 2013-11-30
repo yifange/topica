@@ -7,7 +7,8 @@ app = angular.module 'topicaApp', [
   'monospaced.elastic',
   "angularMoment",
   "ui-gravatar",
-  "md5"
+  "md5",
+  "topicaApp.directive"
 ]
 app.config ($routeProvider) ->
   $routeProvider
