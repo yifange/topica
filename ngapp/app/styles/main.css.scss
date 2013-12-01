@@ -116,3 +116,14 @@ font-family: "FontAwesome";
 .card-buttons {
   margin-top: -3px;
 }
+textarea.new-comment-input-box-content {
+  width: 100%;
+  resize: none;
+  box-sizing: border-box;
+  padding: 8px;
+  border: 1px solid #e4e4e4 !important;
+}
+textarea.new-comment-input-box-content:focus:active:hover {
+  border: 1px solid #e4e4e4 !important;
+}
+

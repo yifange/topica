@@ -28,4 +28,10 @@ app.controller 'MainController', [
           $scope.posts[index].comments = comments
     $scope.commentIsOpen = (index) ->
       !!$scope.posts[index].commentOpen
+
+    $scope.toggleNewComment = (index) ->
+      $scope.posts[index].newCommentOpen = !$scope.posts[index].newCommentOpen
+
+    $scope.newCommentIsOpen = (index) ->
+      !!$scope.posts[index].newCommentOpen
 ]
