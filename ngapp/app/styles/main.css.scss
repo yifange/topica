@@ -95,3 +95,24 @@ font-family: "FontAwesome";
 .card-heading-avatar {
   display: inline-block;
 }
+.comment-time {
+  font-size: 11px;
+  margin-left: 5px;
+}
+
+.new-comment-input-box {
+  padding: 5px;
+  font-size: 13px;
+  color: #c4c4c4;
+
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  background: #fff;
+  border: 1px solid #e4e4e4;
+
+  cursor: text;
+  width: 100%;
+  box-sizing: border-box;
+}
+.card-buttons {
+  margin-top: -3px;
+}

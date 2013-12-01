@@ -24,6 +24,10 @@ app.controller "NewPostController", [
         content: $scope.newPost.content,
       }).then (response) ->
         scope = angular.element(document.getElementById("main-view")).scope()
+        $scope.newPost.user = $rootScope.userSession.user
+        $scope.newPost.created_at = moment().format()
+        $scope.newPost.updated_at = moment().format()
+        $scope.newPost.num_of_comments = 0
         scope.posts.unshift($scope.newPost)
         $scope.newPost = {}
 ]

@@ -8,7 +8,7 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   #
   # GET     /api/v1/posts/:post_id/comments
   def index
-    render :json => Post.find(params[:post_id]).comments
+    render :json => Post.find(params[:post_id]).comments.includes(:user), :include => {:user => {:only => [:username, :id, :email]}}
   end
 
   # Query for one comment by id
