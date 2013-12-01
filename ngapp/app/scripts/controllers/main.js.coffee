@@ -8,7 +8,6 @@ app.controller 'MainController', [
   "$rootScope",
   "UserSession",
   (Restangular, $scope, $http, Configs, $location, $rootScope, UserSession) ->
-    $scope.email = "irfan.1989@gmail.com"
     UserSession.currentUser().then (response) ->
       $rootScope.userSession.user = response.data
     , (error) ->
@@ -21,4 +20,12 @@ app.controller 'MainController', [
       $http.post(Configs.apiRoot + "/users/" + $rootScope.userSession.user.id)
     Restangular.all("users").getList().then (users) ->
       $scope.users = users
+
+    $scope.toggleComments = (index) ->
+      $scope.posts[index].commentOpen = !$scope.posts[index].commentOpen
+      if $scope.posts[index].commentOpen
+        Restangular.one("posts", $scope.posts[index].id).getList("comments").then (comments) ->
+          $scope.posts[index].comments = comments
+    $scope.commentIsOpen = (index) ->
+      !!$scope.posts[index].commentOpen
 ]

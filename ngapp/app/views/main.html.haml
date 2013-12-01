@@ -24,7 +24,27 @@
             {{post.content}}
         .card-comments
           .comments-collapse-toggle
-            %a{"data-toggle" => "collapse"}
-              -# {{post}}
+            %a{"ng-click" => "toggleComments($index)"}
               {{post.num_of_comments}} comments
-          .comments.collapse{"style" => "height: 0px"}
+              %i.fa.fa-angle-down
+
+            .pull-right.card-buttons
+              %button.btn
+                %i.fa.fa-star-o
+              %button.btn
+                Share
+          .comments{:collapse => "!commentIsOpen($index)", "ng-repeat" => "comment in post.comments"}
+            .media
+              %a.pull-left{"href" => ""}
+                .gravatar-image{"data-gravatar-email" => "comment.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
+              .media-body
+                %h4.media-heading
+                  {{comment.user.username}}
+                  %span.comment-time.muted{"am-time-ago" => "comment.updated_at"}
+
+                %p
+                  {{comment.content}}
+          .comments
+            .media
+              .new-comment-input-box
+                Add a comment...
