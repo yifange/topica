@@ -45,6 +45,16 @@
                 %p
                   {{comment.content}}
           .comments
-            .media
-              .new-comment-input-box
+            .media{"ng-hide" => "newCommentIsOpen($index)"}
+              .new-comment-input-box{"ng-click" => "toggleNewComment($index)"}
                 Add a comment...
+            .media{"ng-show" => "newCommentIsOpen($index)"}
+              %a.pull-left
+                .gravatar-image{"data-gravatar-email" => "userSession.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
+              .media-body
+                %textarea.new-comment-input-box-content{"msd-elastic" => "", "ng-model" => "newComment.content"}
+                .comment-buttons
+                  %button.btn.btn-primary{"ng-disabled" => "!newComment.content || newComment.content == ''"}
+                    Post comment
+                  %button.btn{"ng-click" => "toggleNewComment($index)"}
+                    Cancel
