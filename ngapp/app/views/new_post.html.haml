@@ -4,7 +4,8 @@
       Share what's new...
     .new-post-input-box-arrow-out{"ng-show" => "!edit"}
     .new-post-input-box-arrow-in{"ng-show" => "!edit"}
-    %textarea.new-post-input-box{"ng-hide" => "!edit", "ng-model" => "newPost.content", "msd-elastic" => "\n"}
+    %input.new-post-input-box.new-post-input-box-title{"ng-hide" => "!edit", "ng-model" => "newPost.title", :placeholder => "Title"}   
+    %textarea.new-post-input-box.new-post-input-box-content{"ng-hide" => "!edit", "ng-model" => "newPost.content", "msd-elastic" => "\n"}
     .topic-picker{"ng-hide" => "!edit"}
       .topic-picker-label.pull-left
         To:
@@ -17,24 +18,3 @@
       
 
 
-    -# %input{:type => "text", :placeholder => "Title", "data-ng-model" => "newPost.title", :required => "true", :style => "width: 100%; box-sizing: border-box;"}
-    -# %textarea{:rows => "5", :placeholder => "Content", :required => "true", "data-ng-model" => "newPost.content", :style => "width: 100%; box-sizing: border-box;"} 
-    -# %table.table
-    -#   %tr
-    -#     %td.column-for-profile-img
-    -#       %img.profile-img-on-post.img-rounded{:src => "images/profile.png", :alt => "", :style => "width: 50px"}
-    -#     %td
-    -#       %table.table
-    -#         %tr
-    -#           %td
-    -#             %input.span6{:type => "text", :placeholder => "Title", "data-ng-model" => "newPost.title", :required => "true"}
-    -#         %tr
-    -#           %td
-    -#             %textarea.span6{:rows => "5", :placeholder => "Content", :required => "true", "data-ng-model" => "newPost.content"}
-  -#   .pluspicker{:items => "topics"} 
-  -# .card-actions
-  -#   %div.pull-right
-  -#     %button.btn{:type => "button", "data-ng-click" => "createNewPost()"}
-  -#       Post
-  -#     %button.btn{:type => "button"}
-  -#       Cancel
