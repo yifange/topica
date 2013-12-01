@@ -14,7 +14,7 @@
           .gravatar-image.card-heading-avatar{"data-gravatar-email" => "post.user.email", "data-gravatar-size" => "46", "data-gravatar-default" => "mm"}
 
           .card-heading-header
-            %h3
+            %h3.card-heading-title
               {{post.title}}
             %span{"am-time-ago" => "post.updated_at"}
             %span
@@ -25,5 +25,6 @@
         .card-comments
           .comments-collapse-toggle
             %a{"data-toggle" => "collapse"}
-              comments
+              -# {{post}}
+              {{post.num_of_comments}} comments
           .comments.collapse{"style" => "height: 0px"}
