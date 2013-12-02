@@ -114,7 +114,13 @@ font-family: "FontAwesome";
   box-sizing: border-box;
 }
 .card-buttons {
-  margin-top: -3px;
+  margin-top: 1px;
+  .btn {
+    height: 30px;
+  }
+}
+button.share-button {
+  margin-left: 4px;
 }
 textarea.new-comment-input-box-content {
   width: 100%;
@@ -126,4 +132,7 @@ textarea.new-comment-input-box-content {
 textarea.new-comment-input-box-content:focus:active:hover {
   border: 1px solid #e4e4e4 !important;
 }
-
+.inline-comment-input-box {
+  position: relative;
+  margin-left: 105px;
+}
