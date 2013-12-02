@@ -22,17 +22,21 @@
         .card-body
           %p 
             {{post.content}}
-        .card-comments
-          .comments-collapse-toggle
+        .card-actions
+          .card-buttons.pull-left
+            %button.btn.star-button
+              %i.fa.fa-star-o
+            %button.btn.share-button
+              Share
+          .inline-comment-input-box{"ng-hide" => "post.num_of_comments > 0 || newCommentIsOpen($index)", "ng-click" => "toggleNewComment($index)"}
+            .new-comment-input-box
+              Add a comment...
+        .card-comments{"ng-show" => "post.num_of_comments > 0 || newCommentIsOpen($index)"}
+          .comments-collapse-toggle{"ng-show" => "post.num_of_comments > 0"}
             %a{"ng-click" => "toggleComments($index)"}
               {{post.num_of_comments}} comments
               %i.fa.fa-angle-down
 
-            .pull-right.card-buttons
-              %button.btn
-                %i.fa.fa-star-o
-              %button.btn
-                Share
           .comment-list{:collapse => "!commentIsOpen($index)"}
       
             .comments{"ng-repeat" => "comment in post.comments"}
@@ -48,7 +52,7 @@
                     {{comment.content}}
           .comments
             .media{"ng-hide" => "newCommentIsOpen($index)"}
-              .new-comment-input-box{"ng-click" => "toggleNewComment($index)"}
+              .new-comment-input-box{"ng-click" => "toggleNewComment($index)", "ng-show" => "post.num_of_comments > 0"}
                 Add a comment...
             .media{"ng-show" => "newCommentIsOpen($index)"}
               %a.pull-left
