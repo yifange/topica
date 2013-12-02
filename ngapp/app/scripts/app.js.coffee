@@ -1,5 +1,6 @@
 app = angular.module 'topicaApp', [
   'ngRoute',
+  'ngSanitize',
   'restangular',
   'http-auth-interceptor',
   'ui.bootstrap',
@@ -8,8 +9,9 @@ app = angular.module 'topicaApp', [
   "angularMoment",
   "ui-gravatar",
   "md5",
-  "topicaApp.directive.pluspicker",
-  "topicaApp.directive.ngFocus"
+  "topicaApp.directives.pluspicker",
+  "topicaApp.directives.ngFocus",
+  "topicaApp.filters.linebreak"
 ]
 app.config ($routeProvider) ->
   $routeProvider

@@ -1,5 +1,5 @@
 # http://stackoverflow.com/a/14859639
-app = angular.module "topicaApp.directive.ngFocus", []
+app = angular.module "topicaApp.directives.ngFocus", []
 app.directive "ngFocus", ($timeout) ->
   return {
     link: (scope, element, attrs) ->
