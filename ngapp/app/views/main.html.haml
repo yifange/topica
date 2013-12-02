@@ -33,17 +33,19 @@
                 %i.fa.fa-star-o
               %button.btn
                 Share
-          .comments{:collapse => "!commentIsOpen($index)", "ng-repeat" => "comment in post.comments"}
-            .media
-              %a.pull-left{"href" => ""}
-                .gravatar-image{"data-gravatar-email" => "comment.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
-              .media-body
-                %h4.media-heading
-                  {{comment.user.username}}
-                  %span.comment-time.muted{"am-time-ago" => "comment.updated_at"}
+          .comment-list{:collapse => "!commentIsOpen($index)"}
+      
+            .comments{"ng-repeat" => "comment in post.comments"}
+              .media
+                %a.pull-left{"href" => ""}
+                  .gravatar-image{"data-gravatar-email" => "comment.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
+                .media-body
+                  %h4.media-heading
+                    {{comment.user.username}}
+                    %span.comment-time.muted{"am-time-ago" => "comment.updated_at"}
 
-                %p
-                  {{comment.content}}
+                  %p
+                    {{comment.content}}
           .comments
             .media{"ng-hide" => "newCommentIsOpen($index)"}
               .new-comment-input-box{"ng-click" => "toggleNewComment($index)"}
@@ -52,9 +54,9 @@
               %a.pull-left
                 .gravatar-image{"data-gravatar-email" => "userSession.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
               .media-body
-                %textarea.new-comment-input-box-content{"msd-elastic" => "", "ng-model" => "newComment.content"}
+                %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => ""}
                 .comment-buttons
-                  %button.btn.btn-primary{"ng-disabled" => "!newComment.content || newComment.content == ''"}
+                  %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "submitComment($index)"}
                     Post comment
                   %button.btn{"ng-click" => "toggleNewComment($index)"}
                     Cancel
