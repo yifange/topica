@@ -1,11 +1,11 @@
 .card.new-post-card{"ng-controller" => "NewPostController", "ng-class" => "{'new-post-large': edit}"}
   .card-body
-    .new-post-input-box{"ng-show" => "!edit", "ng-click" => "edit = true"}
+    .new-post-input-box{"ng-show" => "!edit", "ng-click" => "edit = true; focusPost = true"}
       Share what's new...
     .new-post-input-box-arrow-out{"ng-show" => "!edit"}
     .new-post-input-box-arrow-in{"ng-show" => "!edit"}
     %input.new-post-input-box.new-post-input-box-title{"ng-hide" => "!edit", "ng-model" => "newPost.title", :placeholder => "Title..."}   
-    %textarea.new-post-input-box.new-post-input-box-content{"ng-hide" => "!edit", "ng-model" => "newPost.content", "msd-elastic" => "\n"}
+    %textarea.new-post-input-box.new-post-input-box-content{"ng-hide" => "!edit", "ng-model" => "newPost.content", "msd-elastic" => "\n", "ng-focus" => "focusPost", "ng-focus-lost" => "focusPost = false"}
     .topic-picker{"ng-hide" => "!edit"}
       .topic-picker-label.pull-left
         To:

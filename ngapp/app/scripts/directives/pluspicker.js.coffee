@@ -1,4 +1,4 @@
-app = angular.module("topicaApp.directive.pluspicker", [])
+app = angular.module("topicaApp.directives.pluspicker", [])
 app.directive 'pluspicker', ['$document'
   ($document) ->
     openElement = null
