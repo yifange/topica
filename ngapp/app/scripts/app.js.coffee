@@ -8,7 +8,8 @@ app = angular.module 'topicaApp', [
   "angularMoment",
   "ui-gravatar",
   "md5",
-  "topicaApp.directive"
+  "topicaApp.directive.pluspicker",
+  "topicaApp.directive.focusme"
 ]
 app.config ($routeProvider) ->
   $routeProvider
