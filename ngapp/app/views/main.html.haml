@@ -58,7 +58,7 @@
               %a.pull-left
                 .gravatar-image{"data-gravatar-email" => "userSession.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
               .media-body
-                %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => "", "focus-me" => "focusInput"}
+                %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => ""}
                 .comment-buttons
                   %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "submitComment($index)"}
                     Post comment

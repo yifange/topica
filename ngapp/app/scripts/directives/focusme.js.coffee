@@ -1,5 +1,4 @@
-
-app = angular.module("topicaApp.directive", [])
+app = angular.module("topicaApp.directive.focusme", [])
 app.directive "focusMe", ->
   return {
     scope: {
