@@ -70,6 +70,8 @@ input.new-post-input-box-title {
   font-size: 20px;
   color: #c4c4c4;
   box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
   background: #fff;
   border: 1px solid #e4e4e4;
   margin-bottom: 0;
@@ -91,10 +93,13 @@ textarea.new-post-input-box-content:active:hover:focus, input.new-post-input-box
   display: inline-block;
   width: 0;
   height: 0;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  -moz-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
+  -webkit-box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.04);
 }
 .new-post-input-box-arrow-in {
   border-top: 10px solid white;
-  margin-top: -2px;
+  margin-top: -1px;
 }
 
 
