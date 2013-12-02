@@ -28,7 +28,7 @@
               %i.fa.fa-star-o
             %button.btn.share-button
               Share
-          .inline-comment-input-box{"ng-hide" => "post.num_of_comments > 0 || newCommentIsOpen($index)", "ng-click" => "toggleNewComment($index); focusInput = true"}
+          .inline-comment-input-box{"ng-hide" => "post.num_of_comments > 0 || newCommentIsOpen($index)", "ng-click" => "toggleNewComment($index); focusComment = true"}
             .new-comment-input-box
               Add a comment...
         .card-comments{"ng-show" => "post.num_of_comments > 0 || newCommentIsOpen($index)"}
@@ -52,13 +52,13 @@
                     {{comment.content}}
           .comments
             .media{"ng-hide" => "newCommentIsOpen($index)"}
-              .new-comment-input-box{"ng-click" => "toggleNewComment($index); focusInput = true", "ng-show" => "post.num_of_comments > 0"}
+              .new-comment-input-box{"ng-click" => "toggleNewComment($index); focusComment = true", "ng-show" => "post.num_of_comments > 0"}
                 Add a comment...
             .media{"ng-show" => "newCommentIsOpen($index)"}
               %a.pull-left
                 .gravatar-image{"data-gravatar-email" => "userSession.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
               .media-body
-                %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => ""}
+                %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => "", "ng-focus" => "focusComment", "ng-focus-lost" => "commentLoseFocus()"}
                 .comment-buttons
                   %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "submitComment($index)"}
                     Post comment
