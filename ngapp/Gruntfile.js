@@ -20,6 +20,7 @@ module.exports = function (grunt) {
   // load the proxy.
   grunt.loadNpmTasks('grunt-connect-proxy');
   grunt.loadNpmTasks('grunt-haml');
+  grunt.loadNpmTasks('grunt-karma');
   // configurable paths
   var yeomanConfig = {
     app: 'app',
@@ -380,8 +381,13 @@ module.exports = function (grunt) {
     karma: {
       unit: {
         configFile: 'karma.conf.js',
-        singleRun: true
-      }
+      },
+      //continuous integration mode: run tests once in PhantomJS browser.
+      continuous: {
+        configFile: 'karma.conf.js',
+        singleRun: true,
+        browsers: ['PhantomJS']
+      },
     },
     cdnify: {
       dist: {
