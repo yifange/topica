@@ -8,6 +8,9 @@ app.controller 'MainController', [
   "$rootScope",
   "UserSession",
   (Restangular, $scope, $http, Configs, $location, $rootScope, UserSession) ->
+    $scope.newComment = []
+    commentOpenStates = []
+    newCommentOpenStates = []
     UserSession.currentUser().then (response) ->
       $rootScope.userSession.user = response.data
     , (error) ->
@@ -22,16 +25,32 @@ app.controller 'MainController', [
       $scope.users = users
 
     $scope.toggleComments = (index) ->
-      $scope.posts[index].commentOpen = !$scope.posts[index].commentOpen
-      if $scope.posts[index].commentOpen
+      commentOpenStates[index] = !commentOpenStates[index]
+      if commentOpenStates[index]
         Restangular.one("posts", $scope.posts[index].id).getList("comments").then (comments) ->
           $scope.posts[index].comments = comments
+          $scope.posts[index].num_of_comments = comments.length if $scope.posts[index].num_of_comments != comments.length
+
     $scope.commentIsOpen = (index) ->
-      !!$scope.posts[index].commentOpen
+      !!commentOpenStates[index]
 
     $scope.toggleNewComment = (index) ->
-      $scope.posts[index].newCommentOpen = !$scope.posts[index].newCommentOpen
+      newCommentOpenStates[index] = !newCommentOpenStates[index]
+      if !newCommentOpenStates[index]
+        $scope.posts[index].newComment = ""
 
     $scope.newCommentIsOpen = (index) ->
-      !!$scope.posts[index].newCommentOpen
+      !!newCommentOpenStates[index]
+
+    $scope.submitComment = (index) ->
+      Restangular.one("posts", $scope.posts[index].id).all("comments").post({
+        content: $scope.posts[index].newComment,
+        user_id: $rootScope.userSession.user.id
+      }).then (comment) ->
+        $scope.posts[index].newComment = ""
+        comment.user = $rootScope.userSession.user
+        if !$scope.posts[index].comments
+          $scope.posts[index].comments = []
+        $scope.posts[index].comments.push comment
+        $scope.posts[index].num_of_comments += 1
 ]
