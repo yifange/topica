@@ -53,4 +53,7 @@ app.controller 'MainController', [
           $scope.posts[index].comments = []
         $scope.posts[index].comments.push comment
         $scope.posts[index].num_of_comments += 1
+
+    $scope.commentLoseFocus = ->
+      $scope.focusComment = false
 ]
