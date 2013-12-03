@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   has_many :users, :through => :favors
+  has_many :favors, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :categories, :dependent => :destroy
   has_many :topics, :through => :categories
 
   def favoring_users

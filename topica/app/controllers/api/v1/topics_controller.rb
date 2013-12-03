@@ -9,6 +9,15 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
     render :json => User.find(params[:user_id]).topics
   end
 
+  # Query for all the posts of the user
+  #
+  # GET /topics/:topic_id/posts
+  def all_posts
+    posts_id = Category.where(:topic_id => params[:topic_id]).map &:post_id
+    posts = Post.where(:id => posts_id)
+    render :json => posts.order(:created_at => :desc)
+  end
+
   # Query for one topic by id
   # GET     /api/v1/topics/:id
   def show

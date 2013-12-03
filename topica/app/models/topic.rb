@@ -4,6 +4,7 @@ class Topic < ActiveRecord::Base
   has_many :followships
   has_many :users, :through => :followships
   has_many :posts, :through => :categories
+  has_many :categories, :dependent => :destroy
 
   validates_inclusion_of :topic_type, :in => ["PUBLIC", "PRIVATE"]
   def following_users

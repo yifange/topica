@@ -18,7 +18,10 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   #
   # GET /users/:user_id/posts
   def index
-    render :json => User.find(params[:user_id]).posts.order(:created_at => :desc)
+    topics_id = Topic.where(:user_id => params[:user_id]).map &:id
+    posts_id = (Category.where(:topic_id => topics_id).map &:post_id).unique
+    posts = Post.where(:id => posts_id)
+    render :json => posts.order(:created_at => :desc)
   end
 
   # Query for one post by id
@@ -72,6 +75,6 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def post_params
-    params.permit(:user_id, :topic_id, :title, :content)
+    params.permit(:title, :content)
   end
 end

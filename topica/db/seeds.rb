@@ -31,6 +31,7 @@ Feed.create(user_id: 4, name: "Programming")
 Feed.create(user_id: 5, name: "Programming")
 Feed.create(user_id: 6, name: "Programming")
 
+# feed_id deleted
 Topic.delete_all
 Topic.create(user_id: 1, name: "c++", topic_type: 1) # 1 to be public
 Topic.create(user_id: 1, name: "python", topic_type: 1)
@@ -38,11 +39,13 @@ Topic.create(user_id: 2, name: "java", topic_type: 1)
 Topic.create(user_id: 2, name: "c++", topic_type: 1)
 Topic.create(user_id: 3, name: "country", topic_type: 1)
 
+# feed_id added
 Followship.delete_all
 Followship.create(user_id: 1, topic_id: 3, feed_id: 2)
 Followship.create(user_id: 1, topic_id: 4, feed_id: 2)
 Followship.create(user_id: 1, topic_id: 5, feed_id: 1)
 
+# user_id, topic_id deleted
 Post.delete_all
 Post.create(title: "c++ string", content: "It's not convenient to convert a single character to a string.")
 Post.create(title: "cmake", content: "CMake is a great tool.")
