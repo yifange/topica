@@ -41,22 +41,8 @@ app.config (RestangularProvider) ->
 app.constant "Configs", {
   apiRoot: "/api/v1"
 }
-app.factory "UserSession", [
-  "$http",
-  "Configs",
-  "authService",
-  ($http, Configs, authService) ->
-    {
-      login: (email, password, rememberMe) ->
-        $http.post(Configs.apiRoot + "/login", {
-          email: email,
-          password: password
-          remember: rememberMe
-        })
-      currentUser: ->
-        $http.get(Configs.apiRoot + "/me")
-    }
-]
+
+
 app.run ($rootScope, $location, $http, Configs, authService) ->
   $rootScope.userSession = {}
   $rootScope.changeView = (view) ->
