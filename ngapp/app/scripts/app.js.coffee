@@ -72,7 +72,7 @@ app.run ($rootScope, $location, $http, Configs, authService) ->
 
   $rootScope.$on "event:auth-loginConfirmed", (event, data) ->
     $rootScope.userSession.user = data
-
+    console.log(data)
     if ($rootScope.userSession.from != undefined)
       # $location.path($rootScope.userSession.from)
       # delete $rootScope.userSession.from

@@ -41,6 +41,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   def create
     post = Post.new(post_params)
     if post.save
+      Category.create_category(post_params)
       render :json => post, :status => :created
     else
       render :json => {:ok => false, :message => post.errors}, :status => :unprocessable_entity

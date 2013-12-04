@@ -18,6 +18,10 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
     render :json => posts.order(:created_at => :desc)
   end
 
+  def all_user_topics
+    render :json => Topic.where(:user_id => params[:user_id])
+  end
+
   # Query for one topic by id
   # GET     /api/v1/topics/:id
   def show
@@ -73,6 +77,6 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def topic_params
-    params.permit(:user_id, :name, :feed_id)
+    params.permit(:user_id, :name, :topic_type)
   end
 end
