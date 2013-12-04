@@ -1,6 +1,7 @@
 app = angular.module 'topicaApp', [
   'ngRoute',
   'ngSanitize',
+  'ngCookies',
   'restangular',
   'http-auth-interceptor',
   'ui.bootstrap',
