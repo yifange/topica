@@ -13,15 +13,6 @@ app.controller "NewPostController", [
       for i in [0..topics.length - 1]
         console.log(topics[i])
         $scope.topics.push({id: i, text: topics[i].name, selected: false})
-    # $scope.topics = [
-    #   {id: 0, text: "Sports", selected: false}
-    #   {id: 1, text: "Movies", selected: false}
-    #   {id: 2, text: "Games", selected: false}
-    #   {id: 3, text: "Photography", selected: false}
-    #   {id: 4, text: "Linux", selected: false}
-    #   {id: 5, text: "Algorithm", selected: false}
-    #   {id: 6, text: "Webdev", selected: false}
-    # ]
 
     $scope.newPost = {}
     $scope.createNewPost = () ->
