@@ -6,7 +6,7 @@
       %li.dropdown
         %a.dropdown-toggle{:href => ""}
           %i.fa.fa-user
-          {{userSession.user.username}}
+          {{user.username}}
         %ul.dropdown-menu
           %li
             %a{:href => "", "ng-click" => "changeView('/profile')"}

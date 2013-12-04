@@ -11,16 +11,13 @@ app.controller 'MainController', [
     $scope.newComment = []
     commentOpenStates = []
     newCommentOpenStates = []
-    UserSession.currentUser().then (response) ->
-      $rootScope.userSession.user = response.data
-    , (error) ->
-      $rootScope.userSession.user = {"username": "user"}
+    user = UserSession.getSession()
 
     Restangular.all("home").getList().then (posts) ->
       $scope.posts = posts
 
     $scope.deletePost = () ->
-      $http.post(Configs.apiRoot + "/users/" + $rootScope.userSession.user.id)
+      $http.post(Configs.apiRoot + "/users/" + $rootScope.user.id)
     Restangular.all("users").getList().then (users) ->
       $scope.users = users
 

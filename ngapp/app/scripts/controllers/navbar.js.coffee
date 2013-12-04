@@ -5,11 +5,7 @@ app.controller 'NavbarController', [
   "UserSession",
   "$scope",
   ($rootScope, UserSession, $scope) ->
-    UserSession.currentUser().then (response) ->
-      $rootScope.userSession.user = response.data
-    , (error) ->
-      $rootScope.userSession.user = {"username": "user"}
-
+    $scope.user = UserSession.getSession()
     openHotcornerMenu = false
     openFullMenu = false
     selected = false
@@ -69,17 +65,3 @@ app.controller 'NavbarController', [
           ""
   ]
 
-app.controller "CardNewPost", [
-  '$scope'
-  ($scope) ->
-    # $scope.options = ['Zero', 'One']
-    $scope.select2Options = {
-      # 'tags': ['tag1', 'tag2'],
-      # 'multiple': true,
-      'allowClear': true,
-      # 'simple_tags': true
-    }
-    # console.log("within card new post")
-    # $scope.mouseClickShowDropdown = ->
-    #   console.log("mouse click in the input, show drop down")
-  ]
