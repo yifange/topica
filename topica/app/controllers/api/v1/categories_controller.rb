@@ -31,21 +31,20 @@ class Api::V1::CategoriesController < Api::V1::ApplicationController
   # POST    /api/v1/posts/:post_id/topics                  
   #
   def create
-    Category.create_category
-    # categries = []
-    # unless params.has_key? :topic_ids or params[:topic_ids].repond_to? :each
-    #   render :json => {:ok => false, :message => "topic_ids required"}
-    # else
-    #   params[:topic_ids].each do |topic_id|
-    #     categries << Category.new(:post_id => params[:post_id], :topic_id => topic_id)
-    #   end
-    #   save_result = Category.import categries, :validate => true
-    #   if save_result.failed_instances.empty?
-    #     render :json => {:ok => true}, :status => :created
-    #   else
-    #     render :json => {:ok => false, :failed_instances => save_result.failed_instances.map {|i| i.topic_id}}, :status => :unprocessable_entity
-    #   end
-    # end
+    categories = []
+    unless params.has_key? :topic_ids or params[:topic_ids].repond_to? :each
+      render :json => {:ok => false, :message => "topic_ids required"}
+    else
+      params[:topic_ids].each do |topic_id|
+        categories << Category.new(:post_id => params[:post_id], :topic_id => topic_id)
+      end
+      save_result = Category.import categories, :validate => true
+      if save_result.failed_instances.empty?
+        render :json => {:ok => true}, :status => :created
+      else
+        render :json => {:ok => false, :failed_instances => save_result.failed_instances.map {|i| i.topic_id}}, :status => :unprocessable_entity
+      end
+    end
   end
   
   ##
