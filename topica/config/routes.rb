@@ -13,7 +13,7 @@ Topica::Application.routes.draw do
       
       resources :comments, :only => [:destroy, :update, :show]
 
-      resources :posts, :only => [:destroy, :update, :show] do
+      resources :posts, :only => [:create, :destroy, :update, :show] do
         resources :comments, :only => [:index, :create, :destroy, :update]
         get "/favors" => "favors#all_favorers"
         get "/topics" => "categories#all_topics"
@@ -39,7 +39,7 @@ Topica::Application.routes.draw do
 
         get "/comments" => "users#all_comments"
         
-        resources :posts, :only => [:create, :index, :destroy, :update]
+        resources :posts, :only => [:index, :destroy, :update]
 
         get "/follows" => "users#all_following_topics" # following topics
         get "/followships/:topic_id" => "followships#create"

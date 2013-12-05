@@ -39,10 +39,18 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # POST /users/:user_id/posts
 
   def create
-    post = Post.new(post_params)
+    post = Post.new(:title => params[:title], :content => params[:content])
     if post.save
-      Category.create_category(post_params)
-      render :json => post, :status => :created
+      categories = []
+      params[:topic_ids].each do |topic_id|
+        categories << Category.new(:post_id => post[:id], :topic_id => topic_id)
+      end
+      save_result = Category.import categories, :validate => true
+      unless save_result.failed_instances.empty?
+        render :json => {:ok => false, :failed_instances => save_result.failed_instances.map {|i| i.topic_id}}, :status => :unprocessable_entity
+      else
+        render :json => post, :status => :created
+      end
     else
       render :json => {:ok => false, :message => post.errors}, :status => :unprocessable_entity
     end
@@ -76,6 +84,6 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # Whitelist the required fields in params hash
 
   def post_params
-    params.permit(:title, :content)
+    params.permit(:title, :content, :topic_ids)
   end
 end
