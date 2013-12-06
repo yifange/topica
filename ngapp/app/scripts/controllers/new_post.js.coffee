@@ -13,7 +13,8 @@ app.controller "NewPostController", [
       $scope.topics = []
       for i in [0..topics.length - 1]
         $scope.topics.push({id: i, text: topics[i].name, selected: false})
-
+    $scope.addItem = (newItem) ->
+      console.log("adding " + $scope.input)
     $scope.newPost = {}
     $scope.createNewPost = () ->
       # collect the selected topics' ids

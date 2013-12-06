@@ -7,6 +7,7 @@ app.directive 'pluspicker', ['$document'
       restrict: "CA"
       scope: {
         items: "="
+        addItem: "&onAdd"
       }
       template: """
       <div class='pluspicker-toggle pluspicker-box'>
@@ -31,6 +32,11 @@ app.directive 'pluspicker', ['$document'
             {{item.text}}
           </a>
         </li>
+        <li class='pluspicker-menu-item pluspicker-menu-add' ng-click='addItem()' ng-show='!!input'>
+          <a>
+            Add "{{input}}"
+          </a>
+        </li>
       </ul>
               """
       link: (scope, element, attrs) ->
@@ -43,7 +49,6 @@ app.directive 'pluspicker', ['$document'
               item.selected = !item.selected
               break
           $event.stopPropagation()
-
         scope.$watch('$location.path', ->
           closeMenu()
         )
