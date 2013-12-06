@@ -30,6 +30,7 @@ group :development, :test do
   gem 'ZenTest'
   gem 'factory_girl_rails'
   gem 'debugger'
+  gem "json_spec", "~> 1.1.1"
   #gem 'database_cleaner'
 end
 
