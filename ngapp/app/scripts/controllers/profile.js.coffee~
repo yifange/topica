@@ -13,9 +13,11 @@ app.controller "ProfileController", [
     , (error) ->
       $rootScope.userSession.user = {"username": "user"}
 
-    Restangular.one("users",$rootScope.userSession.user.id).all("posts").getList().then (posts) ->
+    Restangular.one("users",$scope.userSession.user.id).all("posts").getList().then (posts) ->
       $scope.posts = posts
 
     Restangular.one("users",$scope.userSession.user.id).all("topics").getList().then (topics) ->
       $scope.topics = topics
+
+    $scope.text = "Can you see this?"
 ]

@@ -380,13 +380,12 @@ module.exports = function (grunt) {
     },
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: './test/karma-unit.conf.js',
+        autoWatch: false,
+        singleRun: true
       },
-      //continuous integration mode: run tests once in PhantomJS browser.
-      continuous: {
-        configFile: 'karma.conf.js',
-        singleRun: true,
-        browsers: ['PhantomJS']
+      unit_auto: {
+        configFile: './test/karma-unit.conf.js'
       },
     },
     cdnify: {
