@@ -5,7 +5,7 @@ module.exports = function(config) {
 
   conf.files = conf.files.concat([
     //test files
-    './test/unit/**/*.js'
+    './test/unit/*.js'
   ]);
 
   config.set(conf);
