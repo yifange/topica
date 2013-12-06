@@ -384,8 +384,10 @@ module.exports = function (grunt) {
         autoWatch: false,
         singleRun: true
       },
-      unit_auto: {
-        configFile: './test/karma-unit.conf.js'
+      midway: {
+        configFile: './test/karma-midway.conf.js',
+        autoWatch: false,
+        singleRun: true
       },
     },
     cdnify: {
