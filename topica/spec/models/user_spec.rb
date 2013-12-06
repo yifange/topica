@@ -6,22 +6,21 @@ describe User do
   before(:each) do
     @user = FactoryGirl.create(:user)
     FactoryGirl.create_list(:topic,20)
-    # get all topic id of which id is odd
-    @following_topic_ids = Topic.pluck(:id).reject{|i| i%2 == 0}
-    @following_topic_ids.each do |id|
-      FactoryGirl.create(:followship, user_id: @user.id, topic_id: id )
-    end
   end
   describe 'following_topics' do
     it 'following_topics should get all the topics the user are following' do
-      @user.following_topics.pluck(:id).should == @following_topic_ids
+      # get all topic id of which id is odd
+      following_topic_ids = Topic.pluck(:id).reject{|i| i%2 == 0}
+      following_topic_ids.each do |id|
+        FactoryGirl.create(:followship, user_id: @user.id, topic_id: id )
+      end
+      @user.following_topics.pluck(:id).should == following_topic_ids
     end
   end
   describe 'favoring_posts' do
     it 'should get all the topics the user are favoriing' do
       # create 20 post of topic1, favor odd id post
-      FactoryGirl.create_list(:post,20, user_id: @user.id, 
-                                         topic_id: @following_topic_ids.first)
+      FactoryGirl.create_list(:post,20)
       post_ids = Post.pluck(:id)
       favor_post_ids = post_ids.reject{|i| i%2 ==0}
       favor_post_ids.each do |p_id|
