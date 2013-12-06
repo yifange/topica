@@ -11,13 +11,7 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :feeds
   has_many :comments
-
-  def following_topics
-    topic_ids = Followship.where(:user_id => id).map(&:topic_id)
-    topics = Topic.where(:id => topic_ids)
-  end
-  def favoring_posts
-    post_ids = Favor.where(:user_id => id).map(&:post_id)
-    posts = Post.where(:id => post_ids)
-  end
+  has_many :following_topics, :class_name => "Topic", :through => :followships, :source => :user
+  has_many :following_posts, :class_name => "Post", :through => :topics, :source => :user
+  has_many :favoring_posts, :class_name => "Post", :through => :favors, :source => :user
 end

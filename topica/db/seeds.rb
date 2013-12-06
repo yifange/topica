@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 User.delete_all
-User.create(username: "Yifan", name: "Yifan Ge", email: "yifan@gmail.com",
+User.create(username: "Yifan", name: "Yifan Ge", email: "yifan.ge101@gmail.com",
             password: "123", password_confirmation: "123")
 User.create(username: "Fenghuan", name: "Fenghuan Lu",email: "fenghuan@gmail.com",
             password: "123", password_confirmation: "123")
