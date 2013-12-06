@@ -30,6 +30,7 @@
           .inline-comment-input-box{"ng-hide" => "post.num_of_comments > 0 || newCommentIsOpen($index)", "ng-click" => "toggleNewComment($index); focusComment = true"}
             .new-comment-input-box
               Add a comment...
+
         .card-comments{"ng-show" => "post.num_of_comments > 0 || newCommentIsOpen($index)"}
           .comments-collapse-toggle{"ng-show" => "post.num_of_comments > 0"}
             %a{"ng-click" => "toggleComments($index)"}
@@ -54,7 +55,7 @@
                 Add a comment...
             .media{"ng-show" => "newCommentIsOpen($index)"}
               %a.pull-left
-                .gravatar-image{"data-gravatar-email" => "userSession.user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
+                .gravatar-image{"data-gravatar-email" => "user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
               .media-body
                 %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => "", "ng-focus" => "focusComment", "ng-focus-lost" => "commentLoseFocus()"}
                 .comment-buttons

@@ -11,15 +11,24 @@ app.controller 'MainController', [
     $scope.newComment = []
     commentOpenStates = []
     newCommentOpenStates = []
-    user = UserSession.getSession()
+    $scope.user = UserSession.getSession()
 
-    Restangular.all("home").getList().then (posts) ->
-      $scope.posts = posts
+    Restangular.all("home").getList().then (topics) ->
+      console.log(topics)
+      posts = []
+      for topic in topics
+        t_posts = topic.posts
+        for post in t_posts
+          post.user = topic.user
+        posts.push t_posts
+      $scope.posts = _.flatten(posts)
+      console.log($scope.posts)
+      #XXX here here
 
-    $scope.deletePost = () ->
-      $http.post(Configs.apiRoot + "/users/" + $rootScope.user.id)
-    Restangular.all("users").getList().then (users) ->
-      $scope.users = users
+    # $scope.deletePost = () ->
+    #   $http.post(Configs.apiRoot + "/users/" + $rootScope.user.id)
+    # Restangular.all("users").getList().then (users) ->
+    #   $scope.users = users
 
     $scope.toggleComments = (index) ->
       commentOpenStates[index] = !commentOpenStates[index]
@@ -42,10 +51,10 @@ app.controller 'MainController', [
     $scope.submitComment = (index) ->
       Restangular.one("posts", $scope.posts[index].id).all("comments").post({
         content: $scope.posts[index].newComment,
-        user_id: $rootScope.userSession.user.id
+        user_id: $scope.user.id
       }).then (comment) ->
         $scope.posts[index].newComment = ""
-        comment.user = $rootScope.userSession.user
+        comment.user = $scope.user
         if !$scope.posts[index].comments
           $scope.posts[index].comments = []
         $scope.posts[index].comments.push comment
