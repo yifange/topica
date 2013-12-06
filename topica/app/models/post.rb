@@ -3,11 +3,8 @@ class Post < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
   has_many :categories, :dependent => :destroy
   has_many :topics, :through => :categories
-  def favoring_users
-    user_ids = favors.map &:user_id
-    users = User.where(:id => user_ids).select(:id, :email, :username)
-  end
+  has_many :favoring_users, -> { select "users.id", :email, :username, :name}, :class_name => "User", :through => :favors, :source => :post
   def user
-    topics.first.user
+    topics.first.user.select(:id, :email, :username, :name)
   end
 end
