@@ -27,14 +27,14 @@
               %i.fa.fa-star-o
             %button.btn.share-button
               Share
-          .inline-comment-input-box{"ng-hide" => "post.num_of_comments > 0 || newCommentIsOpen($index)", "ng-click" => "toggleNewComment($index); focusComment = true"}
+          .inline-comment-input-box{"ng-hide" => "post.comment_size > 0 || newCommentIsOpen($index)", "ng-click" => "toggleNewComment($index); focusComment = true"}
             .new-comment-input-box
               Add a comment...
 
-        .card-comments{"ng-show" => "post.num_of_comments > 0 || newCommentIsOpen($index)"}
-          .comments-collapse-toggle{"ng-show" => "post.num_of_comments > 0"}
+        .card-comments{"ng-show" => "post.comment_size > 0 || newCommentIsOpen($index)"}
+          .comments-collapse-toggle{"ng-show" => "post.comment_size > 0"}
             %a{"ng-click" => "toggleComments($index)"}
-              {{post.num_of_comments}} comments
+              {{post.comment_size}} comments
               %i.fa.fa-angle-down
 
           .comment-list{:collapse => "!commentIsOpen($index)"}
@@ -51,7 +51,7 @@
                   %p{"ng-bind-html" => "comment.content | linebreak"}
           .comments
             .media{"ng-hide" => "newCommentIsOpen($index)"}
-              .new-comment-input-box{"ng-click" => "toggleNewComment($index); focusComment = true", "ng-show" => "post.num_of_comments > 0"}
+              .new-comment-input-box{"ng-click" => "toggleNewComment($index); focusComment = true", "ng-show" => "post.comment_size > 0"}
                 Add a comment...
             .media{"ng-show" => "newCommentIsOpen($index)"}
               %a.pull-left

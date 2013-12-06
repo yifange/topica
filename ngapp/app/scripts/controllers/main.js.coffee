@@ -35,7 +35,7 @@ app.controller 'MainController', [
       if commentOpenStates[index]
         Restangular.one("posts", $scope.posts[index].id).getList("comments").then (comments) ->
           $scope.posts[index].comments = comments
-          $scope.posts[index].num_of_comments = comments.length if $scope.posts[index].num_of_comments != comments.length
+          $scope.posts[index].comment_size = comments.length if $scope.posts[index].comment_size != comments.length
 
     $scope.commentIsOpen = (index) ->
       !!commentOpenStates[index]
@@ -58,7 +58,7 @@ app.controller 'MainController', [
         if !$scope.posts[index].comments
           $scope.posts[index].comments = []
         $scope.posts[index].comments.push comment
-        $scope.posts[index].num_of_comments += 1
+        $scope.posts[index].comment_size += 1
 
     $scope.commentLoseFocus = ->
       $scope.focusComment = false
