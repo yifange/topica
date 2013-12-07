@@ -26,7 +26,7 @@ describe User do
       favor_post_ids.each do |p_id|
         FactoryGirl.create(:favor, user_id: @user.id, post_id: p_id)
       end
-      @user.favoring_posts.pluck(:id) == favor_post_ids
+      @user.favoring_posts.pluck(:id).should == favor_post_ids
     end
   end
 end
