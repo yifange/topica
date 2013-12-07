@@ -5,25 +5,21 @@ app.controller "NewPostController", [
   "Configs",
   "UserSession",
   "$http",
-  "$rootScope",
-  (Restangular, $scope, Configs, UserSession, $http, $rootScope) ->
-    # Restangular.one("users", "1").getList("topics").then (topics) ->
-    #   $scope.topics = []
-    #   for i in [0..topics.length - 1]
-    #     $scope.topics.push({id: i, text: topics[i].name, selected: false})
+  (Restangular, $scope, Configs, UserSession, $http) ->
     user = UserSession.getSession()
+    Restangular.one("users", user.id).getList("topics").then (topics) ->
+      $scope.topics = ({id: topic.id, text: topic.name, selected: false} for topic in topics)
+
     $scope.newPost = {}
     $scope.createNewPost = () ->
       # collect the selected topics' ids
-      $scope.selected_topics_ids = []
-      for i in [0..$scope.topics.length - 1]
-        if $scope.topics[i].selected == true
-          $scope.selected_topics_ids.push($scope.topics[i].id)
+      $scope.selected_topic_ids = _.map _.filter($scope.topics, 'selected'), (topic) ->
+        topic.id
       # user id deleted from url
       $http.post(Configs.apiRoot + "/posts/", {
         title: $scope.newPost.title,
         content: $scope.newPost.content,
-        topic_ids: $scope.selected_topics_ids
+        topic_ids: $scope.selected_topic_ids
       }).then (response) ->
         scope = angular.element(document.getElementById("main-view")).scope()
         $scope.newPost = response.data
@@ -32,4 +28,5 @@ app.controller "NewPostController", [
         scope.posts.unshift($scope.newPost)
 
         $scope.newPost = {}
+      $scope.edit = false
 ]

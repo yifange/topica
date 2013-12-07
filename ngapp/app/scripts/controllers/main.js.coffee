@@ -14,7 +14,6 @@ app.controller 'MainController', [
     $scope.user = UserSession.getSession()
 
     Restangular.all("home").getList().then (topics) ->
-      console.log(topics)
       posts = []
       for topic in topics
         t_posts = topic.posts
@@ -22,7 +21,6 @@ app.controller 'MainController', [
           post.user = topic.user
         posts.push t_posts
       $scope.posts = _.flatten(posts)
-      console.log($scope.posts)
       #XXX here here
 
     # $scope.deletePost = () ->
