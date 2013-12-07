@@ -35,6 +35,7 @@ app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationPro
     .otherwise({
       redirectTo: '/'
     })
+  $locationProvider.html5Mode(true)
 ]
 
 app.config (RestangularProvider) ->
