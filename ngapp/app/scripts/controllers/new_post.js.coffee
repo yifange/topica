@@ -6,14 +6,12 @@ app.controller "NewPostController", [
   "UserSession",
   "$http",
   "$rootScope",
-  # XXX fake user id
-  # get a user's topic from backend using Restangular
   (Restangular, $scope, Configs, UserSession, $http, $rootScope) ->
-    Restangular.one("users", "1").getList("topics").then (topics) ->
-      $scope.topics = []
-      for i in [0..topics.length - 1]
-        $scope.topics.push({id: i, text: topics[i].name, selected: false})
-
+    # Restangular.one("users", "1").getList("topics").then (topics) ->
+    #   $scope.topics = []
+    #   for i in [0..topics.length - 1]
+    #     $scope.topics.push({id: i, text: topics[i].name, selected: false})
+    user = UserSession.getSession()
     $scope.newPost = {}
     $scope.createNewPost = () ->
       # collect the selected topics' ids
@@ -29,7 +27,7 @@ app.controller "NewPostController", [
       }).then (response) ->
         scope = angular.element(document.getElementById("main-view")).scope()
         $scope.newPost = response.data
-        $scope.newPost.user = $rootScope.userSession.user
+        $scope.newPost.user = user
         $scope.newPost.num_of_comments = 0
         scope.posts.unshift($scope.newPost)
 
