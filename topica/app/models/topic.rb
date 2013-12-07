@@ -8,5 +8,5 @@ class Topic < ActiveRecord::Base
   has_many :categories, :dependent => :destroy
   
   validates_inclusion_of :topic_type, :in => [0, 1]
-  has_many :following_users, -> { select "users.id", :email, :username, :name}, :class_name => "User", :through => :followships, :source => :topic
+  has_many :following_users, -> { select "users.id", :email, :username, :name}, :class_name => "User", :through => :followships, :source => :user
 end
