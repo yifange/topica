@@ -14,7 +14,7 @@ app = angular.module 'topicaApp', [
   "topicaApp.directives.ngFocus",
   "topicaApp.filters.linebreak"
 ]
-app.config ($routeProvider) ->
+app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -35,6 +35,8 @@ app.config ($routeProvider) ->
     .otherwise({
       redirectTo: '/'
     })
+  $locationProvider.html5Mode(true)
+]
 
 app.config (RestangularProvider) ->
   RestangularProvider.setBaseUrl("/api/v1")
