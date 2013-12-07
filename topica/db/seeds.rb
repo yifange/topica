@@ -30,7 +30,9 @@ Feed.create(user_id: 3, name: "Programming")
 Feed.create(user_id: 4, name: "Programming")
 Feed.create(user_id: 5, name: "Programming")
 Feed.create(user_id: 6, name: "Programming")
-
+Feed.create(user_id: 1, name: "Me")
+Feed.create(user_id: 2, name: "Me")
+Feed.create(user_id: 3, name: "Me")
 # feed_id deleted
 Topic.delete_all
 Topic.create(user_id: 1, name: "c++", topic_type: 1) # 1 to be public
@@ -44,6 +46,12 @@ Followship.delete_all
 Followship.create(user_id: 1, topic_id: 3, feed_id: 2)
 Followship.create(user_id: 1, topic_id: 4, feed_id: 2)
 Followship.create(user_id: 1, topic_id: 5, feed_id: 1)
+
+Followship.create(user_id: 1, topic_id: 1, feed_id: 10)
+Followship.create(user_id: 1, topic_id: 2, feed_id: 10)
+Followship.create(user_id: 2, topic_id: 3, feed_id: 11)
+Followship.create(user_id: 2, topic_id: 4, feed_id: 11)
+Followship.create(user_id: 3, topic_id: 5, feed_id: 12)
 
 # user_id, topic_id deleted
 Post.delete_all
