@@ -1,6 +1,6 @@
 app = angular.module("topicaApp.directives.pluspicker", [])
-app.directive 'pluspicker', ['$document'
-  ($document) ->
+app.directive 'pluspicker', ['$document', '$http',
+  ($document, $http) ->
     openElement = null
     closeMenu = angular.noop
     {
@@ -8,6 +8,8 @@ app.directive 'pluspicker', ['$document'
       scope: {
         items: "="
         addItem: "&onAdd"
+        remoteUrl: "@"
+        itemTemplate: "&"
       }
       template: """
       <div class='pluspicker-toggle pluspicker-box'>
@@ -40,8 +42,21 @@ app.directive 'pluspicker', ['$document'
       </ul>
               """
       link: (scope, element, attrs) ->
+        $http.get(scope.remoteUrl).then (response) ->
+          scope.items = ({id: item.id, text: item.name, selected: false} for item in response.data)
+
         scope.selectedItems = []
+
         scope.newItem = ->
+
+          data = scope.itemTemplate()
+          data.name = scope.input
+          $http.post(scope.remoteUrl, data).then (response) ->
+            newItem = {id: response.data.id, text: data.name, selected: true}
+            scope.selectedItems.push newItem
+            scope.items.unshift newItem
+            console.log(response)
+
           scope.input = ""
           scope.addItem({item: scope.input})
 

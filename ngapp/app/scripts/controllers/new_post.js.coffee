@@ -6,11 +6,13 @@ app.controller "NewPostController", [
   "UserSession",
   "$http",
   (Restangular, $scope, Configs, UserSession, $http) ->
-    user = UserSession.getSession()
-    Restangular.one("users", user.id).getList("topics").then (topics) ->
-      $scope.topics = ({id: topic.id, text: topic.name, selected: false} for topic in topics)
-
+    $scope.user = UserSession.getSession()
+    $scope.baseUrl = Configs.apiRoot
     $scope.newPost = {}
+    $scope.itemTemplate = {
+      user_id: $scope.user.id
+      topic_type: 1
+    }
     $scope.createNewPost = () ->
       # collect the selected topics' ids
       $scope.selected_topic_ids = _.map _.filter($scope.topics, 'selected'), (topic) ->
@@ -23,7 +25,7 @@ app.controller "NewPostController", [
       }).then (response) ->
         scope = angular.element(document.getElementById("main-view")).scope()
         $scope.newPost = response.data
-        $scope.newPost.user = user
+        $scope.newPost.user = $scope.user
         $scope.newPost.num_of_comments = 0
         scope.posts.unshift($scope.newPost)
 
