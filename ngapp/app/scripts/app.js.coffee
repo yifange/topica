@@ -14,7 +14,7 @@ app = angular.module 'topicaApp', [
   "topicaApp.directives.ngFocus",
   "topicaApp.filters.linebreak"
 ]
-app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationProvider) ->
+app.config ["$routeProvider", ($routeProvider) ->
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
@@ -35,7 +35,6 @@ app.config ["$routeProvider", "$locationProvider", ($routeProvider, $locationPro
     .otherwise({
       redirectTo: '/'
     })
-  $locationProvider.html5Mode(true)
 ]
 
 app.config (RestangularProvider) ->
