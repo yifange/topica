@@ -11,12 +11,12 @@ app.directive 'pluspicker', ['$document'
       }
       template: """
       <div class='pluspicker-toggle pluspicker-box'>
-        <span class='pluspicker-listitem' ng-repeat='item in items | filter: {selected: true}'>
+        <span class='pluspicker-listitem' ng-repeat='item in selectedItems'>
           <span class='pluspicker-listitem-content'>
             <span class='pluspicker-listitem-text'>
               {{item.text}}
             </span>
-            <div class='pluspicker-close' ng-click='toggleSelection({{item.id}}, $event)'>
+            <div class='pluspicker-close' ng-click='deselectItem({{item.id}}, $event)'>
               <i class='fa fa-times-circle'></i>
             </div>
           </span>
@@ -27,12 +27,12 @@ app.directive 'pluspicker', ['$document'
         </span>
       </div>
       <ul class='pluspicker-menu'>
-        <li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false} | filter: input' ng-click='toggleSelection({{item.id}}, $event)'>
+        <li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false} | filter: input' ng-click='selectItem({{item.id}}, $event)'>
           <a>
             {{item.text}}
           </a>
         </li>
-        <li class='pluspicker-menu-item pluspicker-menu-add' ng-click='addItem()' ng-show='!!input'>
+        <li class='pluspicker-menu-item pluspicker-menu-add' ng-click='newItem()' ng-show='!!input'>
           <a>
             Add "{{input}}"
           </a>
@@ -40,14 +40,29 @@ app.directive 'pluspicker', ['$document'
       </ul>
               """
       link: (scope, element, attrs) ->
+        scope.selectedItems = []
+        scope.newItem = ->
+          scope.input = ""
+          scope.addItem({item: scope.input})
 
-        scope.toggleSelection = (id, $event) ->
-          for item in scope.items
-            if item.id == id
-              if item.selected == false
-                scope.input = ''
-              item.selected = !item.selected
-              break
+        scope.selectItem = (id, $event) ->
+          item = (_.find scope.items, (item) ->
+            item.id == id
+          )
+          item.selected = true
+          scope.selectedItems.push item
+          $event.stopPropagation()
+
+        scope.deselectItem = (id, $event) ->
+          (_.find scope.items, (item) ->
+            item.id == id
+          ).selected = false
+
+          # Should change to _.remove when restangular gets updated
+          # because the current restangular version depends on lodash 1.3
+
+          scope.selectedItems = scope.selectedItems.filter (item) ->
+            item.id isnt id
           $event.stopPropagation()
         scope.$watch('$location.path', ->
           closeMenu()

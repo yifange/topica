@@ -29,4 +29,7 @@ app.controller "NewPostController", [
 
         $scope.newPost = {}
       $scope.edit = false
+
+    $scope.addItem = (item) ->
+      console.log(item)
 ]

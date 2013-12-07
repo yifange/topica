@@ -9,7 +9,7 @@
     .topic-picker{"ng-hide" => "!edit"}
       .topic-picker-label.pull-left
         To:
-      .pluspicker{:items => "topics", "on-add" => "addItem()"}
+      .pluspicker{:items => "topics", "on-add" => "addItem(item)"}
     .new-post-actions{"ng-hide" => "!edit"}
       %button.btn.btn-primary{"ng-click" => "createNewPost()"}
         Share
