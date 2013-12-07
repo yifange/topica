@@ -47,6 +47,7 @@ Topica::Application.routes.draw do
         delete "/followships/:topic_id" => "followships#destroy"
 
         get "/topics" => "topics#all_user_topics"
+        post "/topics" => "topics#create"
         # resources :topics, :only => [:index, :create, :destroy, :update]
 
         resources :feeds, :only => [:index, :create, :destroy, :update]
