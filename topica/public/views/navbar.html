@@ -1,0 +1,50 @@
+<div class='navbar navbar-fixed-top' ng-controller='NavbarController'>
+<div class='navbar-inner'>
+<a class='hotcorner-icon hotcorner-icon-trigger' ng-class='hotcornerIconClass()' ng-click='toggleHotcornerMenu()' ng-mouseenter='hoverHotcornerIcon = true' ng-mouseleave='hoverHotcornerIcon = false'>
+<i class='fa fa-bars'></i>
+</a>
+<ul class='nav pull-right'>
+<li class='dropdown'>
+<a class='dropdown-toggle' href=''>
+<i class='fa fa-user'></i>
+{{user.username}}
+</a>
+<ul class='dropdown-menu'>
+<li>
+<a href='' ng-click="changeView('/profile')">
+<i class='fa fa-user'></i>
+Profile
+</a>
+<a href='' ng-click='logout()'>
+<i class='fa fa-power-off'></i>
+Logout
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class='hotcorner-menu-wrapper' ng-class='hotcornerMenuClass()' ng-mouseenter='hoverHotcornerMenu = true' ng-mouseleave='hoverHotcornerMenu = false'>
+<div class='hotcorner-menu-scroller'>
+<ul class='hotcorner-menu'>
+<li class='hotcorner-search-item hotcorner-menu-item'>
+<a class='hotcorner-icon hotcorner-icon-search'>
+<i class='fa fa-search'></i>
+</a>
+<input class='hotcorner-search' placeholder='Search' type='search'>
+</li>
+<li class='hotcorner-menu-item' ng-click='selectMenuItem($index)' ng-repeat='item in visibleItems'>
+<a class='hotcorner-icon'>
+<i class='fa' ng-class="'fa-' + item.icon"></i>
+</a>
+<span class='hotcorner-menu-text'>
+{{item.text}}
+</span>
+<span class='hotcorner-menu-item-arrow'>
+<i class='fa' ng-class='arrowClass()'></i>
+</span>
+</li>
+</ul>
+</div>
+</div>
+</div>

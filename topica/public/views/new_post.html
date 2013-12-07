@@ -1,0 +1,25 @@
+<div class='card new-post-card' ng-class="{'new-post-large': edit}" ng-controller='NewPostController'>
+<div class='card-body'>
+<div class='new-post-input-box' ng-click='edit = true; focusPost = true' ng-show='!edit'>
+Share what's new...
+</div>
+<div class='new-post-input-box-arrow-out' ng-show='!edit'></div>
+<div class='new-post-input-box-arrow-in' ng-show='!edit'></div>
+<input class='new-post-input-box new-post-input-box-title' ng-hide='!edit' ng-model='newPost.title' placeholder='Title...'>
+<textarea class='new-post-input-box new-post-input-box-content' msd-elastic='' ng-focus-lost='focusPost = false' ng-focus='focusPost' ng-hide='!edit' ng-model='newPost.content'></textarea>
+<div class='topic-picker' ng-hide='!edit'>
+<div class='topic-picker-label pull-left'>
+To:
+</div>
+<div class='pluspicker' items='topics' on-add='addItem()'></div>
+</div>
+<div class='new-post-actions' ng-hide='!edit'>
+<button class='btn btn-primary' ng-click='createNewPost()'>
+Share
+</button>
+<button class='btn' ng-click='edit = false'>
+Cancel
+</button>
+</div>
+</div>
+</div>

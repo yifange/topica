@@ -1,0 +1,24 @@
+<div class='row-fluid'>
+<div class='span6 offset3'>
+<h1 class='text-center login-title'>
+Create your account
+</h1>
+<div class='login-card'>
+<form class='form-signin'>
+<input autofocus class='form-control form-control-no-margin' data-ng-change='checkSubmittable()' data-ng-model='credential.username' placeholder='Username' required type='text'>
+<input class='form-control form-control-no-margin' data-ng-change='checkSubmittable()' data-ng-model='credential.email' placeholder='Email' required type='text'>
+<input class='form-control form-control-no-margin' data-ng-change='checkSubmittable()' data-ng-model='credential.password' placeholder='Password' required type='password'>
+<input class='form-control form-control-no-margin' data-ng-change='checkSubmittable()' data-ng-model='credential.passwordConfirmation' placeholder='Password confirmation' required type='password'>
+<p class='error-message'>
+{{message}}
+</p>
+<button class='btn btn-large btn-primary btn-block' data-ng-click='submit()' data-ng-disabled='!submittable' id='signin-button' type='submit'>
+Sign up
+</button>
+<a class='pull-right' data-ng-href='/#/login'>
+I have an account
+</a>
+</form>
+</div>
+</div>
+</div>
