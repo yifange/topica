@@ -1,0 +1,29 @@
+.profile-card
+  .profile-avatar
+    .gravatar-image.profile-image{"data-gravatar-email" => "user.email", "data-gravatar-size" => "70", "data-gravatar-default" => "mm"}
+  .profile-details
+    %p.profile-username
+      {{user.username}}
+    %p.profile-name
+      {{user.name}}
+    %p.profile-email
+      {{user.email}}
+  .navbar
+    .navbar-inner
+      %ul.nav
+        %li.active
+          %a{:href => ""}
+            Topics
+        %li
+          %a{:href => ""}
+            Feeds
+        %li
+          %a{:href => ""}
+            Posts
+        %li
+          %a{:href => ""}
+            Favors
+        %li
+          %a{:href => ""}
+            Following
+        
