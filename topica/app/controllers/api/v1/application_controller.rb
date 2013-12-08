@@ -28,7 +28,7 @@ class Api::V1::ApplicationController < ApplicationController
 
   def verified_request?
     super || form_authenticity_token == request.headers['HTTP_X_XSRF_TOKEN']
-    erue # XXX Only for testing, must remove
+    true # XXX Only for testing, must remove
   end
 
   # do not panic when quering for a nonexisted record
