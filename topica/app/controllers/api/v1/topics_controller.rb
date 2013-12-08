@@ -38,7 +38,12 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   def create
     topic = Topic.new(topic_params)
     if topic.save
-      render :json => topic, :status => :created
+      followship = Followship.new(:user_id => params[:user_id], :topic_id => topic.id)
+      if followship.save
+        render :json => topic, :status => :created
+      else
+        render :json => {:ok => false, :message => followship.errors}, :status => :unprocessable_entity
+      end
     else
       render :json => {:ok => false, :message => topic.errors}, :status => :unprocessable_entity
     end
