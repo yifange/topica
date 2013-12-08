@@ -42,3 +42,73 @@ textarea.new-comment-input-box-content:focus:active:hover {
   position: relative;
   margin-left: 105px;
 }
+.card {
+  position: relative;
+}
+.card-topic-badges-wrapper {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 38px 0 0 0;
+  font-size: 12px;
+  -webkit-transition: box-shadow .218s ease,background-color .218s ease,max-width .218s step-end;
+  transition: box-shadow .218s ease,background-color .218s ease,max-width .218s step-end;
+}
+
+.card-topic-badge {
+  background-color: #f5f5f5;
+  clear: both;
+  height: 26px;
+  line-height: 26px;
+}
+
+.card-topic-badge-ribbon {
+  background-color: #427fed;
+  height: 26px;
+  margin-right: -4px;
+  padding-right: 4px;
+  width: 0;
+}
+.card-topic-badge-text {
+  max-width: 130px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 10px;
+  -webkit-transition: opacity .218s ease,max-width .218s step-end,visibility .218s step-end;
+  transition: opacity .218s ease,max-width .218s step-end,visibility .218s step-end;
+  color: #999;
+}
+
+.card-topic-badge-text:hover {
+  text-decoration: none;
+}
+
+.card:hover {
+  .card-topic-badge-text {
+    color: #427fed;
+  }
+  .card-topic-badges-wrapper {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .2);
+    -webkit-transition: box-shadow .218s ease, color .218s ease;
+    transition: box-shadow .218s ease, color .218s ease;
+  }
+}
+.card-topic-badge:hover {
+  background-color: #427fed;
+  cursor: pointer;
+  .card-topic-badge-text {
+    color: white;
+  }
+}
+.opacity-hide {
+  display: none;
+  opacity: 0;
+}
+.card-topic-badges-wrapper:hover {
+  .card-topic-badge.opacity-hide {
+    opacity: 1;
+    display: block;
+  }
+}
+
