@@ -15,18 +15,24 @@ app.controller "NewPostController", [
     }
     $scope.createNewPost = () ->
       # collect the selected topics' ids
-      $scope.selected_topic_ids = _.map _.filter($scope.topics, 'selected'), (topic) ->
+      $scope.selectedTopicIds = _.map _.filter($scope.topics, 'selected'), (topic) ->
         topic.id
       # user id deleted from url
       $http.post(Configs.apiRoot + "/posts/", {
         title: $scope.newPost.title,
         content: $scope.newPost.content,
-        topic_ids: $scope.selected_topic_ids
+        topic_ids: $scope.selectedTopicIds
       }).then (response) ->
         scope = angular.element(document.getElementById("main-view")).scope()
         $scope.newPost = response.data
         $scope.newPost.user = $scope.user
         $scope.newPost.num_of_comments = 0
+        $scope.newPost.topics = _.map _.filter($scope.topics, 'selected'), (topic) ->
+          {
+            id: topic.id
+            name: topic.text
+            topic_type: topic.topic_type
+          }
         scope.posts.unshift($scope.newPost)
 
         $scope.newPost = {}
