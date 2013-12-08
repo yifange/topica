@@ -34,7 +34,7 @@ app.directive 'pluspicker', ['$document', '$http',
             {{item.text}}
           </a>
         </li>
-        <li class='pluspicker-menu-item pluspicker-menu-add' ng-click='newItem()' ng-show='!!input'>
+        <li class='pluspicker-menu-item pluspicker-menu-add' ng-click='newItem()' ng-show='!!input && isNew()'>
           <a>
             Add "{{input}}"
           </a>
@@ -47,15 +47,16 @@ app.directive 'pluspicker', ['$document', '$http',
 
         scope.selectedItems = []
 
-        scope.newItem = ->
+        scope.isNew = ->
+          !(_.contains(_.map(scope.items, (item) -> item.text), scope.input))
 
+        scope.newItem = ->
           data = scope.itemTemplate()
           data.name = scope.input
           $http.post(scope.remoteUrl, data).then (response) ->
             newItem = {id: response.data.id, text: data.name, selected: true}
             scope.selectedItems.push newItem
             scope.items.unshift newItem
-            console.log(response)
 
           scope.input = ""
           scope.addItem({item: scope.input})
