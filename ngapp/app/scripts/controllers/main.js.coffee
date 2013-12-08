@@ -15,10 +15,6 @@ app.controller 'MainController', [
 
     Restangular.all("home").getList().then (posts) ->
       $scope.posts = posts
-    # $scope.deletePost = () ->
-    #   $http.post(Configs.apiRoot + "/users/" + $rootScope.user.id)
-    # Restangular.all("users").getList().then (users) ->
-    #   $scope.users = users
 
     $scope.toggleComments = (index) ->
       commentOpenStates[index] = !commentOpenStates[index]

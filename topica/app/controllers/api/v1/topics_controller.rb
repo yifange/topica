@@ -19,9 +19,8 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   #
   # GET /topics/:topic_id/posts
   def all_posts
-    posts_id = Category.where(:topic_id => params[:topic_id]).map &:post_id
-    posts = Post.where(:id => posts_id)
-    render :json => posts.order(:created_at => :desc)
+    posts = Topic.find(params[:topic_id]).topics
+    render :json => posts.order(:created_at => :desc), :include => :topics, :methods => :comments_size
   end
 
   # Query for one topic by id

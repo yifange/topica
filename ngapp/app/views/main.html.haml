@@ -3,4 +3,5 @@
   .container-fluid 
     .span6.offset3
       %div{"ng-include" => "", :src => "'views/new_post.html'", "style" => "padding-top: 50px"}
-      %div{"ng-include" => "", :src => "'views/newscard.html'", "ng-controller" => "MainController"}
+      .card{"ng-repeat" => "post in posts"}
+        %div{"ng-include" => "", :src => "'views/newscard.html'", "ng-controller" => "MainController"}
