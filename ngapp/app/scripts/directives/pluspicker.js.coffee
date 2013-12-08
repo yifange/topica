@@ -12,34 +12,36 @@ app.directive 'pluspicker', ['$document', '$http',
         itemTemplate: "&"
       }
       template: """
-      <div class='pluspicker-toggle pluspicker-box'>
-        <span class='pluspicker-listitem' ng-repeat='item in selectedItems'>
-          <span class='pluspicker-listitem-content'>
-            <span class='pluspicker-listitem-text'>
-              {{item.text}}
+      <div ng-class="{'open': isOpen}">
+        <div class='pluspicker-toggle pluspicker-box' ng-click="openMenu($event)">
+          <span class='pluspicker-listitem' ng-repeat='item in selectedItems'>
+            <span class='pluspicker-listitem-content'>
+              <span class='pluspicker-listitem-text'>
+                {{item.text}}
+              </span>
+              <div class='pluspicker-close' ng-click='deselectItem({{item.id}}, $event)'>
+                <i class='fa fa-times-circle'></i>
+              </div>
             </span>
-            <div class='pluspicker-close' ng-click='deselectItem({{item.id}}, $event)'>
-              <i class='fa fa-times-circle'></i>
-            </div>
           </span>
-        </span>
-        <span class='pluspicker-input-area'>
-          <input type='text' class='pluspicker-input-area' placeholder='+ add topic' ng-model="input">
-          </input>
-        </span>
+          <span class='pluspicker-input-area'>
+            <input type='text' class='pluspicker-input-area' placeholder='+ add topic' ng-model="input">
+            </input>
+          </span>
+        </div>
+        <ul class='pluspicker-menu'>
+          <li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false} | filter: input' ng-click='selectItem({{item.id}}, $event)'>
+            <a>
+              {{item.text}}
+            </a>
+          </li>
+          <li class='pluspicker-menu-item pluspicker-menu-add' ng-click='newItem()' ng-show='!!input && isNew()'>
+            <a>
+              Add "{{input}}"
+            </a>
+          </li>
+        </ul>
       </div>
-      <ul class='pluspicker-menu'>
-        <li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false} | filter: input' ng-click='selectItem({{item.id}}, $event)'>
-          <a>
-            {{item.text}}
-          </a>
-        </li>
-        <li class='pluspicker-menu-item pluspicker-menu-add' ng-click='newItem()' ng-show='!!input && isNew()'>
-          <a>
-            Add "{{input}}"
-          </a>
-        </li>
-      </ul>
               """
       link: (scope, element, attrs) ->
         $http.get(scope.remoteUrl).then (response) ->
@@ -67,6 +69,7 @@ app.directive 'pluspicker', ['$document', '$http',
           )
           item.selected = true
           scope.selectedItems.push item
+          $event.preventDefault()
           $event.stopPropagation()
 
         scope.deselectItem = (id, $event) ->
@@ -79,27 +82,21 @@ app.directive 'pluspicker', ['$document', '$http',
 
           scope.selectedItems = scope.selectedItems.filter (item) ->
             item.id isnt id
+          $event.preventDefault()
           $event.stopPropagation()
+
+        $document.bind "click", (event) ->
+          scope.$apply("isOpen = false")
+          scope.$apply("input = ''")
+
+        scope.openMenu = ($event) ->
+          $event.preventDefault()
+          $event.stopPropagation()
+          scope.isOpen = true
+
         scope.$watch('$location.path', ->
-          closeMenu()
+          scope.isOpen = false
+          scope.input = ""
         )
-        element.bind 'click', (event) ->
-          elementWasOpen = (element == openElement)
-          event.preventDefault()
-          event.stopPropagation()
-          if (!!openElement)
-            closeMenu()
-          if (!elementWasOpen)
-            element.addClass('open')
-            openElement = element
-            closeMenu = (event) ->
-              if (event)
-                event.preventDefault()
-                event.stopPropagation()
-              $document.unbind('click', closeMenu)
-              element.removeClass('open')
-              closeMenu = angular.noop
-              openElement = null
-            $document.bind('click', closeMenu)
     }
 ]
