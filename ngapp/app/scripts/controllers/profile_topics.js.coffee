@@ -1,3 +1,11 @@
 app = angular.module('topicaApp')
-app.controller "ProfileTopicsController", ->
-  $scopes.topics = [1, 2, 3, 4, 5]
+app.controller "ProfileTopicsController", [
+  "Restangular",
+  "UserSession",
+  "$scope",
+  (Restangular, UserSession, $scope) ->
+    $scope.user = UserSession.getSession()
+    Restangular.one("users", $scope.user.id).all("detailed_topics").getList().then (topics) ->
+      $scope.topics = topics
+
+]

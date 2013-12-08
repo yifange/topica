@@ -8,6 +8,12 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   def index
     render :json => User.find(params[:user_id]).topics
   end
+  
+  # Query for all topics of a user, return a list of topics with number of posts and number of followers
+  # GET    /api/v1/users/:user_id/detailed_topics
+  def detail_index
+    render :json => User.find(params[:user_id]).topics, :methods => [:posts_size, :followers_size]
+  end
 
   # Query for all the posts of the user
   #
@@ -16,10 +22,6 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
     posts_id = Category.where(:topic_id => params[:topic_id]).map &:post_id
     posts = Post.where(:id => posts_id)
     render :json => posts.order(:created_at => :desc)
-  end
-
-  def all_user_topics
-    render :json => Topic.where(:user_id => params[:user_id])
   end
 
   # Query for one topic by id

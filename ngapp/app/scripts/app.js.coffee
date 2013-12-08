@@ -30,7 +30,7 @@ app.config ["$routeProvider", ($routeProvider) ->
     })
     .when('/profile', {
       templateUrl: 'views/profile_topics.html',
-      controller: 'ProfileController'
+      controller: 'ProfileTopicsController'
     })
     .otherwise({
       redirectTo: '/'
