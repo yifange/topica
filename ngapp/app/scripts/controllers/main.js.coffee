@@ -13,16 +13,8 @@ app.controller 'MainController', [
     newCommentOpenStates = []
     $scope.user = UserSession.getSession()
 
-    Restangular.all("home").getList().then (topics) ->
-      posts = []
-      for topic in topics
-        t_posts = topic.posts
-        for post in t_posts
-          post.user = topic.user
-        posts.push t_posts
-      $scope.posts = _.flatten(posts)
-      #XXX here here
-
+    Restangular.all("home").getList().then (posts) ->
+      $scope.posts = posts
     # $scope.deletePost = () ->
     #   $http.post(Configs.apiRoot + "/users/" + $rootScope.user.id)
     # Restangular.all("users").getList().then (users) ->
