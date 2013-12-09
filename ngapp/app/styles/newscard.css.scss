@@ -112,3 +112,31 @@ textarea.new-comment-input-box-content:focus:active:hover {
   }
 }
 
+
+.topic-card {
+  position: relative;
+  margin: 10px 0 20px 0;
+  background-color: #ffffff;
+  border: 1px solid #d8d8d8;
+  border-top: 5px solid white;
+  border-top-color: #76a7fa;
+  box-sizing: border-box;
+  border-radius: 3px
+}
+.topic-card .topic-card-body {
+  padding: 0 20px;
+  margin-top: 20px; 
+}
+.topic-card .topic-card-heading {
+  padding: 0 20px;
+  margin-top: 10px;
+}
+.topic-card-stats {
+  padding-bottom: 20px;
+  a {
+    color: #999; 
+  }
+  a:hover {
+    color: #427fed 
+  }
+}

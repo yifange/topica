@@ -55,9 +55,9 @@ Followship.create(user_id: 3, topic_id: 5, feed_id: 12)
 
 # user_id, topic_id deleted
 Post.delete_all
-Post.create(title: "c++ string", content: "It's not convenient to convert a single character to a string.")
-Post.create(title: "cmake", content: "CMake is a great tool.")
-Post.create(title: "JVM", content: "JVM provides portability.")
+Post.create(user_id: 1, title: "c++ string", content: "It's not convenient to convert a single character to a string.")
+Post.create(user_id: 1, title: "cmake", content: "CMake is a great tool.")
+Post.create(user_id: 1, title: "JVM", content: "JVM provides portability.")
 
 Favor.delete_all
 Favor.create(user_id: 1, post_id: 3)

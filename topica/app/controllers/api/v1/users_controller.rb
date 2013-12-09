@@ -9,7 +9,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # GET     /api/v1/users/:user_id/comments 
 
   def all_comments
-    User.find(params[:user_id]).comments
+    render :json => User.find(params[:user_id]).comments
   end
 
 

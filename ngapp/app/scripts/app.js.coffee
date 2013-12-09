@@ -12,6 +12,7 @@ app = angular.module 'topicaApp', [
   "md5",
   "topicaApp.directives.pluspicker",
   "topicaApp.directives.ngFocus",
+  "topicaApp.directives.newscard",
   "topicaApp.filters.linebreak"
 ]
 app.config ["$routeProvider", ($routeProvider) ->
@@ -29,8 +30,8 @@ app.config ["$routeProvider", ($routeProvider) ->
       controller: 'SignupController'
     })
     .when('/profile', {
-      templateUrl: 'views/profile.html',
-      controller: 'ProfileController'
+      templateUrl: 'views/profile_topics.html',
+      controller: 'ProfileTopicsController'
     })
     .otherwise({
       redirectTo: '/'

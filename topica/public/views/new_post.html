@@ -11,7 +11,7 @@ Share what's new...
 <div class='topic-picker-label pull-left'>
 To:
 </div>
-<div class='pluspicker' items='topics' on-add='addItem()'></div>
+<div class='pluspicker' item-template='itemTemplate' items='topics' on-add='addItem(item)' remote-url='{{baseUrl}}/users/{{user.id}}/topics'></div>
 </div>
 <div class='new-post-actions' ng-hide='!edit'>
 <button class='btn btn-primary' ng-click='createNewPost()'>
