@@ -114,8 +114,8 @@ textarea.new-comment-input-box-content:focus:active:hover {
   }
 }
 
-.repost-comment-input-box-content {
-  border-bottom: none;
+textarea.repost-comment-input-box-content {
+  border-bottom: none !important;
   margin-bottom: 0;
 }
 .repost-topic-picker {
