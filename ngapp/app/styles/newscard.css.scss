@@ -120,9 +120,18 @@ textarea.new-comment-input-box-content:focus:active:hover {
 }
 .repost-topic-picker {
   // margin-top: -1px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 .repost-topic-picker .pluspicker-box {
   border-top: none;
   box-shadow: none;
+}
+
+// overrides bootplus
+.media {
+  overflow: visible;
+}
+.media-body {
+  overflow: visible;
+  margin-left: 40px;
 }

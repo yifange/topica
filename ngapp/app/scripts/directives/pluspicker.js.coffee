@@ -46,7 +46,6 @@ app.directive 'pluspicker', ['$document', '$http',
       link: (scope, element, attrs) ->
         # $http.get(scope.remoteUrl).then (response) ->
         #   scope.items = ({id: item.id, text: item.name, selected: false} for item in response.data)
-
         scope.selectedItems = []
 
         scope.isNew = ->

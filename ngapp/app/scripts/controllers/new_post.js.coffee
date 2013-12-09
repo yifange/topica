@@ -5,13 +5,20 @@ app.controller "NewPostController", [
   "Configs",
   "UserSession",
   "$http",
-  (Restangular, $scope, Configs, UserSession, $http) ->
+  "$rootScope"
+  (Restangular, $scope, Configs, UserSession, $http, $rootScope) ->
     $scope.user = UserSession.getSession()
     $scope.baseUrl = Configs.apiRoot
     $scope.newPost = {}
+    $rootScope.topics = []
+
+    Restangular.one("users", $scope.user.id).all("topics").getList().then (topics) ->
+      $rootScope.topics = ({id: item.id, text: item.name, selected: false} for item in topics)
+
     $scope.itemTemplate = {
       topic_type: 1
     }
+
     $scope.createNewPost = () ->
       # collect the selected topics' ids
       $scope.selectedTopicIds = _.map _.filter($scope.topics, 'selected'), (topic) ->

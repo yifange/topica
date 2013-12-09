@@ -6,6 +6,7 @@ app.directive "newscard", ["$http", "Restangular",
       scope: {
         posts: "="
         user: "="
+        topics: "="
       }
       templateUrl: "views/templates/newscard.html"
       link: (scope, element, attrs) ->

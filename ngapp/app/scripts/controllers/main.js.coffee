@@ -13,4 +13,6 @@ app.controller 'MainController', [
     Restangular.all("home").getList().then (posts) ->
       $scope.posts = posts
 
+    Restangular.one("users", $scope.user.id).all("topics").getList().then (topics) ->
+      $rootScope.topics = ({id: item.id, text: item.name, selected: false} for item in topics)
 ]
