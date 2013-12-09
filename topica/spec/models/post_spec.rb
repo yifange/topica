@@ -3,19 +3,30 @@ require 'spec_helper'
 describe Post do
   before(:each) do
     @rd = Random.new
-    # generate 20 users
-    FactoryGirl.create_list(:user,20)
+    # generate 5 users
+    FactoryGirl.create_list(:user,5)
     @user_ids = User.pluck(:id)
-    # create 20 post
-    FactoryGirl.create_list(:post, 20)
-    @post_ids = Post.pluck(:id)
   end
 
+  describe 'new' do
+    it 'shoould fail if user_id is empty' do
+      FactoryGirl.build(:post, user_id: '').should_not be_valid
+    end
+    it 'shoould fail if title  is empty' do
+      FactoryGirl.build(:post, title: '').should_not be_valid
+    end
+    it 'shoould fail if content  is empty' do
+      FactoryGirl.build(:post, content: '').should_not be_valid
+    end
+  end
   describe 'favoring_users' do
     it 'should get all the users who are favoriing this post' do
+      # create 20 post
+      FactoryGirl.create_list(:post, 20, user_id: @user_ids.at(0))
+      post_ids = Post.pluck(:id)
       #[[]], favor_users[i] contain all user id who favor i-th post
       favor_users = Array.new(0)
-      @post_ids.each do |p_id| 
+      post_ids.each do |p_id| 
         post_favor_users_id = []
         # create favor by each post favored by random number of users
         (1...@rd.rand(@user_ids.length)).each do |i|
@@ -28,7 +39,7 @@ describe Post do
      
       #test
       i = 0
-      @post_ids.each do |p_id|
+      post_ids.each do |p_id|
         Post.find(p_id).favoring_users.pluck(:id).should == favor_users.at(i)
         i += 1
       end

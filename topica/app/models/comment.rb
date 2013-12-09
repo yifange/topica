@@ -6,4 +6,7 @@ class Comment < ActiveRecord::Base
   validates :user_id, :presence => true
   validates :post_id, :presence => true
   validates :content, :presence => true
+
+  validates_presence_of :user
+  validates_presence_of :post
 end
