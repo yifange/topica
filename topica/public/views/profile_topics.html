@@ -1,0 +1,31 @@
+<div id='profile-view'>
+<div ng-include='' src="'views/navbar.html'"></div>
+<div class='container-fluid' style='margin-top: 60px;'>
+<div class='span6 offset3'>
+<div ng-controller='ProfileController' ng-include='' src="'views/profile_about.html'"></div>
+<div class='topic-card-wrapper' ng-repeat='topic in topics'>
+<div class='topic-inner' collapse='(openningPostTopic !== undefined) &amp;&amp; (openningPostTopic !== {{topic.id}})'>
+<div class='topic-card'>
+<h3 class='topic-card-heading'>
+{{topic.name}}
+</h3>
+<div class='topic-card-body'>
+<div class='topic-card-stats'>
+<a href='' ng-click='showPosts({{topic.id}})'>
+{{topic.posts_size}} posts
+</a>
+,
+<a href='' ng-click='showFollowers({{topic.id}})'>
+{{topic.followers_size}} people following
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class='topic-posts' collapse='openningPostTopic !== topic.id'>
+<div class='newscard' post-url='{{baseUrl}}/topics/{{topic.id}}/posts' user='user'></div>
+</div>
+</div>
+</div>
+</div>
+</div>
