@@ -15,7 +15,6 @@ app.directive "newscard", ["$http", "Restangular",
         newCommentOpenStates = []
         $http.get(scope.postUrl).then (response) ->
           scope.posts = response.data
-          console.log scope.posts
 
         scope.toggleComments = (index) ->
           commentOpenStates[index] = !commentOpenStates[index]

@@ -15,8 +15,7 @@
               %a{:href => "", "ng-click" => "showFollowers({{topic.id}})"}
                 {{topic.followers_size}} people following
         .topic-posts{:collapse => "openningPostTopic !== topic.id"}
-          -# .card{"ng-repeat" => "post in topic.posts"}
-          -#   %div{"ng-include" => "", :src => "'views/newscard.html'"}
+          %div.newscard{"post-url" => "{{baseUrl}}/topics/{{topic.id}}/posts", "user" => "user"}
           
 
           
