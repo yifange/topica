@@ -41,7 +41,8 @@ Topica::Application.routes.draw do
         get "/comments" => "users#all_comments"
         
         resources :posts, :only => [:index, :destroy, :update]
-
+        
+        get "/following_posts" => "users#all_following_posts"
         get "/follows" => "users#all_following_topics" # following topics
         get "/followships/:topic_id" => "followships#create"
         post "/followships" => "followships#create"

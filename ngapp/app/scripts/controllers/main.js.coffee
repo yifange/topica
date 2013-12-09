@@ -10,6 +10,7 @@ app.controller 'MainController', [
   (Restangular, $scope, $http, Configs, $location, $rootScope, UserSession) ->
     $scope.user = UserSession.getSession()
     $scope.baseUrl = Configs.apiRoot
-    console.log($scope.baseUrl)
+    Restangular.all("home").getList().then (posts) ->
+      $scope.posts = posts
 
 ]

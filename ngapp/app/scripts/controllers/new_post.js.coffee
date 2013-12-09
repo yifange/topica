@@ -10,7 +10,6 @@ app.controller "NewPostController", [
     $scope.baseUrl = Configs.apiRoot
     $scope.newPost = {}
     $scope.itemTemplate = {
-      user_id: $scope.user.id
       topic_type: 1
     }
     $scope.createNewPost = () ->
@@ -23,7 +22,6 @@ app.controller "NewPostController", [
         content: $scope.newPost.content,
         topic_ids: $scope.selectedTopicIds
       }).then (response) ->
-        scope = angular.element(document.getElementById("main-view")).scope()
         $scope.newPost = response.data
         $scope.newPost.user = $scope.user
         $scope.newPost.num_of_comments = 0
@@ -33,6 +31,8 @@ app.controller "NewPostController", [
             name: topic.text
             topic_type: topic.topic_type
           }
+        scope = angular.element(document.getElementById("main-view")).scope()
+        console.log scope
         scope.posts.unshift($scope.newPost)
 
         $scope.newPost = {}

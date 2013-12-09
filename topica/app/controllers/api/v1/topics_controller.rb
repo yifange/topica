@@ -37,7 +37,7 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   #
   # POST    /api/v1/users/:user_id/topics
   def create
-    topic = Topic.new(topic_params)
+    topic = Topic.new(:name => params[:name], :topic_type => params[:topic_type], :user_id => current_user.id)
     if topic.save
       followship = Followship.new(:user_id => params[:user_id], :topic_id => topic.id)
       if followship.save
