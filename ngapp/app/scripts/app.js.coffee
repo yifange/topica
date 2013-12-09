@@ -12,6 +12,7 @@ app = angular.module 'topicaApp', [
   "md5",
   "topicaApp.directives.pluspicker",
   "topicaApp.directives.ngFocus",
+  "topicaApp.directives.newscard",
   "topicaApp.filters.linebreak"
 ]
 app.config ["$routeProvider", ($routeProvider) ->
