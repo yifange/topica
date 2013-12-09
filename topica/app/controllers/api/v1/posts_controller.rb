@@ -39,20 +39,26 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # POST /users/:user_id/posts
 
   def create
-    post = Post.new(:title => params[:title], :content => params[:content])
-    if post.save
+    post = Post.new(:user_id => current_user.id,
+                    :title => params[:title], 
+                    :content => params[:content])
+    if params.include?(:topic_ids) and post.save
       categories = []
       params[:topic_ids].each do |topic_id|
         categories << Category.new(:post_id => post[:id], :topic_id => topic_id)
       end
       save_result = Category.import categories, :validate => true
       unless save_result.failed_instances.empty?
-        render :json => {:ok => false, :failed_instances => save_result.failed_instances.map {|i| i.topic_id}}, :status => :unprocessable_entity
+        render :json => {:ok => false, 
+                         :failed_instances => save_result.failed_instances.
+                                                map {|i| i.topic_id}}, 
+                         :status => :unprocessable_entity
       else
         render :json => post, :status => :created
       end
     else
-      render :json => {:ok => false, :message => post.errors}, :status => :unprocessable_entity
+      render :json => {:ok => false, :message => post.errors}, 
+                       :status => :unprocessable_entity
     end
   end
 

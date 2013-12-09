@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :topics
   has_many :followships
   has_many :favors
-  has_many :posts, :through => :topics
+  has_many :posts
   has_many :feeds
   has_many :comments
   has_many :following_topics, :class_name => "Topic", :through => :followships, :source => :topic
