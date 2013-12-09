@@ -13,6 +13,8 @@ app.directive "newscard", ["$http", "Restangular",
         scope.newComment = []
         commentOpenStates = []
         newCommentOpenStates = []
+        repostCommentOpenStates = []
+
         scope.toggleComments = (index) ->
           commentOpenStates[index] = !commentOpenStates[index]
           if commentOpenStates[index]
@@ -23,13 +25,35 @@ app.directive "newscard", ["$http", "Restangular",
         scope.commentIsOpen = (index) ->
           !!commentOpenStates[index]
 
-        scope.toggleNewComment = (index) ->
-          newCommentOpenStates[index] = !newCommentOpenStates[index]
-          if !newCommentOpenStates[index]
-            scope.posts[index].newComment = ""
+        # scope.toggleNewComment = (index) ->
+        #   newCommentOpenStates[index] = !newCommentOpenStates[index]
+        #   if !newCommentOpenStates[index]
+        #     scope.posts[index].newComment = ""
+        scope.openNewComment = (index) ->
+          console.log("haha")
+          newCommentOpenStates[index] = true
+          repostCommentOpenStates[index] = false
+
+        scope.closeNewComment = (index) ->
+          console.log("haha")
+          newCommentOpenStates[index] = false
+          scope.posts[index].newComment = ""
+
+        scope.openRepostComment = (index) ->
+          console.log("haha")
+          repostCommentOpenStates[index] = true
+          newCommentOpenStates[index] = false
+
+        scope.closeRepostComment = (index) ->
+          console.log("haha")
+          repostCommentOpenStates[index] = false
+          scope.posts[index].newComment = ""
 
         scope.newCommentIsOpen = (index) ->
           !!newCommentOpenStates[index]
+
+        scope.repostCommentIsOpen = (index) ->
+          !!repostCommentOpenStates[index]
 
         scope.submitComment = (index) ->
           Restangular.one("posts", scope.posts[index].id).all("comments").post({
@@ -44,5 +68,8 @@ app.directive "newscard", ["$http", "Restangular",
 
         scope.commentLoseFocus = ->
           scope.focusComment = false
+
+        scope.reposeCommentLoseFocus = ->
+          scope.focusRepostComment = false
     }
 ]

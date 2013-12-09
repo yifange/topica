@@ -20,13 +20,13 @@
     .card-buttons.pull-left
       %button.btn.star-button
         %i.fa.fa-star-o
-      %button.btn.share-button
+      %button.btn.share-button{"ng-click" => "openRepostComment($index); focusRepostComment = true"}
         Share
-    .inline-comment-input-box{"ng-hide" => "post.comment_size > 0 || newCommentIsOpen($index)", "ng-click" => "toggleNewComment($index); focusComment = true"}
+    .inline-comment-input-box{"ng-hide" => "post.comment_size > 0 || newCommentIsOpen($index) || repostCommentIsOpen($index)", "ng-click" => "openNewComment($index); focusComment = true"}
       .new-comment-input-box
         Add a comment...
 
-  .card-comments{"ng-show" => "post.comment_size > 0 || newCommentIsOpen($index)"}
+  .card-comments{"ng-show" => "post.comment_size > 0 || newCommentIsOpen($index) || repostCommentIsOpen($index)"}
     .comments-collapse-toggle{"ng-show" => "post.comment_size > 0"}
       %a{"ng-click" => "toggleComments($index)"}
         {{post.comment_size}} comments
@@ -46,7 +46,7 @@
             %p{"ng-bind-html" => "comment.content | linebreak"}
     .comments
       .media{"ng-hide" => "newCommentIsOpen($index)"}
-        .new-comment-input-box{"ng-click" => "toggleNewComment($index); focusComment = true", "ng-show" => "post.comment_size > 0"}
+        .new-comment-input-box{"ng-click" => "openNewComment($index); focusComment = true", "ng-show" => "post.comment_size > 0"}
           Add a comment...
       .media{"ng-show" => "newCommentIsOpen($index)"}
         %a.pull-left
@@ -56,5 +56,19 @@
           .comment-buttons
             %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "submitComment($index)"}
               Post comment
-            %button.btn{"ng-click" => "toggleNewComment($index)"}
+            %button.btn{"ng-click" => "closeNewComment($index)"}
+              Cancel
+      .media{"ng-show" => "repostCommentIsOpen($index)"}
+        %a.pull-left
+          .gravatar-image{"data-gravatar-email" => "user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
+        .media-body
+          %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => "", "ng-focus" => "focusRepostComment", "ng-focus-lost" => "repostCommentLoseFocus()"}
+          .topic-picker
+            .topic-picker-label.pull-left
+              To:
+            .pluspicker{:items => "topics", "on-add" => "addItem(item)", "remote-url" => "{{baseUrl}}/users/{{user.id}}/topics", "item-template" => "itemTemplate"}
+          .comment-buttons
+            %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "submitComment($index)"}
+              Share
+            %button.btn{"ng-click" => "closeRepostComment($index)"}
               Cancel
