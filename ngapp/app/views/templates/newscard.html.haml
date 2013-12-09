@@ -62,10 +62,8 @@
         %a.pull-left
           .gravatar-image{"data-gravatar-email" => "user.email", "data-gravatar-size" => "28", "data-gravatar-default" => "mm"}
         .media-body
-          %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => "", "ng-focus" => "focusRepostComment", "ng-focus-lost" => "repostCommentLoseFocus()"}
-          .topic-picker
-            .topic-picker-label.pull-left
-              To:
+          %textarea.new-comment-input-box-content.repost-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => "", "ng-focus" => "focusRepostComment", "ng-focus-lost" => "repostCommentLoseFocus()"}
+          .repost-topic-picker
             .pluspicker{:items => "topics", "on-add" => "addItem(item)", "remote-url" => "{{baseUrl}}/users/{{user.id}}/topics", "item-template" => "itemTemplate"}
           .comment-buttons
             %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "submitComment($index)"}
