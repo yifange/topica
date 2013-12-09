@@ -22,7 +22,15 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     posts = Post.where(:id => post_ids)
     render :json => posts
   end
-  
+
+  # Get all the posts favored by a user
+  #
+  # GET     /api/v1/users/:user_id/favors
+  #
+  def all_following_posts
+    render :json => User.find(params[:user_id]).following_posts
+  end
+    
   # Get all the following topics of a user
   #
   # GET     /api/v1/users/:user_id/follows

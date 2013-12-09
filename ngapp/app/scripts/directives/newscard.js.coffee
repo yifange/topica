@@ -4,7 +4,7 @@ app.directive "newscard", ["$http", "Restangular",
     {
       restrict: "CA"
       scope: {
-        postUrl: "@"
+        posts: "="
         user: "="
       }
       templateUrl: "views/templates/newscard.html"
@@ -13,9 +13,6 @@ app.directive "newscard", ["$http", "Restangular",
         scope.newComment = []
         commentOpenStates = []
         newCommentOpenStates = []
-        $http.get(scope.postUrl).then (response) ->
-          scope.posts = response.data
-
         scope.toggleComments = (index) ->
           commentOpenStates[index] = !commentOpenStates[index]
           if commentOpenStates[index]
@@ -37,7 +34,6 @@ app.directive "newscard", ["$http", "Restangular",
         scope.submitComment = (index) ->
           Restangular.one("posts", scope.posts[index].id).all("comments").post({
             content: scope.posts[index].newComment,
-            user_id: scope.user.id
           }).then (comment) ->
             scope.posts[index].newComment = ""
             comment.user = scope.user
