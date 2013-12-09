@@ -1,5 +1,5 @@
 app = angular.module("topicaApp")
-app.controller "ProfileController", [
+app.controller "ProfileAboutController", [
   "Restangular",
   "$scope",
   "$location",

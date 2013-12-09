@@ -2,7 +2,7 @@
   %div{"ng-include" => "", :src => "'views/navbar.html'"}
   .container-fluid{:style => "margin-top: 60px;"}
     .span6.offset3
-      %div{"ng-include" => "", :src => "'views/profile_about.html'", "ng-controller" => "ProfileController"}
+      %div{"ng-include" => "", :src => "'views/profile_about.html'", "ng-controller" => "ProfileAboutController"}
       .topic-card-wrapper{"ng-repeat" => "topic in topics"} 
         .topic-inner{"collapse" => "(openningPostTopic !== undefined) && (openningPostTopic !== {{topic.id}})"}
           .topic-card

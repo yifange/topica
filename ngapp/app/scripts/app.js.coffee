@@ -29,7 +29,7 @@ app.config ["$routeProvider", ($routeProvider) ->
       templateUrl: 'views/signup.html',
       controller: 'SignupController'
     })
-    .when('/profile', {
+    .when('/profile/:profileId', {
       templateUrl: 'views/profile_topics.html',
       controller: 'ProfileTopicsController'
     })
