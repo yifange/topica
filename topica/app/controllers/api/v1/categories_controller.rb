@@ -4,23 +4,6 @@
 # Author:: Yifan Ge
 #
 class Api::V1::CategoriesController < Api::V1::ApplicationController
-  ##
-  # return all the topics of a given post
-  # GET     /api/v1/posts/:post_id/topics
-  def all_topics
-    topic_ids = Category.where(:post_id => params[:post_id]).map(&:topic_id)
-    topics = Topic.where(:id => topic_ids)
-    render :json => topics
-  end
-  
-  ## 
-  # return all posts for a given topic
-  # GET      /api/v1/topics/:topic_id/posts 
-  def all_posts
-    post_ids = Category.where(:topic_id => params[:topic_id]).map(&:post_id)
-    posts = Post.where(:id => post_ids)
-    render :json => posts
-  end
   
   ##
   # add topics for a post

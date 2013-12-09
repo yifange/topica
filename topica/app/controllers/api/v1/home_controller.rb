@@ -9,7 +9,7 @@ class Api::V1::HomeController < Api::V1::ApplicationController
         :created_at => post.created_at,
         :updated_at => post.updated_at,
         :topics => post.topics,
-        :user => post.topics.first.user,
+        :user => post.user,
         :comment_size => post.comments.size
       }
     end
