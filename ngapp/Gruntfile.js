@@ -237,7 +237,7 @@ module.exports = function (grunt) {
           src: [
             '<%= yeoman.dist %>/scripts/{,*/}*.js',
             '<%= yeoman.dist %>/styles/{,*/}*.css',
-            '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+            // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
             '<%= yeoman.dist %>/styles/fonts/*'
           ]
         }
@@ -353,8 +353,7 @@ module.exports = function (grunt) {
         cwd: '<%= yeoman.app %>/images',
         dest: '.tmp/images/',
         src: '{,*/}*.{png,jpg,jpeg,gif,wep,svg}'
-      }
-    },
+      }    },
     concurrent: {
       server: [
         'coffee:dist',
