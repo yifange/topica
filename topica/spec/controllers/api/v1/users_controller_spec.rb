@@ -106,6 +106,13 @@ describe Api::V1::UsersController do
         response.body.should == all_user.sort {|x, y| y.created_at <=> x.created_at}.
           to_json
       end
+      context "with a search term" do
+        it "performs a search for matching comment text" do
+          get :index, {search: "sandwiches"}
+          Sunspot.session.should be_a_search_for(User)
+          Sunspot.session.should have_search_params(:fulltext, "sandwiches")
+        end
+      end
     end
 
     describe 'show' do

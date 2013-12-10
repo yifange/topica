@@ -19,7 +19,8 @@ class User < ActiveRecord::Base
 
   # solr
   searchable do
-    text :username
+    text :name
+    string :username
     time :created_at
     time :updated_at
   end
