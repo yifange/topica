@@ -17,4 +17,12 @@ class User < ActiveRecord::Base
   has_many :following_posts, :class_name => "Post", :through => :following_topics, :source => :posts
   has_many :favoring_posts, :class_name => "Post", :through => :favors, :source => :post
 
+  # solr
+  searchable do
+    text :username
+    time :created_at
+    time :updated_at
+  end
+
+
 end
