@@ -13,6 +13,11 @@
                 {{topic.posts_size}} posts
               , 
               %a{:href => "", "ng-click" => "showFollowers({{topic.id}})"}
-                {{topic.followers_size}} people following
+                {{topic.followers_size}} followers
+            .topic-card-button-dropdown
+              .topic-card-button-dropdown-wrapper
+                .button-dropdown
+
+
       .topic-posts{:collapse => "openningPostTopic !== topic.id"}
         %div.newscard{"posts" => "topic.posts", "user" => "user"}
