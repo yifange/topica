@@ -36,12 +36,11 @@ describe User do
     # user following odd id topic
     before(:each) do
       @user = FactoryGirl.create(:user)
-      FactoryGirl.create_list(:topic,20)
     end
     describe 'following' do
       before(:each) do
-        @following_topic_ids = create_followship_odd_idx_topic(
-                                  Topic.pluck(:id), @user.id)
+        @following_topic_ids = create_followship(@user.id).
+                               map{|t| t.id}
       end
       describe 'following_topics' do
         it 'following_topics should get all the topics the user are following' do
@@ -68,15 +67,8 @@ describe User do
     end 
     describe 'favoring_posts' do
       it 'should get all the posts the user are favoriing' do
-        # create 20 post of topic1, favor odd id post
-        FactoryGirl.create_list(:post,20, user_id: @user.id)
-        post_ids = Post.pluck(:id)
-        #favoring odd index post
-        favor_post_ids = post_ids.reject{|i| i%2 ==0}
-        favor_post_ids.each do |p_id|
-          FactoryGirl.create(:favor, user_id: @user.id, post_id: p_id)
-        end
-        @user.favoring_posts.pluck(:id).should == favor_post_ids
+        favored_posts = create_favoring(@user.id)
+        @user.favoring_posts.should == favored_posts
       end
     end
 

@@ -16,4 +16,5 @@ class User < ActiveRecord::Base
   has_many :following_topics, :class_name => "Topic", :through => :followships, :source => :topic
   has_many :following_posts, :class_name => "Post", :through => :following_topics, :source => :posts
   has_many :favoring_posts, :class_name => "Post", :through => :favors, :source => :post
+
 end
