@@ -29,7 +29,7 @@ class Api::V1::CommentsController < Api::V1::ApplicationController
   # POST    /api/v1/posts/:post_id/comments
   
   def create
-    comment = Comment.new(:content => params[:content], :user_id => current_user.id)
+    comment = Comment.new(:content => params[:content], :post_id => params[:post_id], :user_id => current_user.id)
     if comment.save
       render :json => comment, :status => :created
     else
