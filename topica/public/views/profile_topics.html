@@ -1,8 +1,7 @@
-<div id='profile-view'>
 <div ng-include='' src="'views/navbar.html'"></div>
 <div class='container-fluid' style='margin-top: 60px;'>
 <div class='span6 offset3'>
-<div ng-controller='ProfileController' ng-include='' src="'views/profile_about.html'"></div>
+<div ng-include='' src="'views/profile_about.html'"></div>
 <div class='topic-card-wrapper' ng-repeat='topic in topics'>
 <div class='topic-inner' collapse='(openningPostTopic !== undefined) &amp;&amp; (openningPostTopic !== {{topic.id}})'>
 <div class='topic-card'>
@@ -23,8 +22,7 @@
 </div>
 </div>
 <div class='topic-posts' collapse='openningPostTopic !== topic.id'>
-<div class='newscard' post-url='{{baseUrl}}/topics/{{topic.id}}/posts' user='user'></div>
-</div>
+<div class='newscard' posts='topic.posts' user='user'></div>
 </div>
 </div>
 </div>

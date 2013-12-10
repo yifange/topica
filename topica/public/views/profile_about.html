@@ -1,42 +1,48 @@
-<div class='profile-card'>
+<div class='profile-card' ng-controller='ProfileAboutController'>
 <div class='profile-avatar'>
-<div class='gravatar-image profile-image' data-gravatar-default='mm' data-gravatar-email='user.email' data-gravatar-size='70'></div>
+<div class='gravatar-image profile-image' data-gravatar-default='mm' data-gravatar-email='profileUser.email' data-gravatar-size='70'></div>
 </div>
 <div class='profile-details'>
 <p class='profile-username'>
-{{user.username}}
+{{profileUser.username}}
 </p>
 <p class='profile-name'>
-{{user.name}}
+{{profileUser.name}}
 </p>
 <p class='profile-email'>
-{{user.email}}
+{{profileUser.email}}
 </p>
+</div>
+<div class='profile-actions'>
+<a class='fa fa-stack' ng-href='#/'>
+<i class='fa fa-circle fa-stack-2x'></i>
+<i class='fa fa-home fa-stack-1x'></i>
+</a>
 </div>
 <div class='navbar'>
 <div class='navbar-inner'>
 <ul class='nav'>
-<li class='active'>
-<a href=''>
+<li ng-class="{'active': isActivePage('topics') || isActivePage('')}">
+<a href='' ng-click="goto('topics')">
 Topics
 </a>
 </li>
-<li>
+<li ng-class="{'active': isActivePage('feeds')}">
 <a href=''>
 Feeds
 </a>
 </li>
-<li>
-<a href=''>
+<li ng-class="{'active': isActivePage('posts')}">
+<a href='' ng-click="goto('posts')">
 Posts
 </a>
 </li>
-<li>
+<li ng-class="{'active': isActivePage('favors')}">
 <a href=''>
 Favors
 </a>
 </li>
-<li>
+<li ng-class="{'active': isActivePage('following')}">
 <a href=''>
 Following
 </a>
