@@ -4,7 +4,7 @@ include Sorcery::TestHelpers::Rails
 include Sorcery::Controller::InstanceMethods
 
 RSpec.configure do |c|
-    c.include ModelHelpers
+  c.include ModelHelpers
 end
 
 describe Api::V1::UsersController do
@@ -37,7 +37,7 @@ describe Api::V1::UsersController do
     describe 'update' do
       it 'should return :unauthorized' do
         put :update, {:id => 1, 
-                      :user => FactoryGirl.attributes_for(:user)}
+          :user => FactoryGirl.attributes_for(:user)}
         expect(response.status).to eq(401)
       end
     end
@@ -104,7 +104,7 @@ describe Api::V1::UsersController do
         all_user = FactoryGirl.create_list(:user,2) << @user
         get :index
         response.body.should == all_user.sort {|x, y| y.created_at <=> x.created_at}.
-                                        to_json
+          to_json
       end
     end
 
@@ -113,8 +113,8 @@ describe Api::V1::UsersController do
         it 'should return json of a given user(id,username,email,)' do
           get :show, {:id => @user.id}
           response.body.should == {:id => @user.id,
-                                   :username => @user.username,
-                                   :email => @user.email}.to_json
+            :username => @user.username,
+            :email => @user.email}.to_json
         end
       end
       context 'user_id does not exit' do

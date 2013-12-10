@@ -25,7 +25,7 @@ describe Topic do
       i = 0
       following_topic_ids.each do |topic_id|
         expect(Topic.find(topic_id).following_users.
-               pluck(:id)).to eq(followers.at(i).sort)
+               pluck(:id).sort).to eq(followers.at(i).sort)
         i += 1
       end
 

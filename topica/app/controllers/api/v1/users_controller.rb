@@ -98,7 +98,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     user.destroy
     render :json => {:ok => true, :message => 'successful destroied'}, :head => :no_content
   end
-
+  
   private
   # Whitelist the required fields in params hash
 
