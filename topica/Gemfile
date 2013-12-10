@@ -38,3 +38,6 @@ group :development, :test do
       gem 'railroady'
 end
 
+# Authorization library for Ruby on Rails
+gem "cancan"
+

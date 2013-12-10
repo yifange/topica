@@ -25,11 +25,12 @@ Topica::Application.routes.draw do
         get "/followers" => "topics#all_following_users"
         get "/posts" => "topics#all_posts"
       end
+
       resources :feeds, :only => [:update, :destroy, :show] do
         get "/topics" => "feeds#all_topics"
       end
+    
       resources :users, :only => [:update, :destroy, :index, :show] do
-        
         # favors
         get "/favors/:post_id" => "favors#create"
         post "/favors" => "favors#create"

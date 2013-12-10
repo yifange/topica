@@ -1,18 +1,38 @@
 module ModelHelpers
   ##
-  # Create followship of given user to odd index of given topic_ids
+  # Create followship of given user to odd index of a list of created topics
   #
   # * *Param*    :
-  #   - +topic_ids+:: a array of topic ids 
   #   - +user_id+::   the user id of user  to peform the follow
   # * *Returns* :
-  #   - array of the odd topic id which is followed by the user
+  #   - array of the odd id topic which is followed by the user
   ##
-  def create_followship_odd_idx_topic(topic_ids, user_id)
-    odd_topic_ids = topic_ids.reject{|i| i % 2 == 0}
-    odd_topic_ids.each do |t_id|
-      FactoryGirl.create(:followship, user_id: user_id, topic_id: t_id)
+  def create_followship(user_id)
+    followed_topics = FactoryGirl.create_list(:topic,20).
+                                  reject{|t| t.id % 2 == 0}
+    followed_topics.each do |t|
+      FactoryGirl.create(:followship, user_id: user_id, topic_id: t.id)
     end
-    odd_topic_ids
+    followed_topics 
   end
+
+  ##
+  # Create favoring of given user_id and some generated posts
+  #
+  # * *Param*    :
+  #   - +user_id+::   the user id of user  to peform the follow
+  # * *Returns* :
+  #   - array of the odd post which is favored by the user
+  ##
+  def create_favoring(user_id) 
+    # create 20 post of topic1, favor odd id post
+    posts = FactoryGirl.create_list(:post,20, user_id: user_id)
+    #favoring odd index post
+    favor_posts = posts.reject{|p| p.id % 2 ==0}
+    favor_posts.each do |p|
+      FactoryGirl.create(:favor, user_id: user_id, post_id: p.id)
+    end
+    favor_posts
+  end
+
 end

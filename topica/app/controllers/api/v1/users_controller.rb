@@ -18,9 +18,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # GET     /api/v1/users/:user_id/favors
   #
   def all_favoring_posts
-    post_ids = Favor.where(:user_id => params[:user_id]).map(&:post_id)
-    posts = Post.where(:id => post_ids)
-    render :json => posts
+    render :json => User.find(params[:user_id]).favoring_posts
   end
 
   # Get all the posts favored by a user
@@ -50,7 +48,8 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # +id+:: user_id
   # GET /api/v1/users/:user_id
   def show
-    render :json => User.find(params[:id]).select(:id, :username, :email)
+    user = User.select(:id, :username, :email).find(params[:id])
+    render :json => user
   end
 
   # Create a new user aka signup
@@ -95,4 +94,6 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   def user_params
     params.permit(:email, :password, :password_confirmation, :username)
   end
+
+
 end

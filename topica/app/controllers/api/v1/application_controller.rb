@@ -6,8 +6,8 @@
 class Api::V1::ApplicationController < ApplicationController
   protect_from_forgery with: :null_session
   after_filter :set_csrf_cookie_for_ng
-  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   rescue_from Exception, :with => :server_error
+  rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
   before_filter :require_login  
   skip_before_filter :require_login, only: [:ping]
   
