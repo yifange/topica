@@ -8,7 +8,7 @@ app.directive "newscard", ["$http", "Restangular",
         user: "="
         topics: "="
       }
-      templateUrl: "views/templates/newscard.html"
+      templateUrl: "views/newscard.html"
       link: (scope, element, attrs) ->
 
         scope.newComment = []
