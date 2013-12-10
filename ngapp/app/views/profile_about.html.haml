@@ -1,13 +1,13 @@
 .profile-card{"ng-controller" => "ProfileAboutController"}
   .profile-avatar
-    .gravatar-image.profile-image{"data-gravatar-email" => "user.email", "data-gravatar-size" => "70", "data-gravatar-default" => "mm"}
+    .gravatar-image.profile-image{"data-gravatar-email" => "profileUser.email", "data-gravatar-size" => "70", "data-gravatar-default" => "mm"}
   .profile-details
     %p.profile-username
-      {{user.username}}
+      {{profileUser.username}}
     %p.profile-name
-      {{user.name}}
+      {{profileUser.name}}
     %p.profile-email
-      {{user.email}}
+      {{profileUser.email}}
   .navbar
     .navbar-inner
       %ul.nav
