@@ -1,4 +1,4 @@
-.profile-card{"ng-controller" => "ProfileController"}
+.profile-card{"ng-controller" => "ProfileAboutController"}
   .profile-avatar
     .gravatar-image.profile-image{"data-gravatar-email" => "user.email", "data-gravatar-size" => "70", "data-gravatar-default" => "mm"}
   .profile-details
@@ -11,14 +11,14 @@
   .navbar
     .navbar-inner
       %ul.nav
-        %li{"ng-class" => "{'active': isActivePage('topics')}", "ng-click" => "isActivePage('topics')"}
-          %a{:href => ""}
+        %li{"ng-class" => "{'active': isActivePage('topics') || isActivePage('')}"}
+          %a{:href => "", "ng-click" => "goto('topics')"}
             Topics
         %li{"ng-class" => "{'active': isActivePage('feeds')}"}
           %a{:href => ""}
             Feeds
         %li{"ng-class" => "{'active': isActivePage('posts')}"}
-          %a{:href => ""}
+          %a{:href => "", "ng-click" => "goto('posts')"}
             Posts
         %li{"ng-class" => "{'active': isActivePage('favors')}"}
           %a{:href => ""}
