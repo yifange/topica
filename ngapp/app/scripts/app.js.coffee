@@ -13,7 +13,8 @@ app = angular.module 'topicaApp', [
   "topicaApp.directives.pluspicker",
   "topicaApp.directives.ngFocus",
   "topicaApp.directives.newscard",
-  "topicaApp.filters.linebreak"
+  "topicaApp.filters.linebreak",
+  "topicaApp.directives.buttonDropdown"
 ]
 app.config ["$routeProvider", ($routeProvider) ->
   $routeProvider
