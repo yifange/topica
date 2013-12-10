@@ -8,6 +8,7 @@ class Api::V1::ApplicationController < ApplicationController
   after_filter :set_csrf_cookie_for_ng
   rescue_from Exception, :with => :server_error
   rescue_from ActiveRecord::RecordNotFound, :with => :record_not_found
+  rescue_from CanCan::AccessDenied, :with => :access_denied
   before_filter :require_login  
   skip_before_filter :require_login, only: [:ping]
   
@@ -42,5 +43,8 @@ class Api::V1::ApplicationController < ApplicationController
   end
   def render_not_authenticated
     render :json => {:ok => false, :message => "Not authenticated"}, :status => :unauthorized
+  end
+  def access_denied
+    render :json => {:ok => false, :message =>"Not authorized"}, :status => :not_acceptable
   end
 end

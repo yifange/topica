@@ -73,8 +73,9 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   def update
     user = User.find(params[:id])
+    authorize! :update, user
     if user.update_attributes(user_params)
-      render :json => {:ok => true}, :head => :no_content
+      render :json => {:ok => true, :message => 'successful updated'}, :head => :no_content
     else
       render :json => {:ok => false, :message => user.errors}, :status => :unprocessable_entity
     end
@@ -84,8 +85,10 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # DELETE /api/v1/users/:user_id
 
   def destroy
-    User.find(params[:id]).destroy
-    render :json => {:ok => true}, :head => :no_content
+    user = User.find(params[:id])
+    authorize! :destroy, user
+    user.destroy
+    render :json => {:ok => true, :message => 'successful destroied'}, :head => :no_content
   end
 
   private
@@ -94,6 +97,4 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   def user_params
     params.permit(:email, :password, :password_confirmation, :username)
   end
-
-
 end

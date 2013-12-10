@@ -15,3 +15,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+tags
+ctag.sh
+Gemfile.lock.orig
+../project.wiki/
