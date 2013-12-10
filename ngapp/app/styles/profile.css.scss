@@ -26,3 +26,23 @@
   font-size: 25px;
   font-weight: bold;
 }
+.profile-actions {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  .fa-circle {
+    color: #888888;
+  }
+  .fa-home {
+    color: #dddddd;
+  }
+}
+
+.profile-actions:hover {
+  .fa-circle {
+    color: #aaaaaa;
+  }
+  .fa-home {
+    color: #e2e2e2;
+  }
+}
