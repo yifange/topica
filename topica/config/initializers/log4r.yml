@@ -14,7 +14,7 @@ log4r_config:
       level         : DEBUG
       trace         : 'true'
       outputters    : 
-      - console
+#      - console  #comment out to output log to console
       - railsfile
  
   # define all outputters (incl. formatters)
@@ -32,7 +32,9 @@ log4r_config:
     filename: "log/#{ENV}.log" # notice the file extension is needed! 
     trunc: false
     formatter: 
-      date_pattern: '%Y %m %d %H:%M:%S.%L %z'
+      #date_pattern: '%Y %m %d %H:%M:%S.%L %z' #too complicated
+      date_pattern: '%H:%M:%S'
       #pattern     : '[#{EC2_INSTANCE}][%p][#{APPNAME}]|[RAILS][%d][%l]: %m '
-      pattern     : '[%p][%d][%l]: %m '
+      #pattern     : '[%p][%d][%l]: %m '  # thread number
+      pattern     : '[%d][%l]: %m '
       type        : PatternFormatter
