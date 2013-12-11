@@ -1,7 +1,7 @@
-%button.btn.btn-success{"ng-mouseover" => "isMenuOpen = true"}
+%button.btn.btn-success{"ng-mouseover" => "openMenu()"}
   %i.fa.fa-check-circle-o
   Sports
-.button-dropdown-menu-wrapper{"ng-show" => "isMenuOpen", "ng-mouseleave" => "isMenuOpen = false; isEditing = false"}
+.button-dropdown-menu-wrapper{"ng-show" => "isMenuOpen", "ng-mouseleave" => "closeMenu(); isEditing = false", "ng-class" => "{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}"}
   %ul.button-dropdown-menu
     %li.button-dropdown-menu-item{"ng-repeat" => "item in items", "ng-class" => "{'active': item.selected}"}
       %a{:href => ""}
