@@ -13,16 +13,31 @@ app.directive 'buttonDropdown', [
       }
       templateUrl: "views/button_dropdown.html"
       link: (scope, element, attrs) ->
+
+        showOnTop = (element) ->
+          if ($position.offset(element).top - $window.scrollY) <= ($window.innerHeight - 40) / 2
+            false
+          else
+            true
+
+        scope.openInput = ($event) ->
+          $event.preventDefault()
+          $event.stopPropagation()
+          scope.isEditing = true
+
         scope.openMenu = ->
           scope.isMenuOpen = true
+          scope.showOnTop = showOnTop(element)
 
-          if ($position.offset(element).top - $window.scrollY) <= ($window.innerHeight - 40) / 2
-            scope.showOnTop = false
-          else
-            scope.showOnTop = true
 
         scope.closeMenu = ->
-          scope.isMenuOpen = false
+          unless scope.isEditing
+            scope.isMenuOpen = false
+
+
+        $document.bind "click", (event) ->
+          scope.$apply("isEditing = false")
+          scope.$apply("isMenuOpen = false")
 
         scope.items = [
           {
