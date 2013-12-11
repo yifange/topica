@@ -2,8 +2,8 @@
 .container-fluid{:style => "margin-top: 60px;"}
   .span6.offset3
     %div{"ng-include" => "", :src => "'views/profile_about.html'"}
-    .topic-card-wrapper{"ng-repeat" => "topic in topics"} 
-      .topic-inner{"collapse" => "(openningPostTopic !== undefined) && (openningPostTopic !== {{topic.id}})"}
+    .topic-card-wrapper{"ng-repeat" => "topic in topics", "collapse" => "isTopicCardCollapsed({{topic.id}})", "ng-class" => "{'allow-overflow': !isTopicCardCollapsed(topic.id)}"} 
+      .topic-inner
         .topic-card
           %h3.topic-card-heading
             {{topic.name}}

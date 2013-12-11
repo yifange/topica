@@ -1,16 +1,16 @@
 %button.btn.btn-success{"ng-mouseover" => "openMenu()"}
   %i.fa.fa-check-circle-o
   Sports
-.button-dropdown-menu-wrapper{"ng-show" => "isMenuOpen", "ng-mouseleave" => "closeMenu(); isEditing = false", "ng-class" => "{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}"}
+.button-dropdown-menu-wrapper{"ng-show" => "isMenuOpen", "ng-mouseleave" => "closeMenu()", "ng-class" => "{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}"}
   %ul.button-dropdown-menu
     %li.button-dropdown-menu-item{"ng-repeat" => "item in items", "ng-class" => "{'active': item.selected}"}
       %a{:href => ""}
         %span.item-name
           {{item.name}}
         %span.item-number.pull-right
-          42
+          {{item.number}}
   %div.button-dropdown-menu-action
-    %a{"ng-hide" => "isEditing", "ng-click" => "isEditing = true"}
+    %a{"ng-hide" => "isEditing", "ng-click" => "openInput($event)"}
       Create new feed
     %div.button-dropdown-new-feed{"ng-hide" => "!isEditing"}
       %input.button-dropdown-new-feed-input
