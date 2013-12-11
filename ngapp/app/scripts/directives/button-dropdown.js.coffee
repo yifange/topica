@@ -11,7 +11,7 @@ app.directive 'buttonDropdown', ['$document', '$http', ($document, $http) ->
 
       scope.items = [
         {
-          name: "Sports"
+          name: "Sports!!!!!!!"
           selected: false
         },
         {
