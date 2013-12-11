@@ -2,6 +2,14 @@
   right: 0;
   left: auto;
 }
+.menu-on-top {
+  bottom: -5px;
+  right: -2px;
+}
+.menu-on-bottom {
+  top: -5px;
+  right: -2px;
+}
 .button-dropdown-menu {
   max-height: 170px;
   overflow-y: auto;
@@ -107,8 +115,6 @@
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, 0.2);
   position: absolute;
-  top: -5px;
-  right: -2px;
   z-index: 1000;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
      -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
