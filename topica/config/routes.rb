@@ -49,8 +49,9 @@ Topica::Application.routes.draw do
         get "/following_topics" => "users#all_following_topics" # following topics
         get "/followships" => "users#all_followships"
         get "/followships/:topic_id" => "followships#create"
+        put "/followships/:followship_id" => "followships#update"
         post "/followships" => "followships#create"
-        delete "/followships/:topic_id" => "followships#destroy"
+        delete "/followships/:followship_id" => "followships#destroy"
 
         get "/topics" => "topics#index"
         get "/detailed_topics" => "topics#detail_index"
