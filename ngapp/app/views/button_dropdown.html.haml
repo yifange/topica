@@ -7,17 +7,17 @@
     Not following
 .button-dropdown-menu-wrapper{"ng-show" => "isMenuOpen", "ng-mouseleave" => "closeMenu()", "ng-class" => "{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}"}
   %ul.button-dropdown-menu
-    %li.button-dropdown-menu-item{"ng-repeat" => "item in items", "ng-class" => "{'active': item.id == selected.id}", "ng-click" => "selectId({{item.id}}, $event)"}
+    %li.button-dropdown-menu-item{"ng-repeat" => "feed in feeds", "ng-class" => "{'active': feed.id == selected.id}", "ng-click" => "selectId({{feed.id}}, $event)"}
       .button-dropdown-menu-item-wrapper
         .item-name
-          {{item.name}}
+          {{feed.name}}
         %span.item-number.pull-right
-          {{item.number}}
+          {{feed.number}}
   %div.button-dropdown-menu-action
     %a{"ng-hide" => "isEditing", "ng-click" => "openInput($event)"}
       Create new feed
     %div.button-dropdown-new-feed{"ng-hide" => "!isEditing"}
-      %input.button-dropdown-new-feed-input
-      %button.btn.btn-primary.btn-small.pull-right
+      %input.button-dropdown-new-feed-input{"ng-model" => "newFeed"}
+      %button.btn.btn-primary.btn-small.pull-right{"ng-click" => "createFeed()", "ng-disabled" => "!newFeed"}
         Create
 
