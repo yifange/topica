@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
 
   has_many :topics
-  has_many :followships
+  has_many :followships, -> { select :id, :topic_id, :feed_id}
   has_many :favors
   has_many :posts
   has_many :feeds
