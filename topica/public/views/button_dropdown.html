@@ -1,0 +1,35 @@
+<div class='follow-btn' ng-mouseover='openMenu()'>
+<button class='btn btn-success btn-following' ng-show='following'>
+<i class='fa fa-check-circle-o'></i>
+{{selected.name || "Following"}}
+</button>
+<button class='btn btn-not-following' ng-show='!following'>
+<i class='fa fa-circle-o'></i>
+Not following
+</button>
+</div>
+<div class='button-dropdown-menu-wrapper' ng-class="{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}" ng-mouseleave='closeMenu()' ng-show='isMenuOpen'>
+<ul class='button-dropdown-menu'>
+<li class='button-dropdown-menu-item' ng-class="{'active': feed.id == selected.id}" ng-click='selectId({{feed.id}}, $event)' ng-repeat='feed in feeds'>
+<div class='button-dropdown-menu-item-wrapper'>
+<div class='item-name'>
+{{feed.name}}
+</div>
+<span class='item-number pull-right'>
+{{feed.number}}
+</span>
+</div>
+</li>
+</ul>
+<div class='button-dropdown-menu-action'>
+<a ng-click='openInput($event)' ng-hide='isEditing'>
+Create new feed
+</a>
+<div class='button-dropdown-new-feed' ng-hide='!isEditing'>
+<input class='button-dropdown-new-feed-input' ng-model='newFeed'>
+<button class='btn btn-primary btn-small pull-right' ng-click='createFeed()' ng-disabled='!newFeed'>
+Create
+</button>
+</div>
+</div>
+</div>

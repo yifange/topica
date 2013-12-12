@@ -2,8 +2,8 @@
 <div class='container-fluid' style='margin-top: 60px;'>
 <div class='span6 offset3'>
 <div ng-include='' src="'views/profile_about.html'"></div>
-<div class='topic-card-wrapper' ng-repeat='topic in topics'>
-<div class='topic-inner' collapse='(openningPostTopic !== undefined) &amp;&amp; (openningPostTopic !== {{topic.id}})'>
+<div class='topic-card-wrapper' collapse='isTopicCardCollapsed({{topic.id}})' ng-class="{'allow-overflow': !isTopicCardCollapsed(topic.id)}" ng-repeat='topic in topics'>
+<div class='topic-inner'>
 <div class='topic-card'>
 <h3 class='topic-card-heading'>
 {{topic.name}}
@@ -15,8 +15,13 @@
 </a>
 ,
 <a href='' ng-click='showFollowers({{topic.id}})'>
-{{topic.followers_size}} people following
+{{topic.followers_size}} followers
 </a>
+</div>
+<div class='topic-card-button-dropdown'>
+<div class='topic-card-button-dropdown-wrapper'>
+<div class='button-dropdown' feeds='feeds' following='topic.following' followship-id='topic.followshipId' selected='topic.selected' topic-id='topic.id' user='user'></div>
+</div>
 </div>
 </div>
 </div>
