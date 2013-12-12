@@ -16,6 +16,6 @@
                 {{topic.followers_size}} followers
             .topic-card-button-dropdown
               .topic-card-button-dropdown-wrapper
-                .button-dropdown
+                .button-dropdown{:items => "feeds", :selected => "topic.selected", "rel" => "topic.followshipId", :following => "topic.following"}
       .topic-posts{:collapse => "openningPostTopic !== topic.id"}
         %div.newscard{"posts" => "topic.posts", "user" => "user"}
