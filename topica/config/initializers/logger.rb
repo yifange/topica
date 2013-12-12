@@ -14,6 +14,7 @@ exception is thrown or the request returned a status of 500. The DEBUG level
 will print the timings of view renderings and database calls and the parameters 
 are printed at the PARAMS log level.
 =end
+
 def time_in_ms(start, finish)
   return ( ((finish - start).to_f * 100000).round / 100.0 )
 end
@@ -83,4 +84,9 @@ ActiveSupport::Notifications.subscribe("process_action.action_controller") do |n
     "TIMING[ms]: sum:#{time_in_ms_s(start,finish)} db:#{db} view:#{view}" 
   }
 
+  ActiveSupport::Notifications.subscribe "exception.action_controller" do |name, start, finish, id, payload|
+    logger = Log4r::Logger['rails']
+    logger.exception { "msg:#{payload[:message]} - inspect:#{payload[:inspect]} - backtrace:#{payload[:backtrace].to_json}" }
+  end
+ 
 end

@@ -20,5 +20,6 @@ Topica::Application.config.log_level = :unknown
 
 Topica::Application.config.logger = Log4r::Logger['rails']
 ActiveRecord::Base.logger = Log4r::Logger['rails'] 
+ActionController::Base.logger = Log4r::Logger['rails']
 
 
