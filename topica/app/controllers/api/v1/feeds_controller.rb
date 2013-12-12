@@ -7,7 +7,7 @@ class Api::V1::FeedsController < Api::V1::ApplicationController
   # Query for all the feeds in descendent order
   # GET     /api/v1/users/:user_id/feeds 
   def index
-    render :json => User.find(params[:user_id]).feeds
+    render :json => User.find(params[:user_id]).feeds.includes(:topics).order(:created_at => :asc), :methods => :topic_size
   end
 
   # Get all the topics of a feed

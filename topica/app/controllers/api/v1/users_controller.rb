@@ -31,12 +31,20 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     
   # Get all the following topics of a user
   #
-  # GET     /api/v1/users/:user_id/follows
+  # GET     /api/v1/users/:user_id/following_topics
   def all_following_topics
     topics = User.find(params[:user_id]).following_topics
     render :json => topics
   end
-  
+
+  # Get all the followships of a user
+  #
+  # GET     /api/v1/users/:user_id/followships
+  #
+  def all_followships
+    followships = User.find(params[:user_id]).followships
+    render :json => followships
+  end
   # Query for all the users in descendent order
   # GET /users
   def index

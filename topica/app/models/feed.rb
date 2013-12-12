@@ -7,4 +7,8 @@ class Feed < ActiveRecord::Base
 
   has_many :topics, :through => :followships
   has_many :posts, :through => :topics
+
+  def topic_size
+    topics.size
+  end
 end
