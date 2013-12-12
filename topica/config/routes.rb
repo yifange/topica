@@ -43,7 +43,8 @@ Topica::Application.routes.draw do
         resources :posts, :only => [:index, :destroy, :update]
         
         get "/following_posts" => "users#all_following_posts"
-        get "/follows" => "users#all_following_topics" # following topics
+        get "/following_topics" => "users#all_following_topics" # following topics
+        get "/followships" => "users#all_followships"
         get "/followships/:topic_id" => "followships#create"
         post "/followships" => "followships#create"
         delete "/followships/:topic_id" => "followships#destroy"
