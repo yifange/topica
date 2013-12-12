@@ -4,21 +4,41 @@ app.directive 'buttonDropdown', [
   '$http',
   '$position',
   '$window',
-  ($document, $http, $position, $window) ->
+  'Restangular',
+  ($document, $http, $position, $window, Restangular) ->
     {
       restrict: "CA"
       scope: {
-        # items: "="
-        remoteUrl: "@"
+        items: "="
+        selected: "="
+        following: "="
+        rel: "&"
       }
       templateUrl: "views/button_dropdown.html"
       link: (scope, element, attrs) ->
-
         showOnTop = (element) ->
           if ($position.offset(element).top - $window.scrollY) <= ($window.innerHeight - 40) / 2
             false
           else
             true
+
+        scope.selectId = (feedId, $event) ->
+          $event.preventDefault()
+          $event.stopPropagation()
+          if scope.following is false
+            # create followship, set selection, set followship id
+            scope.following = true
+
+          else
+            if !scope.selected or scope.selected.id isnt feedId
+              # Update followship, set selection
+              scope.selected = {id: feedId, name: _.find(scope.items, {id: feedId}).name}
+            else if scope.selected.id is feedId
+              # Destroy followship, unset followship id
+              scope.following = false
+              scope.selected = {}
+
+
 
         scope.openInput = ($event) ->
           $event.preventDefault()
@@ -39,43 +59,5 @@ app.directive 'buttonDropdown', [
           scope.$apply("isEditing = false")
           scope.$apply("isMenuOpen = false")
 
-        scope.items = [
-          {
-            name: "Sports!!!!!!!"
-            selected: false
-          },
-          {
-            name: "Music"
-            selected: true
-          },
-          {
-            name: "Fun"
-            selected: false
-          },
-          {
-            name: "Travel"
-            selected: false
-          }
-          {
-            name: "Travel"
-            selected: false
-          }
-          {
-            name: "Travel"
-            selected: false
-          }
-          {
-            name: "Travel"
-            selected: false
-          }
-          {
-            name: "Travel"
-            selected: false
-          }
-          {
-            name: "Travel"
-            selected: false
-          }
-        ]
     }
 ]

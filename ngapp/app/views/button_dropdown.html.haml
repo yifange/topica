@@ -1,11 +1,15 @@
-%button.btn.btn-success{"ng-mouseover" => "openMenu()"}
-  %i.fa.fa-check-circle-o
-  Sports
+.follow-btn{"ng-mouseover" => "openMenu()"}
+  %button.btn.btn-success.btn-following{"ng-show" => "following"}
+    %i.fa.fa-check-circle-o
+    {{selected.name || "Following"}}
+  %button.btn.btn-not-following{"ng-show" => "!following"}
+    %i.fa.fa-circle-o
+    Not following
 .button-dropdown-menu-wrapper{"ng-show" => "isMenuOpen", "ng-mouseleave" => "closeMenu()", "ng-class" => "{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}"}
   %ul.button-dropdown-menu
-    %li.button-dropdown-menu-item{"ng-repeat" => "item in items", "ng-class" => "{'active': item.selected}"}
-      %a{:href => ""}
-        %span.item-name
+    %li.button-dropdown-menu-item{"ng-repeat" => "item in items", "ng-class" => "{'active': item.id == selected.id}", "ng-click" => "selectId({{item.id}}, $event)"}
+      .button-dropdown-menu-item-wrapper
+        .item-name
           {{item.name}}
         %span.item-number.pull-right
           {{item.number}}
