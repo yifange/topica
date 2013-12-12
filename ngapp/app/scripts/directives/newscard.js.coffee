@@ -17,11 +17,16 @@ app.directive "newscard", ["$http", "Restangular",
         repostCommentOpenStates = []
 
         scope.toggleComments = (index) ->
-          commentOpenStates[index] = !commentOpenStates[index]
-          if commentOpenStates[index]
+          unless commentOpenStates[index]
+            if scope.posts[index].comments
+              commentOpenStates[index] = true
             Restangular.one("posts", scope.posts[index].id).getList("comments").then (comments) ->
-              scope.posts[index].comments = comments
-              scope.posts[index].comment_size = comments.length if scope.posts[index].comment_size != comments.length
+              if !scope.posts[index].comments or (_.max(scope.posts[index].comments, "updated_at") < _.max(comments, "updated_at"))
+                scope.posts[index].comments = comments
+                scope.posts[index].comment_size = comments.length
+                commentOpenStates[index] = true
+          else
+            commentOpenStates[index] = false
 
         scope.commentIsOpen = (index) ->
           !!commentOpenStates[index]
