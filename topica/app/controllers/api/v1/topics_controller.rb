@@ -12,7 +12,7 @@ class Api::V1::TopicsController < Api::V1::ApplicationController
   # Query for all topics of a user, return a list of topics with number of posts and number of followers
   # GET    /api/v1/users/:user_id/detailed_topics
   def detail_index
-    render :json => User.find(params[:user_id]).topics, :methods => [:posts_size, :followers_size]
+    render :json => User.find(params[:user_id]).topics.includes(:posts, :followships), :methods => [:posts_size, :followers_size]
   end
 
   # Query for all the posts of the user
