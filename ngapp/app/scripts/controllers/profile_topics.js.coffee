@@ -26,20 +26,16 @@ app.controller "ProfileTopicsController", [
             )
             if followship is undefined
               topic.following = false
-              console.log "not following"
             else
-              console.log "following"
               topic.following = true
               feedId = followship.feed_id
               topic.followshipId = followship.id
-              console.log topic.followshipId
               feed = (_.find $scope.feeds, (feed) ->
                 feed.id == feedId
               )
               if feed isnt undefined
                 topic.selected = {id: feed.id, name: feed.name}
-                console.log topic.selected
-          console.log $scope.topics
+            true
     $scope.isTopicCardCollapsed = (topicId) ->
       ($scope.openningPostTopic isnt undefined) and ($scope.openningPostTopic isnt topicId)
 
