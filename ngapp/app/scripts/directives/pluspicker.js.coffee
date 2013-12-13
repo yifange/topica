@@ -19,7 +19,7 @@ app.directive 'pluspicker', ['$document', '$http',
               <span class='pluspicker-listitem-text'>
                 {{item.text}}
               </span>
-              <div class='pluspicker-close' ng-click='deselectItem({{item.id}}, $event)'>
+              <div class='pluspicker-close' ng-click='deselectItem(item.id, $event)'>
                 <i class='fa fa-times-circle'></i>
               </div>
             </span>
@@ -30,7 +30,7 @@ app.directive 'pluspicker', ['$document', '$http',
           </span>
         </div>
         <ul class='pluspicker-menu'>
-          <li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false} | filter: input' ng-click='selectItem({{item.id}}, $event)'>
+          <li class='pluspicker-menu-item' ng-repeat='item in items | filter: {selected: false} | filter: input' ng-click='selectItem(item.id, $event)'>
             <a>
               {{item.text}}
             </a>
