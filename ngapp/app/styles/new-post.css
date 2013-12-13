@@ -18,16 +18,16 @@
   -webkit-transition:all linear 0.3s;
   transition:all linear 0.3s;
 }
-.new-post-input-box.ng-hide-add,
-.new-post-input-box.ng-hide-remove {
-  display: block !important;
-}
-
-.new-post-input-box.ng-hide {
-  height: 0;
-  width: 0;
-}
-
+/* .new-post-input-box.ng-hide-add, */
+/* .new-post-input-box.ng-hide-remove { */
+/*   display: block !important; */
+/* } */
+/*  */
+/* .new-post-input-box.ng-hide { */
+/*   height: 0; */
+/*   width: 0; */
+/* } */
+/*  */
 .new-post-card .card-body {
   padding-bottom: 40px;
 }

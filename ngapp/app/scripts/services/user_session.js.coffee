@@ -43,5 +43,6 @@ app.service "UserSession", [
         $location.path("/login")
         undefined
 
+    undefined
 
 ]
