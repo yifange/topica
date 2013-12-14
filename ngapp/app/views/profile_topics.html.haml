@@ -2,17 +2,28 @@
 .container-fluid{:style => "margin-top: 60px;"}
   .span6.offset3
     %div{"ng-include" => "", :src => "'views/profile_about.html'"}
-    .topic-card-wrapper{"ng-repeat" => "topic in topics", "collapse" => "isTopicCardCollapsed({{topic.id}})", "ng-class" => "{'allow-overflow': !isTopicCardCollapsed(topic.id)}"} 
+    .topic-card-wrapper.collapse{"ng-repeat" => "topic in topics", "ng-class" => "{'expanded': !isTopicCardCollapsed(topic.id), 'collapsed': isTopicCardCollapsed(topic.id)}"} 
       .topic-inner
         .topic-card
+          .topic-card-button
+            .dropdown-toggle
+              %i.fa.fa-chevron-down
+            %ul.dropdown-menu
+              %li{"ng-show" => "topic.following"}
+                %a{"ng-click" => "unfollow(topic.id)"}
+                  Unfollow this topic
+              %li{"ng-show" => "!topic.following"}
+                %a{"ng-click" => "follow(topic.id)"}
+                  Follow this topic
+
           %h3.topic-card-heading
             {{topic.name}}
           .topic-card-body
             .topic-card-stats
-              %a{:href => "", "ng-click" => "showPosts({{topic.id}})"}
+              %a{:href => "", "ng-click" => "showPosts(topic.id)"}
                 {{topic.posts_size}} posts
               , 
-              %a{:href => "", "ng-click" => "showFollowers({{topic.id}})"}
+              %a{:href => "", "ng-click" => "showFollowers(topic.id)"}
                 {{topic.followers_size}} followers
             .topic-card-button-dropdown
               .topic-card-button-dropdown-wrapper

@@ -9,7 +9,7 @@
           {{user.username}}
         %ul.dropdown-menu
           %li
-            %a{:href => "", "ng-click" => "changeView('/profile/{{user.id}}')"}
+            %a{:href => "", "ng-href" => "#/profile/{{user.id}}"}
               %i.fa.fa-user
               Profile
             %a{:href => "", "ng-click" => "logout()"}
