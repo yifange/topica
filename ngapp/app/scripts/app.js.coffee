@@ -34,6 +34,10 @@ app.config ["$routeProvider", ($routeProvider) ->
       templateUrl: 'views/profile_topics.html',
       controller: 'ProfileTopicsController'
     })
+    .when('/profile/:profileId/topics/:topicId', {
+      templateUrl: 'views/profile_topics.html',
+      controller: 'ProfileTopicsController'
+    })
     .when('/profile/:profileId/topics', {
       templateUrl: 'views/profile_topics.html',
       controller: 'ProfileTopicsController'

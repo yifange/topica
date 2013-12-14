@@ -49,6 +49,7 @@ textarea.new-comment-input-box-content:focus:active:hover {
 }
 .card-topic-badges-wrapper {
   position: absolute;
+  z-index: 1001;
   right: 0;
   top: 0;
   margin: 38px 0 0 0;

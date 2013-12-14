@@ -12,7 +12,7 @@
     .card-topic-badge{"ng-repeat" => "topic in post.topics", "ng-class" => "{'opacity-hide': ($index != 0)}"}
       %span.card-topic-badge-ribbon.pull-right
         &nbsp;
-      %a.card-topic-badge-text{"ng-bind" => "topic.name"}
+      %a.card-topic-badge-text{"ng-bind" => "topic.name", "ng-href" => "#/profile/{{topic.user_id}}/topics/{{topic.id}}"}
 
   .card-body
     %p{"ng-bind-html" => "post.content | linebreak"}
