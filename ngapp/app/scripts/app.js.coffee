@@ -1,3 +1,10 @@
+###*
+ * @doc function
+ * @name hahaha
+ * @description nothing
+ *
+ * All the dependencies
+ ###
 app = angular.module 'topicaApp', [
   'ngRoute',
   'ngSanitize',
