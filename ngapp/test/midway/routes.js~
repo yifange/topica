@@ -1,0 +1,57 @@
+describe("Midway Testing for Routes", function() {
+
+  var tester;
+  beforeEach(function() {
+    tester = ngMidwayTester('topicaApp');
+  });
+
+  afterEach(function() {
+    tester.destroy();
+    tester = null;
+  });
+
+  it("should have a working main route", function() {
+    expect(ROUTER.routeDefined('main')).to.equal(true);
+    var url = ROUTER.routePath('main');
+    expect(url).to.equal('/');
+  });
+
+  it("should have a main route that should go to the MainController controller", function() {
+    var route = ROUTER.getRoute('main');
+    route.params.controller.should.equal('MainController');
+  });
+
+  it("should have a working profile route", function() {
+    expect(ROUTER.routeDefined('profile')).to.equal(true);
+    var url = ROUTER.routePath('profile');
+    expect(url).to.equal('/profile');
+  });
+
+  it("should have a profile route that should go to the ProfileController controller", function() {
+    var route = ROUTER.getRoute('profile');
+    route.params.controller.should.equal('ProfileController');
+  });
+
+  it("should have a working signup route", function() {
+    expect(ROUTER.routeDefined('signup')).to.equal(true);
+    var url = ROUTER.routePath('signup');
+    expect(url).to.equal('/signup');
+  });
+
+  it("should have a signup route that should go to the SignupController controller", function() {
+    var route = ROUTER.getRoute('signup');
+    route.params.controller.should.equal('SignupController');
+  });
+
+  it("should have a working login route", function() {
+    expect(ROUTER.routeDefined('login')).to.equal(true);
+    var url = ROUTER.routePath('login');
+    expect(url).to.equal('/login');
+  });
+
+  it("should have a login route that should goto the LoginController controller", function() {
+    var route = ROUTER.getRoute('login');
+    route.params.controller.should.equal('LoginController');
+  });
+
+});
