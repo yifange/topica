@@ -46,6 +46,10 @@ app.config ["$routeProvider", ($routeProvider) ->
       templateUrl: 'views/profile_posts.html'
       controller: 'ProfilePostsController'
     })
+    .when('/profile/:profileId/feeds', {
+      templateUrl: 'views/profile_feeds.html'
+      controller: 'ProfileFeedsController'
+    })
     .otherwise({
       redirectTo: '/'
     })
