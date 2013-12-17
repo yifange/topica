@@ -11,6 +11,9 @@ Topica::Application.routes.draw do
       root :to => "application#ping"
       get "ping" => "application#ping"
       
+      #search
+      get "/search" => "search#search_all"
+
       resources :comments, :only => [:destroy, :update, :show]
 
       resources :posts, :only => [:create, :destroy, :update, :show] do

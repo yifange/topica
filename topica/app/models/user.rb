@@ -19,10 +19,12 @@ class User < ActiveRecord::Base
 
   # solr
   searchable do
-    text :name
-    string :username
-    time :created_at
-    time :updated_at
+    text    :name
+    string  :username
+    time    :created_at
+    time    :updated_at
+    # TODO temporay hack enable multi modle search to be group
+    string  :type do |topic| topic.class.name end
   end
 
 
