@@ -12,6 +12,7 @@ describe Api::V1::UsersController do
   context 'not login' do
     describe "all_comments" do
       it "should return :unauthorized" do
+        debugger
         get :all_comments, :user_id => 1
         expect(response.status).to eq(401)
       end
