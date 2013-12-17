@@ -77,8 +77,6 @@ app.directive 'buttonDropdown', [
               (_.find scope.feeds, {id: feedId}).number -= 1
               scope.selected = null
 
-
-
         scope.openInput = ($event) ->
           $event.preventDefault()
           $event.stopPropagation()

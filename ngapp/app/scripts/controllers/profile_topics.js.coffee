@@ -59,6 +59,8 @@ app.controller "ProfileTopicsController", [
     $scope.unfollow = (topicId) ->
       topic = (_.find $scope.topics, {id: topicId})
       topic.following = false
+      (_.find $scope.feeds, {id: topic.selected.id}).number -= 1
+      topic.selected = null
       Restangular.one("users", $scope.user.id).one("followships", topic.followshipId).remove()
     $scope.follow = (topicId) ->
       topic = (_.find $scope.topics, {id: topicId})
