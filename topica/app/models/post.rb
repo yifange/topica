@@ -14,6 +14,17 @@ class Post < ActiveRecord::Base
   has_many :favoring_users, -> { select "users.id", :email, :username, :name}, 
               :class_name => "User", :through => :favors, :source => :user
 
+  # sunspot
+  searchable do
+    text      :title,    :boost => 2.0
+    text      :content 
+    integer   :user_id
+    time      :created_at
+    time      :updated_at
+    # TODO temporay hack enable multi modle search to be group
+    string    :type do |topic| topic.class.name end
+  end
+
   def comment_size
     comments.size
   end

@@ -48,7 +48,14 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   # Query for all the users in descendent order
   # GET /users
   def index
-    render :json => User.all.order("created_at DESC")
+    if params[:search]
+      @user = Sunspot.search(User) do
+        fulltext params[:search]
+      end.results
+    else
+      @user = User.all.order("created_at DESC")
+    end
+    render :json => @user
   end
 
   # Query for one user by id
@@ -98,7 +105,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
     user.destroy
     render :json => {:ok => true, :message => 'successful destroied'}, :head => :no_content
   end
-
+  
   private
   # Whitelist the required fields in params hash
 

@@ -5,6 +5,8 @@
 class Api::V1::UserSessionsController < Api::V1::ApplicationController
   skip_before_filter :require_login, except: [:destroy]
 
+  skip_before_filter :require_login, :create
+
   # Create a user session aka login
   # POST    /api/v1/login 
   def create

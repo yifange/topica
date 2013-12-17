@@ -1,6 +1,6 @@
 .topic-card {
   position: relative;
-  margin: 10px 0 20px 0;
+  margin: 0 0 20px 0;
   background-color: #ffffff;
   border: 1px solid #d8d8d8;
   border-top: 5px solid white;
@@ -15,6 +15,12 @@
 .topic-card .topic-card-heading {
   padding: 0 20px;
   margin-top: 10px;
+}
+.topic-card .topic-card-button {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  cursor: pointer;
 }
 .topic-card-stats {
   padding-bottom: 20px;
@@ -31,6 +37,18 @@
   right: 20px;
 }
 
-.allow-overflow {
+.collapsed {
+  overflow: hidden;
+  height: 0px;
+}
+.expanded {
   overflow: visible;
+  height: 146px;
+}
+.topic-card-button i {
+  font-size: 10px;
+}
+.topic-card-button ul {
+  left: initial;
+  right: -10px;
 }

@@ -1,0 +1,15 @@
+%div{"ng-include" => "", :src => "'views/navbar.html'"}
+.container-fluid{:style => "margin-top: 60px;"}
+  .span6.offset3
+    %div{"ng-include" => "", :src => "'views/profile_about.html'"}
+    .card{"ng-repeat" => "feed in feeds"}
+      .feed-card
+        .card-heading.image
+          -# .fa.fa-folder
+
+          -# .card-heading-header
+          %h3.feed-card-heading
+            %a{:href => "", "ng-click" => "showTopics(feed.id)"}
+              {{feed.name}}
+        .card-body
+        %div.newscard{"topics" => "feed.topics", "user" => "user"}

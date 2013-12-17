@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe Post do
+  it { should have_searchable_field(:title,:content) }
   before(:each) do
     @rd = Random.new
     # generate 5 users

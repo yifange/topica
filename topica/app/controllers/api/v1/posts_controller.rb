@@ -18,7 +18,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   #
   # GET /users/:user_id/posts
   def index
-    render :json => User.find(params[:user_id]).posts, :order => {:updated_at => :desc}
+    render :json => User.find(params[:user_id]).posts.includes(:topics), :order => {:updated_at => :desc}, :include => "topics"
   end
 
   # Query for one post by id

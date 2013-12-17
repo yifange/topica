@@ -7,7 +7,7 @@
     Not following
 .button-dropdown-menu-wrapper{"ng-show" => "isMenuOpen", "ng-mouseleave" => "closeMenu()", "ng-class" => "{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}"}
   %ul.button-dropdown-menu
-    %li.button-dropdown-menu-item{"ng-repeat" => "feed in feeds", "ng-class" => "{'active': feed.id == selected.id}", "ng-click" => "selectId({{feed.id}}, $event)"}
+    %li.button-dropdown-menu-item{"ng-repeat" => "feed in feeds", "ng-class" => "{'active': feed.id == selected.id}", "ng-click" => "selectId(feed.id, $event)"}
       .button-dropdown-menu-item-wrapper
         .item-name
           {{feed.name}}

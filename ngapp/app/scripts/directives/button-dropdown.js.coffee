@@ -65,18 +65,17 @@ app.directive 'buttonDropdown', [
                 }
               )
 
-              (_.find scope.feeds, {id: scope.selected.id}).number -= 1
+              (_.find scope.feeds, {id: scope.selected.id}).number -= 1 if scope.selected
               (_.find scope.feeds, {id: feedId}).number += 1
 
               scope.selected = {id: feedId, name: _.find(scope.feeds, {id: feedId}).name}
             else if scope.selected.id is feedId
               # Destroy followship, unset followship id
-              Restangular.one("users", scope.user().id).one("followships", scope.followshipId).remove()
+              Restangular.one("users", scope.user().id).one("followships", scope.followshipId).put {
+                feed_id: null
+              }
               (_.find scope.feeds, {id: feedId}).number -= 1
-              scope.following = false
-              scope.selected = {}
-
-
+              scope.selected = null
 
         scope.openInput = ($event) ->
           $event.preventDefault()

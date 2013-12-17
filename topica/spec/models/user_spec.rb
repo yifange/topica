@@ -6,6 +6,8 @@ RSpec.configure do |c|
 end
 
 describe User do
+  it { should have_searchable_field(:username) }
+
   context 'create user' do
     it 'should require username' do
      FactoryGirl.build(:user, username: '').should_not be_valid

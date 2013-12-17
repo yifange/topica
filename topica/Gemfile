@@ -11,8 +11,9 @@ gem 'pg'
 gem 'uglifier', '>= 1.3.0'
 
 # solr search service
-#gem 'sunspot_rails'
-#gem 'sunspot_solr'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'sunspot_matchers'#make it easier to unit test search logic
 
 gem "sorcery"
 
@@ -35,9 +36,13 @@ group :development, :test do
 end
 
 group :development, :test do
-      gem 'railroady'
+  gem 'railroady'
 end
 
 # Authorization library for Ruby on Rails
-gem "cancan"
+gem 'cancan'
 
+gem 'progress_bar'
+
+#replace rails logger
+gem 'log4r'

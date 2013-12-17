@@ -11,6 +11,14 @@ app.controller "ProfileTopicsController", [
     $scope.profileId = $routeParams.profileId
     Restangular.one("users", $scope.profileId).all("detailed_topics").getList().then (topics) ->
       $scope.topics = topics
+      topicId = parseInt $routeParams.topicId
+      if _.find $scope.topics, {id: topicId}
+        $scope.openningPostTopic = topicId
+        Restangular.one("topics", topicId).all("posts").getList().then (posts) ->
+          _.find($scope.topics, (topic) ->
+            topic.id is topicId
+          ).posts = posts
+
       Restangular.one("users", $scope.user.id).all("feeds").getList().then (feeds) ->
         $scope.feeds = _.map feeds, (feed) ->
           {
@@ -48,6 +56,18 @@ app.controller "ProfileTopicsController", [
             topic.id is topicId
           ).posts = posts
           $scope.openningPostTopic = topicId
-
+    $scope.unfollow = (topicId) ->
+      topic = (_.find $scope.topics, {id: topicId})
+      topic.following = false
+      (_.find $scope.feeds, {id: topic.selected.id}).number -= 1
+      topic.selected = null
+      Restangular.one("users", $scope.user.id).one("followships", topic.followshipId).remove()
+    $scope.follow = (topicId) ->
+      topic = (_.find $scope.topics, {id: topicId})
+      Restangular.one("users", $scope.user.id).all("followships").post({
+        topic_id: topic.id
+      }).then (followship) ->
+        topic.followshipId = followship.id
+        topic.following = true
 
 ]

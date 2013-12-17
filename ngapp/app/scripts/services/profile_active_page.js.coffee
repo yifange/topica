@@ -5,3 +5,4 @@ app.service "ProfileActivePage", ->
     activePage = page
   @getActivePage = ->
     activePage
+  null
