@@ -20,6 +20,7 @@ module.exports = function (grunt) {
   // load the proxy.
   grunt.loadNpmTasks('grunt-connect-proxy');
   grunt.loadNpmTasks('grunt-haml');
+  grunt.loadNpmTasks('grunt-karma');
   // configurable paths
   var yeomanConfig = {
     app: 'app',
@@ -378,9 +379,20 @@ module.exports = function (grunt) {
     },
     karma: {
       unit: {
-        configFile: 'karma.conf.js',
+        configFile: './test/karma-unit.conf.js',
+        autoWatch: false,
         singleRun: true
-      }
+      },
+      midway: {
+        configFile: './test/karma-midway.conf.js',
+        autoWatch: false,
+        singleRun: true
+      },
+      e2e: {
+        configFile: './test/karma-e2e.conf.js',
+        autoWatch: false,
+        singleRun: true
+      },
     },
     cdnify: {
       dist: {
