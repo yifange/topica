@@ -20,12 +20,12 @@ module.exports = function() {
       'app/bower_components/angular-http-auth/src/http-auth-interceptor.js',
       'app/bower_components/angular-bootstrap/ui-bootstrap.js',
       'app/bower_components/angular-animate/angular-animate.js',
-      'node_modules/expect.js/expect.js',
-      'node_modules/ng-midway-tester/src/ng-midway-tester.js',
+      'node_modules/expect.js/expect.js',      
 
       //App-specific Code      
       'app/scripts/app.js.coffee',
       'app/scripts/controllers/*.js.coffee',
+      '.tmp/views/*.html',
     ]
   }
 };

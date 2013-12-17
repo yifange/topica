@@ -1,3 +1,4 @@
+//Ensure that controllers are executing properly
 describe("Unit Tests for Controllers", function() {
 
   beforeEach(angular.mock.module('topicaApp'));

@@ -1,3 +1,4 @@
+//Ensure that our controllers have scopes
 describe("Midway Testing for Controllers", function() {
 
   var tester;
@@ -19,8 +20,8 @@ describe("Midway Testing for Controllers", function() {
     });
   });
 
-  it('should load the MainController controller properly when /main route is accessed', function(done) {
-    tester.visit('/main', function() {
+  it('should load the MainController controller properly when / route is accessed', function(done) {
+    tester.visit('/', function() {
       expect(tester.path()).to.equal('/');
       var current = tester.inject('$route').current;
       var controller = current.controller;

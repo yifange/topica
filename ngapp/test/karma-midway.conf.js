@@ -7,8 +7,11 @@ module.exports = function(config) {
     //3rd party
     'node_modules/ng-midway-tester/src/ngMidwayTester.js',
 
+    //mocha stuff
+    'test/mocha.conf.js',
+
     //test files
-    './test/midway/*.js',
+    'test/midway/*.js',
   ]);
 
   config.set(conf);

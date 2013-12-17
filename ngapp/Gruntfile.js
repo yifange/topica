@@ -389,6 +389,11 @@ module.exports = function (grunt) {
         autoWatch: false,
         singleRun: true
       },
+      e2e: {
+        configFile: './test/karma-e2e.conf.js',
+        autoWatch: false,
+        singleRun: true
+      },
     },
     cdnify: {
       dist: {
