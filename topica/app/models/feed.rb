@@ -16,7 +16,7 @@ class Feed < ActiveRecord::Base
     time      :updated_at
     # TODO temporay hack enable multi modle search to be group
     string    :type do |topic| topic.class.name end
-
+  end
   def topic_size
     topics.size
   end

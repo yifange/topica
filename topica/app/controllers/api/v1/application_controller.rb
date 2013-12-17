@@ -39,11 +39,9 @@ class Api::V1::ApplicationController < ApplicationController
     render :json => {:ok => false, :message => "Record not found"}, :status => :not_found
   end
   def server_error(e)
-    debugger
-    logger.error e.backtrace.join("\n")
     render :json => {:ok => false, :message => e.message}, :status => :internal_server_error
   end
-  def render_not_authenticated(e)
+  def render_not_authenticated
     render :json => {:ok => false, :message => "Not authenticated"}, :status => :unauthorized
   end
   def access_denied
