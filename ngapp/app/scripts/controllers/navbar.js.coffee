@@ -1,4 +1,13 @@
 app = angular.module("topicaApp")
+
+###*
+* @doc overview
+* @id navbar_controller
+* @name topicaApp.controllers:NavbarController
+* @description This is the Navbarcontroller
+*
+###
+
 app.controller 'NavbarController', [
   # "Restangular",
   "$rootScope",

@@ -1,3 +1,9 @@
+###*
+* @doc overview
+* @id signup_controller
+* @name topicaAll.controllers:SignupController
+* @description This is the signup_controller.
+###
 app = angular.module("topicaApp")
 app.controller "SignupController", [
   'Configs',

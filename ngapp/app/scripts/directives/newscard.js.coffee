@@ -1,3 +1,11 @@
+###*
+# @doc overview
+* @ngdoc directive
+* @id newscard
+* @name topicaApp.directive.newscard:NewscardDirective
+* @description This is the Newscarddirectives
+*
+###
 app = angular.module("topicaApp.directives.newscard", [])
 app.directive "newscard", ["$http", "Restangular",
   ($http, Restangular) ->

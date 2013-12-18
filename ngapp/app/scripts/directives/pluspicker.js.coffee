@@ -1,3 +1,11 @@
+###*
+* @ngdoc directive
+* @id pluspicker
+* @name topicaApp.directives.pluspicker:PluspickerDirectives
+* @description This is the Plus_picker_directives
+*
+###
+
 app = angular.module("topicaApp.directives.pluspicker", [])
 app.directive 'pluspicker', ['$document', '$http',
   ($document, $http) ->

@@ -1,3 +1,10 @@
+###*
+* @doc overview
+* @id user_session_service
+* @name topicaApp:UserSession
+* @description This is the Usersession.
+###
+
 app = angular.module("topicaApp")
 app.service "UserSession", [
   "$http",

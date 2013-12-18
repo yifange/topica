@@ -20,6 +20,7 @@ module.exports = function (grunt) {
   // load the proxy.
   grunt.loadNpmTasks('grunt-connect-proxy');
   grunt.loadNpmTasks('grunt-haml');
+  grunt.loadNpmTasks('grunt-docular');
   // configurable paths
   var yeomanConfig = {
     app: 'app',
@@ -31,6 +32,53 @@ module.exports = function (grunt) {
   } catch (e) {}
 
   grunt.initConfig({
+    pkg: grunt.file.readJSON('package.json'), 
+    docular: {
+      groups: [
+        {
+          groupTitle: "Topica",
+          groupId: "topica",
+          groupIcon: "icon-beer",
+          showSource: true,
+          sections: [
+            {
+              id: "controllers",
+              title: "Controllers",
+              showSource: true,
+              scripts: [
+                ".tmp/scripts/controllers/"
+              ],
+            },
+            {
+              id: "directives",
+              title: "Directives",
+              showSource: true,
+              scripts: [
+                ".tmp/scripts/directives/"
+              ]
+            },
+            {
+              id: "filters",
+              title: "Filters",
+              showSource: true,
+              scripts: [
+                ".tmp/scripts/filters/"
+              ]
+            },
+            {
+              id: "services",
+              title: "Services",
+              showSource: true,
+              scripts: [
+                ".tmp/scripts/services/"
+              ]
+            }
+          ]
+        }
+      ],
+      showDocularDocs: false,
+      showAngularDocs: false
+    },
     yeoman: yeomanConfig,
     watch: {
       haml: {
@@ -454,6 +502,11 @@ module.exports = function (grunt) {
   grunt.registerTask('default', [
     'jshint',
     'test',
-    'build'
+    'build',
+    'docular'
+  ]);
+  grunt.registerTask('doc', [
+    'coffee',
+    'docular'
   ]);
 };

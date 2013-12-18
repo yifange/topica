@@ -1,3 +1,9 @@
+###*
+* @doc overview
+* @id profile_following_controller
+* @name topicaApp.controllers:ProfileFollowingController
+* @description This is the profile_followingcontroller.
+###
 app = angular.module('topicaApp')
 app.controller "ProfileFollowingController", [
   "Restangular",
