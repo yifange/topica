@@ -16,6 +16,7 @@ describe("Midway Testing for Controllers", function() {
       var controller = current.controller;
       var scope = current.scope;
       expect(controller).to.eql('SignupController');
+      expect(scope).not.to.eql(null);
       done();
     });
   });
@@ -27,6 +28,7 @@ describe("Midway Testing for Controllers", function() {
       var controller = current.controller;
       var scope = current.scope;
       expect(controller).to.eql('MainController');
+      expect(scope).not.to.eql(null);
       done();
     });
   });
@@ -38,17 +40,43 @@ describe("Midway Testing for Controllers", function() {
       var controller = current.controller;
       var scope = current.scope;
       expect(controller).to.eql('LoginController');
+      expect(scope).not.to.eql(null);
       done();
     });
   });
 
   it('should load the ProfileController controller properly when /profile route is accessed', function(done) {
-    tester.visit('/profile', function() {
-      expect(tester.path()).to.equal('/profile');
+    tester.visit('/profile/1', function() {
+      expect(tester.path()).to.equal('/profile/1');
       var current = tester.inject('$route').current;
       var controller = current.controller;
       var scope = current.scope;
-      expect(controller).to.eql('ProfileController');
+      expect(controller).to.eql('ProfileTopicsController');
+      expect(scope).not.to.eql(null);
+      done();
+    });
+  });
+
+  it('should load the ProfileController controller properly when /profile route is accessed', function(done) {
+    tester.visit('/profile/1/topics', function() {
+      expect(tester.path()).to.equal('/profile/1/topics');
+      var current = tester.inject('$route').current;
+      var controller = current.controller;
+      var scope = current.scope;
+      expect(controller).to.eql('ProfileTopicsController');
+      expect(scope).not.to.eql(null);
+      done();
+    });
+  });
+
+  it('should load the ProfileController controller properly when /profile route is accessed', function(done) {
+    tester.visit('/profile/1/posts', function() {
+      expect(tester.path()).to.equal('/profile/1/posts');
+      var current = tester.inject('$route').current;
+      var controller = current.controller;
+      var scope = current.scope;
+      expect(controller).to.eql('ProfilePostsController');
+      expect(scope).not.to.eql(null);
       done();
     });
   });

@@ -2,19 +2,36 @@
 <div class='container-fluid' style='margin-top: 60px;'>
 <div class='span6 offset3'>
 <div ng-include='' src="'views/profile_about.html'"></div>
-<div class='topic-card-wrapper' collapse='isTopicCardCollapsed({{topic.id}})' ng-class="{'allow-overflow': !isTopicCardCollapsed(topic.id)}" ng-repeat='topic in topics'>
+<div class='topic-card-wrapper collapse' ng-class="{'expanded': !isTopicCardCollapsed(topic.id), 'collapsed': isTopicCardCollapsed(topic.id)}" ng-repeat='topic in topics'>
 <div class='topic-inner'>
 <div class='topic-card'>
+<div class='topic-card-button'>
+<div class='dropdown-toggle'>
+<i class='fa fa-chevron-down'></i>
+</div>
+<ul class='dropdown-menu'>
+<li ng-show='topic.following'>
+<a ng-click='unfollow(topic.id)'>
+Unfollow this topic
+</a>
+</li>
+<li ng-show='!topic.following'>
+<a ng-click='follow(topic.id)'>
+Follow this topic
+</a>
+</li>
+</ul>
+</div>
 <h3 class='topic-card-heading'>
 {{topic.name}}
 </h3>
 <div class='topic-card-body'>
 <div class='topic-card-stats'>
-<a href='' ng-click='showPosts({{topic.id}})'>
+<a href='' ng-click='showPosts(topic.id)'>
 {{topic.posts_size}} posts
 </a>
 ,
-<a href='' ng-click='showFollowers({{topic.id}})'>
+<a href='' ng-click='showFollowers(topic.id)'>
 {{topic.followers_size}} followers
 </a>
 </div>

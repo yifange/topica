@@ -2,5 +2,108 @@
 <div class='container-fluid' style='margin-top: 60px;'>
 <div class='span6 offset3'>
 <div ng-include='' src="'views/profile_about.html'"></div>
+<div class='card' ng-repeat='post in posts'>
+<div class='card-heading image'>
+<div class='gravatar-image card-heading-avatar' data-gravatar-default='mm' data-gravatar-email='post.user.email' data-gravatar-size='46'></div>
+<div class='card-heading-header'>
+<h3 class='card-heading-title'>
+{{post.title}}
+</h3>
+<span am-time-ago='post.updated_at'></span>
+</div>
+</div>
+<div class='card-topic-badges-wrapper'>
+<div class='card-topic-badge' ng-class="{'opacity-hide': ($index != 0)}" ng-repeat='topic in post.topics'>
+<span class='card-topic-badge-ribbon pull-right'>
+&nbsp;
+</span>
+<a class='card-topic-badge-text' ng-bind='topic.name' ng-href='#/profile/{{topic.user_id}}/topics/{{topic.id}}'></a>
+</div>
+</div>
+<div class='card-body'>
+<p ng-bind-html='post.content | linebreak'></p>
+</div>
+<div class='card-actions'>
+<div class='card-buttons pull-left'>
+<button class='btn star-button'>
+<i class='fa fa-star-o'></i>
+</button>
+<button class='btn share-button' ng-click='openRepostComment($index); focusRepostComment = true'>
+Share
+</button>
+</div>
+<div class='inline-comment-input-box' ng-click='openNewComment($index); focusComment = true' ng-hide='post.comment_size &gt; 0 || newCommentIsOpen($index) || repostCommentIsOpen($index)'>
+<div class='new-comment-input-box'>
+Add a comment...
+</div>
+</div>
+</div>
+<div class='card-comments' ng-show='post.comment_size &gt; 0 || newCommentIsOpen($index) || repostCommentIsOpen($index)'>
+<div class='comments-collapse-toggle' ng-show='post.comment_size &gt; 0'>
+<a ng-click='toggleComments($index)'>
+{{post.comment_size}} comments
+<i class='fa fa-angle-down'></i>
+</a>
+</div>
+<div class='comment-list' collapse='!commentIsOpen($index)'>
+<div class='comments' ng-repeat='comment in post.comments'>
+<div class='media'>
+<a class='pull-left' href=''>
+<div class='gravatar-image' data-gravatar-default='mm' data-gravatar-email='comment.user.email' data-gravatar-size='28'></div>
+</a>
+<div class='media-body'>
+<h4 class='media-heading'>
+{{comment.user.username}}
+<span am-time-ago='comment.updated_at' class='comment-time muted'></span>
+</h4>
+<p ng-bind-html='comment.content | linebreak'></p>
+</div>
+</div>
+</div>
+</div>
+<div class='comments'>
+<div class='media' ng-hide='newCommentIsOpen($index)'>
+<div class='new-comment-input-box' ng-click='openNewComment($index); focusComment = true' ng-show='post.comment_size &gt; 0'>
+Add a comment...
+</div>
+</div>
+<div class='media' ng-show='newCommentIsOpen($index)'>
+<a class='pull-left'>
+<div class='gravatar-image' data-gravatar-default='mm' data-gravatar-email='user.email' data-gravatar-size='28'></div>
+</a>
+<div class='media-body'>
+<textarea class='new-comment-input-box-content' msd-elastic='' ng-focus-lost='commentLoseFocus()' ng-focus='focusComment' ng-model='post.newComment'></textarea>
+<div class='comment-buttons'>
+<button class='btn btn-primary' ng-click='submitComment($index)' ng-disabled="!post.newComment || post.newComment == ''">
+Post comment
+</button>
+<button class='btn' ng-click='closeNewComment($index)'>
+Cancel
+</button>
+</div>
+</div>
+</div>
+<div class='media' ng-show='repostCommentIsOpen($index)'>
+<a class='pull-left'>
+<div class='gravatar-image' data-gravatar-default='mm' data-gravatar-email='user.email' data-gravatar-size='28'></div>
+</a>
+<div class='media-body'>
+<textarea class='new-comment-input-box-content repost-comment-input-box-content' msd-elastic='' ng-focus-lost='repostCommentLoseFocus()' ng-focus='focusRepostComment' ng-model='post.newComment'></textarea>
+<div class='repost-topic-picker'>
+<div class='pluspicker' item-template='itemTemplate' items='topics' on-add='addItem(item)' remote-url='{{baseUrl}}/users/{{user.id}}/topics'></div>
+</div>
+<div class='comment-buttons'>
+<button class='btn btn-primary' ng-click='submitComment($index)' ng-disabled="!post.newComment || post.newComment == ''">
+Share
+</button>
+<button class='btn' ng-click='closeRepostComment($index)'>
+Cancel
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>

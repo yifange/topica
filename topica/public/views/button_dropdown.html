@@ -10,7 +10,7 @@ Not following
 </div>
 <div class='button-dropdown-menu-wrapper' ng-class="{'menu-on-top': showOnTop, 'menu-on-bottom': !showOnTop}" ng-mouseleave='closeMenu()' ng-show='isMenuOpen'>
 <ul class='button-dropdown-menu'>
-<li class='button-dropdown-menu-item' ng-class="{'active': feed.id == selected.id}" ng-click='selectId({{feed.id}}, $event)' ng-repeat='feed in feeds'>
+<li class='button-dropdown-menu-item' ng-class="{'active': feed.id == selected.id}" ng-click='selectId(feed.id, $event)' ng-repeat='feed in feeds'>
 <div class='button-dropdown-menu-item-wrapper'>
 <div class='item-name'>
 {{feed.name}}

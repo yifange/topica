@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131117211413) do
+ActiveRecord::Schema.define(version: 20131208233748) do
 
   create_table "categories", force: true do |t|
     t.integer  "topic_id"
