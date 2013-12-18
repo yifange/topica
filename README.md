@@ -11,3 +11,14 @@ E.g. we defined in the [User model](https://pl.cs.jhu.edu:8000/oose-13-group-12/
 
 All the APIs are listed [here](https://pl.cs.jhu.edu:8000/oose-13-group-12/project/blob/master/topica/api_routes.md)
 Instructions on unit testing in rails can be found [here](https://pl.cs.jhu.edu:8000/oose-13-group-12/project/wikis/unit-testing).
+
+Instruction on how to install npm and nodeJS, plese refer to the following commands.
+echo 'export PATH=$HOME/local/bin:$PATH' >> ~/.bashrc
+. ~/.bashrc
+mkdir ~/local
+mkdir ~/node-latest-install
+cd ~/node-latest-install
+curl http://nodejs.org/dist/node-latest.tar.gz | tar xz --strip-components=1
+./configure --prefix=~/local
+make install # ok, fine, this step probably takes more than 30 seconds...
+curl https://npmjs.org/install.sh | sh
