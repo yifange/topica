@@ -20,3 +20,4 @@ tags
 ctag.sh
 Gemfile.lock.orig
 ../project.wiki/
+/solr
