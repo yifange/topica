@@ -4,14 +4,14 @@
       Share what's new...
     .new-post-input-box-arrow-out{"ng-show" => "!edit"}
     .new-post-input-box-arrow-in{"ng-show" => "!edit"}
-    %input.new-post-input-box.new-post-input-box-title{"ng-hide" => "!edit", "ng-model" => "newPost.title", :placeholder => "Title..."}   
+    %input.new-post-input-box.new-post-input-box-title{"ng-hide" => "!edit", "ng-model" => "newPost.title", :placeholder => "Type in title..."}   
     %textarea.new-post-input-box.new-post-input-box-content{"ng-hide" => "!edit", "ng-model" => "newPost.content", "msd-elastic" => "\n", "ng-focus" => "focusPost", "ng-focus-lost" => "focusPost = false"}
     .topic-picker{"ng-hide" => "!edit"}
       .topic-picker-label.pull-left
         To:
       .pluspicker{:items => "topics", "on-add" => "addItem(item)", "remote-url" => "{{baseUrl}}/users/{{user.id}}/topics", "item-template" => "itemTemplate"}
     .new-post-actions{"ng-hide" => "!edit"}
-      %button.btn.btn-primary{"ng-click" => "createNewPost()"}
+      %button.btn.btn-primary{"ng-click" => "createNewPost()", "ng-disabled" => "!submittable()"}
         Share
       %button.btn{"ng-click" => "edit = false"}
         Cancel

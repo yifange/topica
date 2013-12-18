@@ -59,6 +59,8 @@ app.controller "NewPostController", [
         $scope.newPost = {}
       $scope.edit = false
 
+    $scope.submittable = ->
+      $scope.newPost.title and $scope.newPost.content and (_.find($scope.topics, {selected: true}))
     # XXX Not used
     $scope.addItem = (item) ->
       console.log(item)

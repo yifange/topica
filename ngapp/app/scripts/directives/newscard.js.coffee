@@ -99,12 +99,14 @@ app.directive "newscard", ["$http", "Restangular",
             console.log scope.topics
             scope.closeRepostComment(index)
 
-
-
         scope.commentLoseFocus = ->
           scope.focusComment = false
 
         scope.repostCommentLoseFocus = ->
           scope.focusRepostComment = false
+
+        scope.topicSelected = ->
+          _.find scope.topics, {selected: true}
+
     }
 ]
