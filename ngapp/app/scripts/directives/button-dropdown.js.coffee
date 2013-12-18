@@ -1,3 +1,10 @@
+###*
+* @doc overview
+* @ngdoc directive
+* @id button_dropdown
+* @name topicaApp.directive.buttonDropdown:Buttondropdown
+* @description This is the Buttondropdown.
+###
 app = angular.module("topicaApp.directives.buttonDropdown", ['ui.bootstrap.position'])
 app.directive 'buttonDropdown', [
   '$document',

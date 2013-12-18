@@ -1,3 +1,10 @@
+###*
+* @doc overview
+* @id new_post_controller
+* @name topicaApp.controllers:NewPostController
+* @description This is the newpostcontroller.
+###
+
 app = angular.module("topicaApp")
 app.controller "NewPostController", [
   "Restangular",

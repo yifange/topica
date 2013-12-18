@@ -1,4 +1,12 @@
 app = angular.module("topicaApp")
+###*
+* @doc overview
+* @id main_controller
+* @name topicaApp.controllers:MainController
+* @description This is the Maincontroller.
+*
+###
+
 app.controller 'MainController', [
   "Restangular",
   "$scope",

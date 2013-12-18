@@ -1,4 +1,11 @@
 app = angular.module("topicaApp")
+###*
+* @doc overview
+* @id login_controller
+* @name topicaApp.controllers:LoginController
+* @description This is the LoginController
+*
+###
 app.controller "LoginController", [
   'Configs',
   '$http',

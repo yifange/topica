@@ -40,7 +40,8 @@
     "karma": "~0.10.2",
     "karma-ng-html2js-preprocessor": "~0.1.0",
     "grunt-connect-proxy": "~0.1.6",
-    "grunt-haml": "~0.8.0"
+    "grunt-haml": "~0.8.0",
+    "grunt-docular": "*"
   },
   "engines": {
     "node": ">=0.8.0"

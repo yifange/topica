@@ -1,3 +1,11 @@
+###*
+* @doc overview
+* @id topics_service
+* @name topicaApp:Topics
+* @description This is the Topics.
+*
+###
+
 app = angular.module("topicaApp")
 app.service "Topics", [
   "$http",

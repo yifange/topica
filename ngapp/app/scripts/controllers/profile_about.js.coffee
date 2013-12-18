@@ -1,3 +1,11 @@
+###*
+* @doc overview
+* @id profile_about_controller
+* @name topicaApp.controllers:ProfileAboutController
+* @description This is the profile_aboutcontroller.
+*
+###
+
 app = angular.module("topicaApp")
 app.controller "ProfileAboutController", [
   "Restangular",
