@@ -2,11 +2,11 @@
 * @ngdoc directive
 * @id ng_focus
 * @name topicaApp.directives.ngFocus:ngfocus
-* @description This is the Ng_focusDirectives
+* @description Auto focus the input box
 *
+* http://stackoverflow.com/a/14859639
 ###
 
-# http://stackoverflow.com/a/14859639
 app = angular.module "topicaApp.directives.ngFocus", []
 app.directive "ngFocus", ($timeout) ->
   return {

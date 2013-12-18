@@ -3,7 +3,9 @@
 * @ngdoc directive
 * @id button_dropdown
 * @name topicaApp.directive.buttonDropdown:Buttondropdown
-* @description This is the Buttondropdown.
+* @description The button dropdown directive.
+*
+* This is used to assign feeds to a topic
 ###
 app = angular.module("topicaApp.directives.buttonDropdown", ['ui.bootstrap.position'])
 app.directive 'buttonDropdown', [
@@ -31,12 +33,14 @@ app.directive 'buttonDropdown', [
         element.bind "click", (event) ->
           event.preventDefault()
           event.stopPropagation()
-
+        # check the current postion of the widget, and determine if the menu is to show on top or bottom
         showOnTop = (element) ->
           if ($position.offset(element).top - $window.scrollY) <= ($window.innerHeight - 40) / 2
             false
           else
             true
+        # create a new feed
+        # this is triggered when create button is clicked
         scope.createFeed = ->
           if scope.newFeed
             Restangular.one("users", scope.user().id).all("feeds").post({
@@ -45,7 +49,8 @@ app.directive 'buttonDropdown', [
               scope.feeds.push {id: feed.id, name: feed.name, number: 0}
               scope.newFeed = ""
               scope.isEditing = false
-
+        # select a feed in the menu
+        # this is triggered when a feed is clicked in the menu
         scope.selectId = (feedId, $event) ->
           $event.preventDefault()
           $event.stopPropagation()

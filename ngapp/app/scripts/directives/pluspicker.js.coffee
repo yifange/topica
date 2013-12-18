@@ -2,8 +2,9 @@
 * @ngdoc directive
 * @id pluspicker
 * @name topicaApp.directives.pluspicker:PluspickerDirectives
-* @description This is the Plus_picker_directives
+* @description Pluspicker directive
 *
+* Used to select target topics for a new post or repost.
 ###
 
 app = angular.module("topicaApp.directives.pluspicker", [])
@@ -52,8 +53,6 @@ app.directive 'pluspicker', ['$document', '$http',
       </div>
               """
       link: (scope, element, attrs) ->
-        # $http.get(scope.remoteUrl).then (response) ->
-        #   scope.items = ({id: item.id, text: item.name, selected: false} for item in response.data)
         scope.selectedItems = []
 
         scope.isNew = ->
@@ -84,8 +83,8 @@ app.directive 'pluspicker', ['$document', '$http',
             item.id == id
           ).selected = false
 
-          # Should change to _.remove when restangular gets updated
-          # because the current restangular version depends on lodash 1.3
+          # XXX Should change to _.remove when restangular gets updated
+          # XXX because the current restangular version depends on lodash 1.3
 
           scope.selectedItems = scope.selectedItems.filter (item) ->
             item.id isnt id

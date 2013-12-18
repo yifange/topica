@@ -3,8 +3,9 @@
 * @ngdoc directive
 * @id newscard
 * @name topicaApp.directive.newscard:NewscardDirective
-* @description This is the Newscarddirectives
+* @description newscard directive
 *
+* Used to show all the posts
 ###
 app = angular.module("topicaApp.directives.newscard", [])
 app.directive "newscard", ["$http", "Restangular",
