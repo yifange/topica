@@ -113,6 +113,9 @@ textarea.new-comment-input-box-content:focus:active:hover {
     opacity: 1;
     display: block;
   }
+  .card-topic-badge-more {
+    display: none;
+  }
 }
 
 textarea.repost-comment-input-box-content {

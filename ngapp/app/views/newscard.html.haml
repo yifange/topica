@@ -9,10 +9,14 @@
       %span
         , posted by {{post.user.username}}
   .card-topic-badges-wrapper
-    .card-topic-badge{"ng-repeat" => "topic in post.topics", "ng-class" => "{'opacity-hide': ($index != 0)}"}
+    .card-topic-badge{"ng-repeat" => "topic in post.topics", "ng-class" => "{'opacity-hide': !$first}"}
       %span.card-topic-badge-ribbon.pull-right
         &nbsp;
-      %a.card-topic-badge-text{"ng-bind" => "topic.name", "ng-href" => "#/profile/{{topic.user_id}}/topics/{{topic.id}}"}
+      %a.card-topic-badge-text{"ng-href" => "#/profile/{{topic.user_id}}/topics/{{topic.id}}"}
+        %span{"ng-bind" => "topic.name"}
+        %span.card-topic-badge-more{"ng-show" => "$first && post.topics.length > 1"}
+          &nbsp;({{post.topics.length - 1}}+) 
+          
 
   .card-body
     %p{"ng-bind-html" => "post.content | linebreak"}
