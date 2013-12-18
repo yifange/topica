@@ -54,7 +54,7 @@
         .media-body
           %textarea.new-comment-input-box-content{"ng-model" => "post.newComment", "msd-elastic" => "", "ng-focus" => "focusComment", "ng-focus-lost" => "commentLoseFocus()"}
           .comment-buttons
-            %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "repost($index)"}
+            %button.btn.btn-primary{"ng-disabled" => "!post.newComment || post.newComment == ''", "ng-click" => "submitComment($index)"}
               Post comment
             %button.btn{"ng-click" => "closeNewComment($index)"}
               Cancel

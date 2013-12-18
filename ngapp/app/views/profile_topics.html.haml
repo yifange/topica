@@ -29,4 +29,4 @@
               .topic-card-button-dropdown-wrapper
                 .button-dropdown{:feeds => "feeds", :selected => "topic.selected", "followship-id" => "topic.followshipId", :following => "topic.following", "user" => "user", "topic-id" => "topic.id"}
       .topic-posts{:collapse => "openningPostTopic !== topic.id"}
-        %div.newscard{"posts" => "topic.posts", "user" => "user"}
+        %div.newscard{"posts" => "topic.posts", "user" => "user", :topics => "topic_selections"}

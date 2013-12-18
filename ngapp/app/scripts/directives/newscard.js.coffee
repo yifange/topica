@@ -27,13 +27,11 @@ app.directive "newscard", ["$http", "Restangular",
 
         scope.toggleComments = (index) ->
           unless commentOpenStates[index]
-            if scope.posts[index].comments
-              commentOpenStates[index] = true
+            commentOpenStates[index] = true
             Restangular.one("posts", scope.posts[index].id).getList("comments").then (comments) ->
               if (_.size(scope.posts[index].comments) isnt scope.posts[index].comment_size) or (!scope.posts[index].comments) or (_.max(scope.posts[index].comments, "updated_at") < _.max(comments, "updated_at"))
                 scope.posts[index].comments = comments
                 scope.posts[index].comment_size = comments.length
-                commentOpenStates[index] = true
           else
             commentOpenStates[index] = false
 
@@ -82,7 +80,7 @@ app.directive "newscard", ["$http", "Restangular",
                 name: topic.text
                 topic_type: topic.topic_type
               }
-
+          console.log "hello repost"
           Restangular.all("posts").post({
             title: scope.posts[index].title
             content: scope.posts[index].content
@@ -93,8 +91,7 @@ app.directive "newscard", ["$http", "Restangular",
             newPost.num_of_comments = 0
             newPost.topics = topics
             console.log scope.selectedTopicIds
-            main_scope = angular.element(document.getElementById("main-view")).scope()
-            main_scope.posts.unshift(newPost)
+            scope.posts.unshift(newPost)
             for topic in scope.topics
               topic.selected = false
             newPost = null

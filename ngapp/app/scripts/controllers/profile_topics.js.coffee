@@ -15,7 +15,8 @@ app.controller "ProfileTopicsController", [
   "$scope",
   "Configs",
   "$routeParams",
-  (Restangular, UserSession, $scope, Configs, $routeParams) ->
+  "$rootScope",
+  (Restangular, UserSession, $scope, Configs, $routeParams, $rootScope) ->
     $scope.baseUrl = Configs.apiRoot
     $scope.user = UserSession.getSession()
     $scope.profileId = $routeParams.profileId
@@ -23,6 +24,7 @@ app.controller "ProfileTopicsController", [
     # GET /users/:user_id/detailed_topics
     Restangular.one("users", $scope.profileId).all("detailed_topics").getList().then (topics) ->
       $scope.topics = topics
+      $rootScope.topic_selections = ({id: item.id, text: item.name, selected:false} for item in topics)
       topicId = parseInt $routeParams.topicId
       if _.find $scope.topics, {id: topicId}
         $scope.openningPostTopic = topicId
@@ -74,6 +76,7 @@ app.controller "ProfileTopicsController", [
             topic.id is topicId
           ).posts = posts
           $scope.openningPostTopic = topicId
+
     # unfollow a topic
     # Triggered when the "unfollow topic" link in the menu is clicked
     $scope.unfollow = (topicId) ->
