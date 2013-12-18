@@ -3,8 +3,11 @@ app = angular.module("topicaApp")
 * @doc overview
 * @id login_controller
 * @name topicaApp.controllers:LoginController
-* @description This is the LoginController
+* @description The login controller.
 *
+* The controller of the login view.
+* Route:
+* /login
 ###
 app.controller "LoginController", [
   'Configs',
@@ -15,6 +18,7 @@ app.controller "LoginController", [
   (Configs, $http, $scope, authService, UserSession) ->
     # redirect if the user has logged in
     $scope.credential = {email: "", password: "", rememberMe: false}
+    # Submit the login credentials.
     $scope.submit = ->
       UserSession.login($scope.credential.email, $scope.credential.password, $scope.credential.rememberMe).then (response) ->
           user = response.data.user

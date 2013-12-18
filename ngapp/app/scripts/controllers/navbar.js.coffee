@@ -4,12 +4,12 @@ app = angular.module("topicaApp")
 * @doc overview
 * @id navbar_controller
 * @name topicaApp.controllers:NavbarController
-* @description This is the Navbarcontroller
+* @description Navbar controller
 *
+* Provides the funcionalities for both the top navbar and the side bar partials.
 ###
 
 app.controller 'NavbarController', [
-  # "Restangular",
   "$rootScope",
   "UserSession",
   "$scope",
@@ -18,6 +18,8 @@ app.controller 'NavbarController', [
     openHotcornerMenu = false
     openFullMenu = false
     selected = false
+
+    # The items in the sidebar
     menuItems = [
       {
         name: "user"
@@ -35,6 +37,7 @@ app.controller 'NavbarController', [
         icon: "comment-o"
       }
     ]
+    # The currently displaying item
     $scope.visibleItems = menuItems
 
     $scope.arrowClass = (name) ->
@@ -42,7 +45,7 @@ app.controller 'NavbarController', [
         "fa-angle-double-left"
       else
         "fa-angle-double-right"
-
+    # Select an item from the sidebar. Set the visibleItems and toggle the selected flag
     $scope.selectMenuItem = (index) ->
       if !selected
         $scope.visibleItems = [$scope.visibleItems[index]]
@@ -51,6 +54,7 @@ app.controller 'NavbarController', [
         $scope.visibleItems = menuItems
         selected = false
 
+    # Toggle the full hotcorner menu when clicking on the hotcorner icon
     $scope.toggleHotcornerMenu = ->
       openFullMenu = !openFullMenu
 
