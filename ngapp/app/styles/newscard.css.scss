@@ -116,19 +116,19 @@ textarea.new-comment-input-box-content:focus:active:hover {
 }
 
 textarea.repost-comment-input-box-content {
-  border-bottom: none !important;
-  margin-bottom: 0;
+  border-top: none !important;
+  margin-top: 0;
 }
 
 textarea.repost-comment-input-box-content:focus:active:hover {
-  border-bottom: none !important;
+  border-top: none !important;
 }
 .repost-topic-picker {
   // margin-top: -1px;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 .repost-topic-picker .pluspicker-box {
-  border-top: none;
+  border-bottom: none;
   box-shadow: none;
 }
 
