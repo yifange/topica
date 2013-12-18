@@ -14,7 +14,7 @@ log4r_config:
       level         : DEBUG
       trace         : 'true'
       outputters    : 
-      - console  #comment out to output log to console
+#      - console  #comment out to output log to console
       - railsfile
  
   # define all outputters (incl. formatters)

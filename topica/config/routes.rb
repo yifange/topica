@@ -12,7 +12,10 @@ Topica::Application.routes.draw do
       get "ping" => "application#ping"
       
       #search
-      get "/search" => "search#search_all"
+      post "search" => "search#search_all"
+      post "searchuser" => "search#search_user"
+      resources :search, :only => [] do
+      end
 
       resources :comments, :only => [:destroy, :update, :show]
 

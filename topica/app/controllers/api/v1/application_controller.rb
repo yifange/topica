@@ -39,6 +39,7 @@ class Api::V1::ApplicationController < ApplicationController
     render :json => {:ok => false, :message => "Record not found"}, :status => :not_found
   end
   def server_error(e)
+    logger.error e.message
     logger.error e.backtrace.join("\n")
     render :json => {:ok => false, :message => e.message}, :status => :internal_server_error
   end
