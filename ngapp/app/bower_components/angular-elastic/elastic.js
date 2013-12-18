@@ -1,5 +1,5 @@
 /*
- * angular-elastic v2.1.0
+ * angular-elastic v2.2.0
  * (c) 2013 Monospaced http://monospaced.com
  * License: MIT
  */
@@ -42,12 +42,13 @@ angular.module('monospaced.elastic', [])
         var appendText = attrs.msdElastic || config.append,
             append = appendText === '\\n' ? '\n' : appendText,
             $win = angular.element($window),
-            $mirror = angular.element('<textarea tabindex="-1" style="position: absolute; ' +
-                                      'top: -999px; right: auto; bottom: auto; left: 0 ;' +
-                                      'overflow: hidden; -webkit-box-sizing: content-box; ' +
-                                      '-moz-box-sizing: content-box; box-sizing: content-box; ' +
-                                      'min-height: 0!important; height: 0!important; padding: 0;' +
-                                      'word-wrap: break-word; border: 0;"/>').data('elastic', true),
+            mirrorStyle = 'position: absolute; top: -999px; right: auto; bottom: auto; left: 0 ;' +
+                          'overflow: hidden; -webkit-box-sizing: content-box;' +
+                          '-moz-box-sizing: content-box; box-sizing: content-box;' +
+                          'min-height: 0 !important; height: 0 !important; padding: 0;' +
+                          'word-wrap: break-word; border: 0;',
+            $mirror = angular.element('<textarea tabindex="-1" ' +
+                                      'style="' + mirrorStyle + '"/>').data('elastic', true),
             mirror = $mirror[0],
             taStyle = getComputedStyle(ta),
             resize = taStyle.getPropertyValue('resize'),
@@ -55,14 +56,14 @@ angular.module('monospaced.elastic', [])
                         taStyle.getPropertyValue('-moz-box-sizing') === 'border-box' ||
                         taStyle.getPropertyValue('-webkit-box-sizing') === 'border-box',
             boxOuter = !borderBox ? {width: 0, height: 0} : {
-                          width: parseInt(taStyle.getPropertyValue('border-right-width'), 10) +
+                          width:  parseInt(taStyle.getPropertyValue('border-right-width'), 10) +
                                   parseInt(taStyle.getPropertyValue('padding-right'), 10) +
                                   parseInt(taStyle.getPropertyValue('padding-left'), 10) +
                                   parseInt(taStyle.getPropertyValue('border-left-width'), 10),
                           height: parseInt(taStyle.getPropertyValue('border-top-width'), 10) +
-                                 parseInt(taStyle.getPropertyValue('padding-top'), 10) +
-                                 parseInt(taStyle.getPropertyValue('padding-bottom'), 10) +
-                                 parseInt(taStyle.getPropertyValue('border-bottom-width'), 10)
+                                  parseInt(taStyle.getPropertyValue('padding-top'), 10) +
+                                  parseInt(taStyle.getPropertyValue('padding-bottom'), 10) +
+                                  parseInt(taStyle.getPropertyValue('border-bottom-width'), 10)
                         },
             minHeightValue = parseInt(taStyle.getPropertyValue('min-height'), 10),
             heightValue = parseInt(taStyle.getPropertyValue('height'), 10),
@@ -107,8 +108,9 @@ angular.module('monospaced.elastic', [])
           // copy the essential styles from the textarea to the mirror
           taStyle = getComputedStyle(ta);
           angular.forEach(copyStyle, function(val){
-            mirror.style[val] = taStyle.getPropertyValue(val);
+            mirrorStyle += val + ':' + taStyle.getPropertyValue(val) + ';';
           });
+          mirror.setAttribute('style', mirrorStyle);
         }
 
         function adjust() {
@@ -131,9 +133,7 @@ angular.module('monospaced.elastic', [])
             taHeight = ta.style.height === '' ? 'auto' : parseInt(ta.style.height, 10);
 
             // update mirror width in case the textarea width has changed
-            width = parseInt(borderBox ?
-                             ta.offsetWidth :
-                             getComputedStyle(ta).getPropertyValue('width'), 10) - boxOuter.width;
+            width = parseInt(getComputedStyle(ta).getPropertyValue('width'), 10) - boxOuter.width;
             mirror.style.width = width + 'px';
 
             mirrorHeight = mirror.scrollHeight;

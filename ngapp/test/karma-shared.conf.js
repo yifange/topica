@@ -26,7 +26,7 @@ module.exports = function() {
       'app/bower_components/angular-moment/angular-moment.js',
       'app/bower_components/angularjs-gravatar/src/gravatar-directive.js',
       'app/bower_components/angularjs-gravatar/src/md5-service.js',
-      'node_modules/expect.js/expect.js',      
+      'node_modules/expect.js/expect.js',    
 
       //App-specific Code      
       'app/scripts/app.js.coffee',

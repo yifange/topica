@@ -56,35 +56,33 @@ ActiveRecord::Schema.define(version: 20131208233748) do
   create_table "followships", force: true do |t|
     t.integer  "user_id"
     t.integer  "topic_id"
+    t.integer  "feed_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+  add_index "followships", ["feed_id"], name: "index_followships_on_feed_id", using: :btree
   add_index "followships", ["topic_id"], name: "index_followships_on_topic_id", using: :btree
   add_index "followships", ["user_id"], name: "index_followships_on_user_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.integer  "user_id"
-    t.integer  "topic_id"
     t.text     "title"
     t.text     "content"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "posts", ["topic_id"], name: "index_posts_on_topic_id", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "topics", force: true do |t|
     t.integer  "user_id"
-    t.integer  "feed_id"
     t.string   "name"
-    t.string   "topic_type"
+    t.integer  "topic_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "topics", ["feed_id"], name: "index_topics_on_feed_id", using: :btree
   add_index "topics", ["user_id"], name: "index_topics_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
