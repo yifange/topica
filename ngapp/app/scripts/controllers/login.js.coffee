@@ -1,4 +1,3 @@
-app = angular.module("topicaApp")
 ###*
 * @doc overview
 * @id login_controller
@@ -13,6 +12,8 @@ app = angular.module("topicaApp")
 * Route: /login
 *
 ###
+
+app = angular.module("topicaApp")
 app.controller "LoginController", [
   'Configs',
   '$http',

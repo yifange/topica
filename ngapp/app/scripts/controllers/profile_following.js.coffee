@@ -9,6 +9,7 @@
 * Route:
 * /profile/:profileId/following
 ###
+
 app = angular.module('topicaApp')
 app.controller "ProfileFollowingController", [
   "Restangular",

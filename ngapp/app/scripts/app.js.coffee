@@ -1,7 +1,7 @@
 ###*
- * @doc function
- * @name hahaha
- * @description nothing
+ * @doc module
+ * @name topicaApp
+ * @description The main module of the project.
  *
  * All the dependencies for the topica module and all the routing rules are defined here.
  *

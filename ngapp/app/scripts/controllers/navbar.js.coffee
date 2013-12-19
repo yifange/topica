@@ -1,5 +1,3 @@
-app = angular.module("topicaApp")
-
 ###*
 * @doc overview
 * @id navbar_controller
@@ -10,6 +8,8 @@ app = angular.module("topicaApp")
 * The controller mainly maintains the opening states of the side bar, which can be closed, fully opened, and partly opened (When hovering on the hot corner icon).
 * Currently the controller holds four items: Search, User, Feed, and Topic.
 ###
+
+app = angular.module("topicaApp")
 
 app.controller 'NavbarController', [
   "$rootScope",

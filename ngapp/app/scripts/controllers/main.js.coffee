@@ -1,4 +1,3 @@
-app = angular.module("topicaApp")
 ###*
 * @doc overview
 * @id main_controller
@@ -11,6 +10,7 @@ app = angular.module("topicaApp")
 *
 ###
 
+app = angular.module("topicaApp")
 app.controller 'MainController', [
   "Restangular",
   "$scope",
