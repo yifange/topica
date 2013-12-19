@@ -2,7 +2,8 @@
 * @doc overview
 * @id topics_service
 * @name topicaApp:Topics
-* @description This is the Topics.
+* @description Used to share topics among old repost inputs in homepage and the profile page.
+*
 *
 ###
 

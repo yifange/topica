@@ -5,7 +5,9 @@
 * @name topicaApp.directive.newscard:NewscardDirective
 * @description newscard directive
 *
-* Used to show all the posts
+* Used to show all the posts.
+* This directive integrates the gravatar image of the user, the title, the content, and the posting time of the post, a comment list, new comment input and the repost
+* input.
 ###
 app = angular.module("topicaApp.directives.newscard", [])
 app.directive "newscard", ["$http", "Restangular",

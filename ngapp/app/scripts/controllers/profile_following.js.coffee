@@ -4,7 +4,8 @@
 * @name topicaApp.controllers:ProfileFollowingController
 * @description The controller for the following topics
 *
-* Show all the following topics
+* Show all the following topics that the user is following.
+*
 * Route:
 * /profile/:profileId/following
 ###

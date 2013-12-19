@@ -5,7 +5,13 @@
 * @description The controller for the topic subpage of profile page
 *
 * Shows all the topics owned by a user.
-* Provides functionalities like showing all posts, assigning feeds to the topics
+* Provides functionalities like showing all posts, assigning feeds to the topics.
+* Assigning the feeds to the topics is implemented in the button dropdown directives.
+*
+* Routes:
+* /profile/:profileId/topics
+* or /profile/:profiledId
+*
 ###
 
 app = angular.module('topicaApp')

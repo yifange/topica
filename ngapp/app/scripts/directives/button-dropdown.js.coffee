@@ -5,7 +5,11 @@
 * @name topicaApp.directive.buttonDropdown:Buttondropdown
 * @description The button dropdown directive.
 *
-* This is used to assign feeds to a topic
+* This is used to assign feeds to a topic.
+* Provides functionalities like select, feed, and add new feed.
+* When clicking on the selected feed, the feed will be deselected, but the topics will still be followed. If the topic is not being followed, clicking on a feed will
+* follow this topic and put this topic into the selected feed. If the topics are already followed, doing so will change the feeds for this topic.
+*
 ###
 app = angular.module("topicaApp.directives.buttonDropdown", ['ui.bootstrap.position'])
 app.directive 'buttonDropdown', [

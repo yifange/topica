@@ -6,7 +6,9 @@ app = angular.module("topicaApp")
 * @name topicaApp.controllers:NavbarController
 * @description Navbar controller
 *
-* Provides the funcionalities for both the top navbar and the side bar partials.
+* Provides the functionalities for both the: top navbar and the side bar partials.
+* The controller mainly maintains the opening states of the side bar, which can be closed, fully opened, and partly opened (When hovering on the hot corner icon).
+* Currently the controller holds four items: Search, User, Feed, and Topic.
 ###
 
 app.controller 'NavbarController', [

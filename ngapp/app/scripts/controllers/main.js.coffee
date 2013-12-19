@@ -6,8 +6,9 @@ app = angular.module("topicaApp")
 * @description The home page controller
 *
 * The controller for the main view. Display posts in the topics followed by the current user.
-* Route:
-* /
+*
+* Route: /
+*
 ###
 
 app.controller 'MainController', [
