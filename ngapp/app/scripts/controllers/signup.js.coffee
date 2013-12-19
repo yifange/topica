@@ -3,6 +3,7 @@
 * @id signup_controller
 * @name topicaAll.controllers:SignupController
 * @description Controller for the signup view
+* The input boxes are binded to $scope.credential.
 *
 * Route:
 * /signup

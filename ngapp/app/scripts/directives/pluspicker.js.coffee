@@ -5,6 +5,8 @@
 * @description Pluspicker directive
 *
 * Used to select target topics for a new post or repost.
+* Multi-select the topics, filter the topics and add new topics.
+*
 ###
 
 app = angular.module("topicaApp.directives.pluspicker", [])

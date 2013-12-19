@@ -3,7 +3,8 @@
  * @name hahaha
  * @description nothing
  *
- * All the dependencies
+ * All the dependencies for the topica module and all the routing rules are defined here.
+ *
  ###
 app = angular.module 'topicaApp', [
   'ngRoute',

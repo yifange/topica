@@ -5,6 +5,7 @@
 * @description New post controller
 *
 * New post controller, used for the new post box partial.
+* The post input boxes in the view is binded to $scope.newPost. The controller will call $scope.createNewPost to send the content of $scope.newPost to the server.
 ###
 
 app = angular.module("topicaApp")

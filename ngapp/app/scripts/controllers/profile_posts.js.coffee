@@ -2,7 +2,8 @@
 * @doc overview
 * @id profile_posts_controller
 * @name topicaApp.controllers:ProfilePostsController
-* @description Show a user's all posts in profile page
+* @description Show a user's all posts in profile page.
+* The view uses newscard directives to show all the post.
 *
 * Route:
 * /profile/:profileId/posts

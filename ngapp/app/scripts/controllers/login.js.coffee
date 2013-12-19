@@ -6,8 +6,12 @@ app = angular.module("topicaApp")
 * @description The login controller.
 *
 * The controller of the login view.
-* Route:
-* /login
+* View calls submit funtion to login. $scope.credential is bind to the email input and password input.
+* When login is successful, call loginConfirmed method authService module.
+* A login confirmed event will be broadcasted.
+*
+* Route: /login
+*
 ###
 app.controller "LoginController", [
   'Configs',

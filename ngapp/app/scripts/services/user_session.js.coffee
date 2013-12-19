@@ -1,9 +1,13 @@
 ###*
 * @doc overview
 * @id user_session_service
-* @name topicaApp:UserSession
-* @description This is the Usersession.
+* @name topicaApp:UserSession.
+* @description Used to get the current use session.
+*
+* The session will first be looked up in the UserSession service singleton. If this does not exist, the cookie will be looked up. If the cookie doesn't have the user data,
+* a request will be sent to the server to get the current user info.
 ###
+
 
 app = angular.module("topicaApp")
 app.service "UserSession", [

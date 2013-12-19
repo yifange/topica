@@ -2,7 +2,7 @@
 * @doc overview
 * @id profile_active_page_service
 * @name topicaApp:ProfileActivePage
-* @description This is the profileactivepage.
+* @description Hosts the active profile subpage. The page can be topics, feeds, posts, following or favors.
 *
 ###
 #

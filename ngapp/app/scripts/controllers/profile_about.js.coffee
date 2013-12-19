@@ -7,6 +7,8 @@
 * Used by all the profile subpages.
 * The route may contain a profile id. (/profile/:profileId)
 * If the profileId is not provided, the profile for current user will be rendered.
+* This controller is contained by all the sub-pages of profile page.
+*
 ###
 
 app = angular.module("topicaApp")
